@@ -31,8 +31,8 @@ server.post('/register',(req,res)=>{
     const users = user.getUsers();
     const foundUser = users.find(element => element.email === email)
     if(!foundUser) users.add({'email':email,'password':password});
-    let refreshToken = jwt.sign({'email':email},process.env.REFRESH_TOKEN_SECRET,{'expiresIn':'1h'});
-    res.cookie('refreshtoekn',refreshToken);
+    let refreshToken = jwt.sign({'email':email},process.env.REFRESH_TOKEN_SECRET,{'expiresIn':'1h'},null);
+    res.cookie('refreshToken',refreshToken);
     res.send('ok|'+ refreshToken);
     console.log(foundUser);
 });
