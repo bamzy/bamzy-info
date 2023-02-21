@@ -76,6 +76,7 @@ server.get('/html',(req,res)=>{
         '</body>' +
         '</html>');
 });
+
 server.listen(port,()=>{
     console.log(`Auth Server running on port ${port}`)
 });
