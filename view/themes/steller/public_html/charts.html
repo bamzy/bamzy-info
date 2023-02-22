@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Bamdad's Charts</title>
+        <meta charset="UTF-8">
+        <link rel="icon" type="image/x-icon" href="assets/imgs/logo2.svg">
+        <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
+        <!-- Bootstrap + Steller main styles -->
+        <link rel="stylesheet" href="assets/css/steller.css">
+        <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+        <script src="https://cdn.anychart.com/releases/v8/js/anychart-tag-cloud.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.3/axios.min.js"></script>
+
+    </head>
+    <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top border" data-spy="affix" data-offset-top="0">
+            <div class="container">
+                <a class="navbar-brand" href="#"><img src="assets/imgs/logo2.svg" alt=""></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto align-items-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">back</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <section class="section m-5 ">
+            <div class="row p-2">
+                <div class="col-6 text-center">
+                    <button class="btn-primary text-white" onclick="drawWordCloud('ابر کلمات','http://localhost:8081/analyzeBBC','bbc-container')">نمودار بی بی سی فارسی</button>
+                </div>
+                <div class="col-6 text-center">
+                    <button class="btn-primary text-white" onclick="drawWordCloud('ابر کلمات','http://localhost:8081/analyzeIranIntl','iranintl-container')">نمودار ایران اینترنشنال</button>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-6">
+                    <div id="bbc-container" class="wordcount-container border">
+                        <img src="./assets/loading.gif"/>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div id="iranintl-container" class="wordcount-container border">
+
+                        <img src="./assets/loading.gif"/>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+        <style>
+            .wordcount-container {
+                width: 100%;
+                height: 200%;
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+        <script>
+            function getRandomInt(max) {
+                return Math.floor(Math.random() * max);
+            }
+
+            drawWordCloud = function(title, url, containerId){
+
+                var elem = document.getElementById(containerId);
+                elem.innerHTML='';
+
+                axios.get(url).then((response)=>{
+                    console.log('drawWordCound called on '+url);
+                    var data = response.data;
+                    var chart = anychart.tagCloud(data);
+                    var angels = [];
+                    for (i=0; i<data.length;i++)
+                        angels.push(getRandomInt(180)-90);
+                    let date = new Date().toLocaleDateString('fa-IR');
+                    chart.title(date + " | " + title )
+                    chart.angles(angels)
+                    chart.container(containerId);
+                    chart.draw();
+                })
+
+
+
+            }
+            window.onload = function(){
+                drawWordCloud('ابر کلمات','http://localhost:8081/analyzeBBC','bbc-container');
+                drawWordCloud('ابر کلمات','http://localhost:8081/analyzeIranIntl','iranintl-container')
+            }
+        </script>
+
+    </body>
+</html>
