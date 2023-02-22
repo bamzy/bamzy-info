@@ -33,10 +33,10 @@
         <section class="section m-5 ">
             <div class="row p-2">
                 <div class="col-6 text-center">
-                    <button class="btn-primary text-white" onclick="drawWordCloud('ابر کلمات','https://bamzy.info/api/chart?name=analyzeBBC','bbc-container')">نمودار بی بی سی فارسی</button>
+                    <button class="btn-primary text-white" onclick="drawWordCloud('ابر کلمات','https://bamzy.info/api/chart?name=analyzeBBC','bbc-container')"> بی بی سی فارسی</button>
                 </div>
                 <div class="col-6 text-center">
-                    <button class="btn-primary text-white" onclick="drawWordCloud('ابر کلمات','https://bamzy.info/api/chart?name=analyzeIranIntl','iranintl-container')">نمودار ایران اینترنشنال</button>
+                    <button class="btn-primary text-white" onclick="drawWordCloud('ابر کلمات','https://bamzy.info/api/chart?name=analyzeIranIntl','iranintl-container')">ایران اینترنشنال</button>
                 </div>
             </div>
             <div class="row text-center">
@@ -52,8 +52,28 @@
                     </div>
                 </div>
             </div>
-
-
+        </section>
+        <section class="section m-5 ">
+            <div class="row p-2">
+                <div class="col-6 text-center">
+                    <button class="btn-primary text-white" onclick="drawWordCloud('ابر کلمات','https://bamzy.info/api/chart?name=analyzeRadioFarda','radiofarda-container')">رادیو فردا</button>
+                </div>
+                <div class="col-6 text-center">
+                    <button class="btn-primary text-white" onclick="drawWordCloud('ابر کلمات','https://bamzy.info/api/chart?name=analyzeTasnim','tasnim-container')">تسنیم</button>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-6">
+                    <div id="radiofarda-container" class="wordcount-container border">
+                        <img src="./assets/loading.gif"/>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div id="tasnim-container" class="wordcount-container border">
+                        <img src="./assets/loading.gif"/>
+                    </div>
+                </div>
+            </div>
         </section>
         <style>
             .wordcount-container {
@@ -93,6 +113,8 @@
             window.onload = function(){
                 drawWordCloud('ابر کلمات','https://bamzy.info/api/chart?name=analyzeBBC','bbc-container');
                 drawWordCloud('ابر کلمات','https://bamzy.info/api/chart?name=analyzeIranIntl','iranintl-container')
+                drawWordCloud('ابر کلمات','https://bamzy.info/api/chart?name=analyzeRadioFarda','radiofarda-container')
+                drawWordCloud('ابر کلمات','https://bamzy.info/api/chart?name=analyzeTasnim','tasnim-container')
             }
         </script>
 
