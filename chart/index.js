@@ -62,5 +62,5 @@ server.get('/analyzeIranIntl',(req,res)=>{
     analyze('https://www.iranintl.com/feed',res);
 })
 server.listen(port,()=>{
-    console.log(`Auth Server running on port ${port}`)
+    console.log(`Chat Server running on port ${port}`)
 });
