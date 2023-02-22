@@ -49,6 +49,7 @@ app.post('/deploy', verifyPostData, function (req, res) {
             console.log(`stderr: ${stderr}`);
             return;
         }
+        console.log('log to see in pm2');
         console.log(`stdout: deployed successfully at` + Date.now());
     });
 
