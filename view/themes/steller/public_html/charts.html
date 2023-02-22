@@ -31,12 +31,13 @@
             </div>
         </nav>
         <section class="section m-5 ">
+            <p>This is comparison between some of the opposition news agencies in Iran vs. the state-sponsored news from Iran</p>
             <div class="row p-2">
                 <div class="col-6 text-center">
-                    <button class="btn-primary text-white" onclick="drawWordCloud('ابر کلمات','https://bamzy.info/api/chart?name=analyzeBBC','bbc-container')"> بی بی سی فارسی</button>
+                    <button class="btn-primary text-white" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeBBC','bbc-container')">BBC Persian بی بی سی فارسی</button>
                 </div>
                 <div class="col-6 text-center">
-                    <button class="btn-primary text-white" onclick="drawWordCloud('ابر کلمات','https://bamzy.info/api/chart?name=analyzeIranIntl','iranintl-container')">ایران اینترنشنال</button>
+                    <button class="btn-primary text-white" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeIranIntl','iranintl-container')">ایران اینترنشنالIran International </button>
                 </div>
             </div>
             <div class="row text-center">
@@ -56,10 +57,10 @@
         <section class="section m-5 ">
             <div class="row p-2">
                 <div class="col-6 text-center">
-                    <button class="btn-primary text-white" onclick="drawWordCloud('ابر کلمات','https://bamzy.info/api/chart?name=analyzeRadioFarda','radiofarda-container')">رادیو فردا</button>
+                    <button class="btn-primary text-white" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeRadioFarda','radiofarda-container')">رادیو فرداFree Radio Europe</button>
                 </div>
                 <div class="col-6 text-center">
-                    <button class="btn-primary text-white" onclick="drawWordCloud('ابر کلمات','https://bamzy.info/api/chart?name=analyzeTasnim','tasnim-container')">تسنیم</button>
+                    <button class="btn-primary text-white" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeTasnim','tasnim-container')">Tasnim تسنیم</button>
                 </div>
             </div>
             <div class="row text-center">
@@ -88,7 +89,7 @@
                 return Math.floor(Math.random() * max);
             }
 
-            drawWordCloud = function(title, url, containerId){
+            drawWordCloud = function( url, containerId){
 
                 var elem = document.getElementById(containerId);
                 elem.innerHTML='';
@@ -100,8 +101,9 @@
                     var angels = [];
                     for (i=0; i<data.length;i++)
                         angels.push(getRandomInt(180)-90);
-                    let date = new Date().toLocaleDateString('fa-IR');
-                    chart.title(date + " | " + title )
+                    let persianDate = new Date().toLocaleDateString('fa-IR');
+                    let canadianDate = new Date().toLocaleDateString('en-CA');
+                    chart.title(persianDate + " | " + canadianDate )
                     chart.angles(angels)
                     chart.container(containerId);
                     chart.draw();
@@ -111,10 +113,10 @@
 
             }
             window.onload = function(){
-                drawWordCloud('ابر کلمات','https://bamzy.info/api/chart?name=analyzeBBC','bbc-container');
-                drawWordCloud('ابر کلمات','https://bamzy.info/api/chart?name=analyzeIranIntl','iranintl-container')
-                drawWordCloud('ابر کلمات','https://bamzy.info/api/chart?name=analyzeRadioFarda','radiofarda-container')
-                drawWordCloud('ابر کلمات','https://bamzy.info/api/chart?name=analyzeTasnim','tasnim-container')
+                drawWordCloud('https://bamzy.info/api/chart?name=analyzeBBC','bbc-container');
+                drawWordCloud('https://bamzy.info/api/chart?name=analyzeIranIntl','iranintl-container')
+                drawWordCloud('https://bamzy.info/api/chart?name=analyzeRadioFarda','radiofarda-container')
+                drawWordCloud('https://bamzy.info/api/chart?name=analyzeTasnim','tasnim-container')
             }
         </script>
 
