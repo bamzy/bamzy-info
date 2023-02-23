@@ -35,6 +35,8 @@ const textCleanup = (val) => {
     val = val.replace('،','');
     val = val.replace(':','');
     val = val.replace('<img','');
+    val = val.replace('»','');
+    val = val.replace('«','');
     return val;
 }
 module.exports = { getExcludedWords, textCleanup}
