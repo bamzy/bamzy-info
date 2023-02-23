@@ -28,7 +28,9 @@ const textCleanup = (val) => {
     val = val.replace('</div>','');
     val = val.replace('.','');
     val = val.replace(',','');
+    val = val.replace('،','');
     val = val.replace('?','');
+    val = val.replace(':','');
     val = val.replace('!','');
     val = val.replace('>','');
     val = val.replace('<','');
