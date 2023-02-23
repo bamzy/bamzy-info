@@ -17,10 +17,9 @@ const scrape = (url,res)=>{
         res.header('Content-Type','text/html');
         let data = response.data;
 
-        var result = data.match(/<description>(.*?)<\/description>/g).map(function(val){
+        var result = data.match(/<description>(.*?)<\/description>/g).map(function(newsEntry){
 
-
-            return textCleanup(val);
+            return textCleanup(newsEntry);
         });
         let words = new Map();
         let excludedWords = getExcludedWords();

@@ -21,7 +21,8 @@ const getExcludedWords = ()=>{
     return map;
 }
 const textCleanup = (val) => {
-    val = val.replace(/<\/?description>/g,'');
+    return val.replace(/[`~!@#$%^*()_|+\-=?;:'",.<>\{\}\[\]\\\/a-zA-Z]/gi, '');
+    /*val = val.replace(/<\/?description>/g,'');
     val = val.replace('![CDATA[','');
     val = val.replace(']]','');
     val = val.replace('<div>','');
@@ -39,8 +40,9 @@ const textCleanup = (val) => {
     val = val.replace('<img','');
     val = val.replace('»','');
     val = val.replace('«','');
-    return val;
+    return val;*/
 }
+
 module.exports = { getExcludedWords, textCleanup}
 
 
