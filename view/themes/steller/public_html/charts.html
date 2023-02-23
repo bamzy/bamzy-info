@@ -34,10 +34,10 @@
             <p>This is comparison between some of the opposition news agencies in Iran vs. the state-sponsored news from Iran</p>
             <div class="row p-2">
                 <div class="col-6 text-center">
-                    <button class="btn-primary text-white" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeBBC','bbc-container')">BBC Persian بی بی سی فارسی</button>
+                    <button class="btn btn-primary text-white" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeBBC','bbc-container')">BBC Persian بی بی سی فارسی</button>
                 </div>
                 <div class="col-6 text-center">
-                    <button class="btn-primary text-white" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeIranIntl','iranintl-container')">ایران اینترنشنالIran International </button>
+                    <button class="btn btn-primary text-white" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeIranIntl','iranintl-container')">ایران اینترنشنالIran International </button>
                 </div>
             </div>
             <div class="row text-center">
@@ -57,10 +57,10 @@
         <section class="section m-5 ">
             <div class="row p-2">
                 <div class="col-6 text-center">
-                    <button class="btn-primary text-white" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeRadioFarda','radiofarda-container')">رادیو فرداFree Radio Europe</button>
+                    <button class="btn btn-primary text-white" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeRadioFarda','radiofarda-container')">رادیو فرداFree Radio Europe</button>
                 </div>
                 <div class="col-6 text-center">
-                    <button class="btn-primary text-white" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeTasnim','tasnim-container')">Tasnim تسنیم</button>
+                    <button class="btn btn-danger text-white" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeTasnim','tasnim-container')">Tasnim تسنیم</button>
                 </div>
             </div>
             <div class="row text-center">
@@ -71,6 +71,28 @@
                 </div>
                 <div class="col-6">
                     <div id="tasnim-container" class="wordcount-container border">
+                        <img src="./assets/loading.gif"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section m-5 ">
+            <div class="row p-2">
+                <div class="col-6 text-center">
+                    <button class="btn btn-danger text-white" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeFarsnews','farsnews-container')">خبرگزاری فارس Fars News</button>
+                </div>
+                <div class="col-6 text-center">
+                    <button class="btn bg-warning text-white" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeShargh','shargh-container')">Shargh News شرق</button>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-6">
+                    <div id="farsnews-container" class="wordcount-container border">
+                        <img src="./assets/loading.gif"/>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div id="shargh-container" class="wordcount-container border">
                         <img src="./assets/loading.gif"/>
                     </div>
                 </div>
@@ -117,6 +139,9 @@
                 drawWordCloud('https://bamzy.info/api/chart?name=analyzeIranIntl','iranintl-container')
                 drawWordCloud('https://bamzy.info/api/chart?name=analyzeRadioFarda','radiofarda-container')
                 drawWordCloud('https://bamzy.info/api/chart?name=analyzeTasnim','tasnim-container')
+                drawWordCloud('https://bamzy.info/api/chart?name=analyzeShargh','shargh-container')
+                drawWordCloud('https://localhost:8081/analyzeShargh','shargh-container')
+                // drawWordCloud('https://bamzy.info/api/chart?name=analyzeFarsnews','farsnews-container')
             }
         </script>
 

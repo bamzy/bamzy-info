@@ -21,6 +21,8 @@ const scrape = (url,res)=>{
             val = val.replace(/<\/?description>/g,'');
             val = val.replace('![CDATA[','');
             val = val.replace(']]','');
+            val = val.replace('<div>','');
+            val = val.replace('</div>','');
             val = val.replace('.','');
             val = val.replace(',','');
             val = val.replace('?','');
@@ -70,6 +72,12 @@ server.get('/analyzeRadioFarda',(req,res)=>{
 })
 server.get('/analyzeTasnim',(req,res)=>{
     scrape('https://www.tasnimnews.com/fa/rss/feed/0/8/0/%D9%85%D9%87%D9%85%D8%AA%D8%B1%DB%8C%D9%86-%D8%A7%D8%AE%D8%A8%D8%A7%D8%B1',res);
+})
+server.get('/analyzeShargh',(req,res)=>{
+    scrape('https://www.sharghdaily.com/feeds/',res);
+})
+server.get('/analyzeFarsnews',(req,res)=>{
+    scrape('https://www.farsnews.ir/rss',res);
 })
 server.listen(port,()=>{
     console.log(`Chat Server running on port ${port}`)
