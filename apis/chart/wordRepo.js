@@ -9,6 +9,15 @@ const getExcludedWords = ()=>{
     map.set('امروز');
     map.set('کرده');
     map.set('کرد');
+    map.set('کردن');
+    map.set('کردند');
+    map.set('دارد');
+    map.set('آنها');
+    map.set('بیشتر');
+    map.set('باید');
+    map.set('دارند');
+    map.set('شد');
+    map.set('می دهد');
     return map;
 }
 module.exports = { getExcludedWords}
