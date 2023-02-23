@@ -20,6 +20,23 @@ const getExcludedWords = ()=>{
     map.set('می دهد');
     return map;
 }
-module.exports = { getExcludedWords}
+const textCleanup = (val) => {
+    val = val.replace(/<\/?description>/g,'');
+    val = val.replace('![CDATA[','');
+    val = val.replace(']]','');
+    val = val.replace('<div>','');
+    val = val.replace('</div>','');
+    val = val.replace('.','');
+    val = val.replace(',','');
+    val = val.replace('?','');
+    val = val.replace('!','');
+    val = val.replace('>','');
+    val = val.replace('<','');
+    val = val.replace('،','');
+    val = val.replace(':','');
+    val = val.replace('<img','');
+    return val;
+}
+module.exports = { getExcludedWords, textCleanup}
 
 

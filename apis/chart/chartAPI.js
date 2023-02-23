@@ -1,6 +1,6 @@
 const express = require('express')
 require('dotenv').config();
-const wordRepo = require('./wordRepo');
+const {getExcludedWords,textCleanup} = require('./wordRepo');
 const axios = require('axios')
 const cors = require('cors')
 const server = express();
@@ -18,24 +18,12 @@ const scrape = (url,res)=>{
         let data = response.data;
 
         var result = data.match(/<description>(.*?)<\/description>/g).map(function(val){
-            val = val.replace(/<\/?description>/g,'');
-            val = val.replace('![CDATA[','');
-            val = val.replace(']]','');
-            val = val.replace('<div>','');
-            val = val.replace('</div>','');
-            val = val.replace('.','');
-            val = val.replace(',','');
-            val = val.replace('?','');
-            val = val.replace('!','');
-            val = val.replace('>','');
-            val = val.replace('<','');
-            val = val.replace('،','');
-            val = val.replace(':','');
 
-            return val;
+
+            return textCleanup(val);
         });
         let words = new Map();
-        let excludedWords = wordRepo.getExcludedWords();
+        let excludedWords = getExcludedWords();
         for (let i = 0; i < result.length ; i++) {
             let arr = result[i].split(" ");
 
