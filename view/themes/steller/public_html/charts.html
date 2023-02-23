@@ -98,6 +98,28 @@
                 </div>
             </div>
         </section>
+        <section class="section m-2 p-1">
+            <div class="row p-1">
+                <div class="col-6 text-center">
+                    <button class="btn bg-warning text-white" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeEtemad','etemad-container')">روزنامه اعتماد Etemad News</button>
+                </div>
+                <div class="col-6 text-center">
+<!--                    <button class="btn bg-warning text-white" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeShargh','shargh-container')">Shargh News شرق</button>-->
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-6">
+                    <div id="etemad-container" class="wordcount-container border">
+                        <img src="./assets/loading.gif"/>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div id="" class="wordcount-container border">
+                        <img src="./assets/loading.gif"/>
+                    </div>
+                </div>
+            </div>
+        </section>
         <style>
             .wordcount-container {
                 width: 100%;
