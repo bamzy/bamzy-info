@@ -21,7 +21,7 @@ const getExcludedWords = ()=>{
     return map;
 }
 const textCleanup = (val) => {
-    return val.replace(/[`~!@#$%^*()_|+\-=?;:'",.<>\{\}\[\]\\\/a-zA-Z]/gi, '');
+    return val.replace(/[،،»«`~!@#$%^*()_|+\-=?;:'",.<>\{\}\[\]\\\/a-zA-Z]/gi, '');
     /*val = val.replace(/<\/?description>/g,'');
     val = val.replace('![CDATA[','');
     val = val.replace(']]','');
