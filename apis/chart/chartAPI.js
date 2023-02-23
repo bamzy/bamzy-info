@@ -65,7 +65,7 @@ server.get('/analyzeShargh',(req,res)=>{
     scrape('https://www.sharghdaily.com/feeds/',res);
 })
 server.get('/analyzeFarsnews',(req,res)=>{
-    scrape('https://www.farsnews.ir/rss',res);
+    scrape('https://www.farsnews.ir/rss/chosennews',res);
 })
 server.listen(port,()=>{
     console.log(`Chat Server running on port ${port}`)
