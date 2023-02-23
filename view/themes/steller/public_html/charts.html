@@ -15,7 +15,7 @@
     <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
         <nav class="navbar navbar-expand-lg navbar-light fixed-top border" data-spy="affix" data-offset-top="0">
             <div class="container">
-                <a class="navbar-brand" href="#"><img src="assets/imgs/logo2.svg" alt=""></a>
+                <a class="navbar-brand" href="/"><img src="assets/imgs/logo2.svg" alt=""></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -30,9 +30,9 @@
                 </div>
             </div>
         </nav>
-        <section class="section m-5 ">
+        <section class="section m-2 mt-5 p-1 pt-4">
             <p>This is comparison between some of the opposition news agencies in Iran vs. the state-sponsored news from Iran</p>
-            <div class="row p-2">
+            <div class="row p-1">
                 <div class="col-6 text-center">
                     <button class="btn btn-primary text-white" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeBBC','bbc-container')">BBC Persian بی بی سی فارسی</button>
                 </div>
@@ -54,8 +54,8 @@
                 </div>
             </div>
         </section>
-        <section class="section m-5 ">
-            <div class="row p-2">
+        <section class="section m-2 p-1">
+            <div class="row p-1">
                 <div class="col-6 text-center">
                     <button class="btn btn-primary text-white" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeRadioFarda','radiofarda-container')">رادیو فرداFree Radio Europe</button>
                 </div>
@@ -76,8 +76,8 @@
                 </div>
             </div>
         </section>
-        <section class="section m-5 ">
-            <div class="row p-2">
+        <section class="section m-2 p-1">
+            <div class="row p-1">
                 <div class="col-6 text-center">
                     <button class="btn btn-danger text-white" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeFarsnews','farsnews-container')">خبرگزاری فارس Fars News</button>
                 </div>
@@ -101,9 +101,12 @@
         <style>
             .wordcount-container {
                 width: 100%;
-                height: 200%;
+                height: 500px;
                 margin: 0;
                 padding: 0;
+            }
+            .chart-row-section {
+
             }
         </style>
         <script>
