@@ -47,13 +47,18 @@
             <div class="row text-center">
                 <div class="col-md-6">
                     <div id="bbc-container" class="wordcount-container border">
-                        <img src="./assets/loading.gif"/>
+                        <span class="img-wrapper">
+                            <img class="loading-img" src="./assets/loading.gif"/>
+                            <span class="bg-gray text-muted">click the above btn if taking too long</span>
+                        </span>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div id="iranintl-container" class="wordcount-container border">
-
-                        <img src="./assets/loading.gif"/>
+                        <span class="img-wrapper">
+                            <img class="loading-img" src="./assets/loading.gif"/>
+                            <span class="bg-gray text-muted">click the above btn if taking too long</span>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -70,12 +75,18 @@
             <div class="row text-center">
                 <div class="col-6">
                     <div id="radiofarda-container" class="wordcount-container border">
-                        <img src="./assets/loading.gif"/>
+                        <span class="img-wrapper">
+                            <img class="loading-img" src="./assets/loading.gif"/>
+                            <span class="bg-gray text-muted">click the above btn if taking too long</span>
+                        </span>
                     </div>
                 </div>
                 <div class="col-6">
                     <div id="tasnim-container" class="wordcount-container border">
-                        <img src="./assets/loading.gif"/>
+                        <span class="img-wrapper">
+                            <img class="loading-img" src="./assets/loading.gif"/>
+                            <span class="bg-gray text-muted">click the above btn if taking too long</span>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -92,12 +103,18 @@
             <div class="row text-center">
                 <div class="col-6">
                     <div id="farsnews-container" class="wordcount-container border">
-                        <img src="./assets/loading.gif"/>
+                        <span class="img-wrapper">
+                            <img class="loading-img" src="./assets/loading.gif"/>
+                            <span class="bg-gray text-muted">click the above btn if taking too long</span>
+                        </span>
                     </div>
                 </div>
                 <div class="col-6">
                     <div id="shargh-container" class="wordcount-container border">
-                        <img src="./assets/loading.gif"/>
+                        <span class="img-wrapper">
+                            <img class="loading-img" src="./assets/loading.gif"/>
+                            <span class="bg-gray text-muted">click the above btn if taking too long</span>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -114,12 +131,18 @@
             <div class="row text-center">
                 <div class="col-6">
                     <div id="etemad-container" class="wordcount-container border">
-                        <img src="./assets/loading.gif"/>
+                        <span class="img-wrapper">
+                            <img class="loading-img" src="./assets/loading.gif"/>
+                            <span class="bg-gray text-muted">click the above btn if taking too long</span>
+                        </span>
                     </div>
                 </div>
                 <div class="col-6">
                     <div id="vahidonline-container" class="wordcount-container border">
-                        <img src="./assets/loading.gif"/>
+                        <span class="img-wrapper">
+                            <img class="loading-img" src="./assets/loading.gif"/>
+                            <span class="bg-gray text-muted">click the above btn if taking too long</span>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -135,25 +158,65 @@
             <div class="row text-center">
                 <div class="col-6">
                     <div id="varzesh3-container" class="wordcount-container border">
-                        <img src="./assets/loading.gif"/>
+                        <span class="img-wrapper">
+                            <img class="loading-img" src="./assets/loading.gif"/>
+                            <span class="bg-gray text-muted">click the above btn if taking too long</span>
+                        </span>
                     </div>
                 </div>
                 <div class="col-6">
                     <div id="" class="wordcount-container border">
-                        <img class="d-none" src="./assets/loading.gif"/>
+                        <span class="img-wrapper">
+                            <img class="loading-img" src="./assets/loading.gif"/>
+                            <span class="bg-gray text-muted">click the above btn if taking too long</span>
+                        </span>
                     </div>
                 </div>
             </div>
+            <div class="Aligner">
+                <div class="Aligner-item Aligner-item--top">A</div>
+                <div class="Aligner-item">B</div>
+                <div class="Aligner-item Aligner-item--bottom">C</div>
+            </div>
         </section>
         <style>
+            .Aligner {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .Aligner-item {
+                max-width: 50%;
+            }
+
+            .Aligner-item--top {
+                align-self: flex-start;
+            }
+
+            .Aligner-item--bottom {
+                align-self: flex-end;
+            }
             .wordcount-container {
                 width: 100%;
                 height: 500px;
                 margin: 0;
                 padding: 0;
             }
-            .chart-row-section {
+            .img-wrapper {
+                width: 20%;
+                position: relative;
+                top: 50%;
+                left: 50%;
+                transform: translateY(-50%);
+                transform: translateX(-50%);
 
+
+            }
+            .loading-img {
+                /*background: #3A6F9A;*/
+                /*vertical-align: middle;*/
+                /*max-height: 500px;*/
             }
         </style>
         <script>
@@ -163,8 +226,6 @@
 
             drawWordCloud = function( url, containerId){
 
-                var elem = document.getElementById(containerId);
-                elem.innerHTML='';
 
                 axios.get(url).then((response)=>{
                     console.log('drawWordCound called on '+url);
@@ -177,6 +238,9 @@
                     let canadianDate = new Date().toLocaleDateString('en-CA');
                     chart.title(persianDate + " | " + canadianDate )
                     chart.angles(angels)
+                    var elem = document.getElementById(containerId);
+                    elem.innerHTML='';
+
                     chart.container(containerId);
                     chart.draw();
                 })
