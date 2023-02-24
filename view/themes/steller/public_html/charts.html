@@ -173,29 +173,12 @@
                     </div>
                 </div>
             </div>
-            <div class="Aligner">
-                <div class="Aligner-item Aligner-item--top">A</div>
-                <div class="Aligner-item">B</div>
-                <div class="Aligner-item Aligner-item--bottom">C</div>
-            </div>
+
         </section>
         <style>
-            .Aligner {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .Aligner-item {
-                max-width: 50%;
-            }
-
-            .Aligner-item--top {
-                align-self: flex-start;
-            }
-
-            .Aligner-item--bottom {
-                align-self: flex-end;
+            @font-face {
+                font-family: Lalezar;
+                src: url('bamzy.info/assets/Lalezar-Regular.ttf');
             }
             .wordcount-container {
                 width: 100%;
@@ -208,15 +191,11 @@
                 position: relative;
                 top: 50%;
                 left: 50%;
-                transform: translateY(-50%);
                 transform: translateX(-50%);
 
 
             }
             .loading-img {
-                /*background: #3A6F9A;*/
-                /*vertical-align: middle;*/
-                /*max-height: 500px;*/
             }
         </style>
         <script>
@@ -237,7 +216,8 @@
                     let persianDate = new Date().toLocaleDateString('fa-IR');
                     let canadianDate = new Date().toLocaleDateString('en-CA');
                     chart.title(persianDate + " | " + canadianDate )
-                    chart.angles(angels)
+                    chart.angles(angels);
+                    chart.normal().fontFamily("Lalezar");
                     var elem = document.getElementById(containerId);
                     elem.innerHTML='';
 
