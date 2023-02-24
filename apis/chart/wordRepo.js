@@ -20,6 +20,17 @@ const getExcludedWords = ()=>{
     map.set('شد');
     map.set('می دهد');
     map.set('دادن');
+    map.set('باعث');
+    map.set('آن‌ها');
+    map.set('همچنین');
+    map.set('کنید');
+    map.set('اینجا');
+    map.set('کلیک');
+    map.set('بوده');
+    map.set('رسیده');
+    map.set('شد');
+    map.set('خواهد');
+    map.set('بخوانید');
     return map;
 }
 const removeSpecialCharacters = (val) => {

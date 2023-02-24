@@ -36,6 +36,9 @@ server.get('/analyzeFarsnews',(req,res)=>{
 server.get('/analyzeEtemad',(req,res)=>{
     scrapeRssFeed('https://www.etemadnewspaper.ir/fa/rss',res);
 })
+server.get('/analyzeVarzesh3',(req,res)=>{
+    scrapeRssFeed('https://www.varzesh3.com/rss/all',res);
+})
 server.get('/analyzeTelegramChannel/:channelName',(req,res)=>{
     let channelName = req.params['channelName'];
     console.info(channelName);

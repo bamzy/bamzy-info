@@ -124,6 +124,27 @@
                 </div>
             </div>
         </section>
+        <section class="section m-2 p-1">
+            <div class="row p-1">
+                <div class="col-6 text-center">
+                    <button class="btn bg-warning text-white" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeVarzesh3','varzesh3-container')">Varzesh3 News ورزش سه</button>
+                </div>
+                <div class="col-6 text-center">
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-6">
+                    <div id="varzesh3-container" class="wordcount-container border">
+                        <img src="./assets/loading.gif"/>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div id="" class="wordcount-container border">
+                        <img class="d-none" src="./assets/loading.gif"/>
+                    </div>
+                </div>
+            </div>
+        </section>
         <style>
             .wordcount-container {
                 width: 100%;
@@ -165,13 +186,14 @@
             }
             window.onload = function(){
                 drawWordCloud('https://bamzy.info/api/chart?name=analyzeBBC','bbc-container');
-                drawWordCloud('https://bamzy.info/api/chart?name=analyzeIranIntl','iranintl-container')
-                drawWordCloud('https://bamzy.info/api/chart?name=analyzeRadioFarda','radiofarda-container')
-                drawWordCloud('https://bamzy.info/api/chart?name=analyzeTasnim','tasnim-container')
-                drawWordCloud('https://bamzy.info/api/chart?name=analyzeShargh','shargh-container')
-                drawWordCloud('https://bamzy.info/api/chart?name=analyzeFarsnews','farsnews-container')
-                drawWordCloud('https://bamzy.info/api/chart?name=analyzeEtemad','etemad-container')
-                drawWordCloud('https://bamzy.info/api/chart?name=analyzeTelegramChannel/VahidOnline','vahidonline-container')
+                drawWordCloud('https://bamzy.info/api/chart?name=analyzeIranIntl','iranintl-container');
+                drawWordCloud('https://bamzy.info/api/chart?name=analyzeRadioFarda','radiofarda-container');
+                drawWordCloud('https://bamzy.info/api/chart?name=analyzeTasnim','tasnim-container');
+                drawWordCloud('https://bamzy.info/api/chart?name=analyzeShargh','shargh-container');
+                drawWordCloud('https://bamzy.info/api/chart?name=analyzeFarsnews','farsnews-container');
+                drawWordCloud('https://bamzy.info/api/chart?name=analyzeEtemad','etemad-container');
+                drawWordCloud('https://bamzy.info/api/chart?name=analyzeTelegramChannel/VahidOnline','vahidonline-container');
+                drawWordCloud('https://bamzy.info/api/chart?name=analyzeVarzesh3','varzesh3-container');
             }
         </script>
 
