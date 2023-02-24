@@ -1,3 +1,4 @@
+const axios = require("axios");
 const getExcludedWords = ()=>{
     let map = new Map();
     map.set('است');
@@ -57,6 +58,25 @@ const finalizeText = (newsTextArr) => {
     }
     return chartResult;
 }
-module.exports = { getExcludedWords, removeSpecialCharacters,finalizeText,extractRssText: extractRawRSSText}
+const scrapeRssFeed = (url,res)=>{
+    axios.get(url).then((response)=>{
+        res.header('Content-Type','text/html');
+        let fullText = response.data;
+        let rawTextArr = extractRssText(fullText);
+        let chartResult = finalizeText(rawTextArr);
+        res.send(chartResult);
+    }).catch(function (error) {
+        res.send(
+            [
+                {x:'Please',value:10},
+                {x:'Try',value:10},
+                {x:'Again',value: 20},
+                {x:'Error',value:50},
+                {x:error.message,value:25}
+            ]
+        );
+    })
+}
+module.exports = { scrapeRssFeed, getExcludedWords, removeSpecialCharacters,finalizeText,extractRssText: extractRawRSSText}
 
 

@@ -1,6 +1,6 @@
 const express = require('express')
 require('dotenv').config();
-const {getExcludedWords,textCleanup,finalizeText,extractRssText} = require('./wordRepo');
+const {scrapeRssFeed} = require('./wordRepo');
 const {analyzeTelegramChannel} = require('./telegram');
 const axios = require('axios')
 const cors = require('cors')
@@ -13,15 +13,7 @@ server.use(express.json());
 server.use(express.urlencoded());
 server.use(cors());
 
-const scrapeRssFeed = (url,res)=>{
-    axios.get(url).then((response)=>{
-        res.header('Content-Type','text/html');
-        let fullText = response.data;
-        let rawTextArr = extractRssText(fullText);
-        let chartResult = finalizeText(rawTextArr);
-        res.send(chartResult);
-    })
-}
+
 server.get('/analyzeBBC',(req,res)=>{
 
     scrapeRssFeed('https://feeds.bbci.co.uk/persian/rss.xml',res);
