@@ -77,6 +77,6 @@ const scrapeRssFeed = (url,res)=>{
         );
     })
 }
-module.exports = { scrapeRssFeed, getExcludedWords, removeSpecialCharacters,finalizeText,extractRssText: extractRawRSSText}
+module.exports = { scrapeRssFeed, getExcludedWords, removeSpecialCharacters,finalizeText, extractRawRSSText}
 
 
