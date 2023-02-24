@@ -18,31 +18,45 @@ const getExcludedWords = ()=>{
     map.set('دارند');
     map.set('شد');
     map.set('می دهد');
+    map.set('دادن');
     return map;
 }
-const textCleanup = (val) => {
-    return val.replace(/[،،»«`~!@#$%^*()_|+\-=?;:'",.<>\{\}\[\]\\\/a-zA-Z]/gi, '');
-    /*val = val.replace(/<\/?description>/g,'');
-    val = val.replace('![CDATA[','');
-    val = val.replace(']]','');
-    val = val.replace('<div>','');
-    val = val.replace('</div>','');
-    val = val.replace('.','');
-    val = val.replace(',','');
-    val = val.replace('،','');
-    val = val.replace('?','');
-    val = val.replace(':','');
-    val = val.replace('!','');
-    val = val.replace('>','');
-    val = val.replace('<','');
-    val = val.replace('،','');
-    val = val.replace(':','');
-    val = val.replace('<img','');
-    val = val.replace('»','');
-    val = val.replace('«','');
-    return val;*/
-}
+const removeSpecialCharacters = (val) => {
+    return val.replace(/[،،»«`~!@#$%^*()_|+\-=?;:'",.<>\{\}\[\]\\\/a-zA-Z0-9]/gi, '');
 
-module.exports = { getExcludedWords, textCleanup}
+}
+const extractRawRSSText = (fullText) => {
+    return fullText.match(/<description>(.*?)<\/description>/g).map(function (newsEntry) {
+        return removeSpecialCharacters(newsEntry);
+    });
+}
+const finalizeText = (newsTextArr) => {
+
+    let words = new Map();
+    let excludedWords = getExcludedWords();
+    for (let i = 0; i < newsTextArr.length ; i++) {
+        let arr = newsTextArr[i].split(" ");
+
+        for (let j = 0; j < arr.length; j++) {
+            let currentWord = arr[j];
+            if(excludedWords.has(currentWord)) {
+                // console.log("this word was found:"+ currentWord);
+                continue;
+            }
+            if(currentWord.length<=3) continue;
+            if (words.get(currentWord)) words.set(currentWord,words.get(currentWord)+1);
+            else words.set(currentWord,1);
+        }
+
+    }
+    const sortedWords = new Map([...words.entries()].sort((a, b) => b[1] - a[1]));
+    let finalArr = [...sortedWords.entries()];
+    let chartResult = [];
+    for(let i=0;i<finalArr.length&&i<75;i++){
+        chartResult.push({x:finalArr[i][0],value:finalArr[i][1]})
+    }
+    return chartResult;
+}
+module.exports = { getExcludedWords, removeSpecialCharacters,finalizeText,extractRssText: extractRawRSSText}
 
 

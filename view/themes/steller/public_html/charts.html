@@ -108,7 +108,7 @@
                     <button class="btn bg-warning text-white" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeEtemad','etemad-container')">روزنامه اعتماد Etemad News</button>
                 </div>
                 <div class="col-6 text-center">
-<!--                    <button class="btn bg-warning text-white" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeShargh','shargh-container')">Shargh News شرق</button>-->
+                    <button class="btn bg-warning text-white" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeTelegramChannel/VahidOnline','vahidonline-container')">Vahid Online وحید آنلاین</button>
                 </div>
             </div>
             <div class="row text-center">
@@ -118,7 +118,7 @@
                     </div>
                 </div>
                 <div class="col-6">
-                    <div id="" class="wordcount-container border">
+                    <div id="vahidonline-container" class="wordcount-container border">
                         <img src="./assets/loading.gif"/>
                     </div>
                 </div>
@@ -171,6 +171,7 @@
                 drawWordCloud('https://bamzy.info/api/chart?name=analyzeShargh','shargh-container')
                 drawWordCloud('https://bamzy.info/api/chart?name=analyzeFarsnews','farsnews-container')
                 drawWordCloud('https://bamzy.info/api/chart?name=analyzeEtemad','etemad-container')
+                drawWordCloud('https://bamzy.info/api/chart?name=analyzeTelegramChannel/VahidOnline','vahidonline-container')
             }
         </script>
 

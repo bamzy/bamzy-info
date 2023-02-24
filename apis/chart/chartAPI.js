@@ -1,6 +1,7 @@
 const express = require('express')
 require('dotenv').config();
-const {getExcludedWords,textCleanup} = require('./wordRepo');
+const {getExcludedWords,textCleanup,finalizeText,extractRssText} = require('./wordRepo');
+const {analyzeTelegramChannel} = require('./telegram');
 const axios = require('axios')
 const cors = require('cors')
 const server = express();
@@ -12,62 +13,41 @@ server.use(express.json());
 server.use(express.urlencoded());
 server.use(cors());
 
-const scrape = (url,res)=>{
+const scrapeRssFeed = (url,res)=>{
     axios.get(url).then((response)=>{
         res.header('Content-Type','text/html');
-        let data = response.data;
-
-        var result = data.match(/<description>(.*?)<\/description>/g).map(function(newsEntry){
-
-            return textCleanup(newsEntry);
-        });
-        let words = new Map();
-        let excludedWords = getExcludedWords();
-        for (let i = 0; i < result.length ; i++) {
-            let arr = result[i].split(" ");
-
-            for (let j = 0; j < arr.length; j++) {
-                let currentWord = arr[j];
-                if(excludedWords.has(currentWord)) {
-                    // console.log("this word was found:"+ currentWord);
-                    continue;
-                }
-                if(currentWord.length<=3) continue;
-                if (words.get(currentWord)) words.set(currentWord,words.get(currentWord)+1);
-                else words.set(currentWord,1);
-            }
-
-        }
-        const sortedWords = new Map([...words.entries()].sort((a, b) => b[1] - a[1]));
-        let finalArr = [...sortedWords.entries()];
-        let chartResult = [];
-        for(let i=0;i<finalArr.length&&i<75;i++){
-            chartResult.push({x:finalArr[i][0],value:finalArr[i][1]})
-        }
+        let fullText = response.data;
+        let rawTextArr = extractRssText(fullText);
+        let chartResult = finalizeText(rawTextArr);
         res.send(chartResult);
     })
 }
 server.get('/analyzeBBC',(req,res)=>{
 
-    scrape('https://feeds.bbci.co.uk/persian/rss.xml',res);
+    scrapeRssFeed('https://feeds.bbci.co.uk/persian/rss.xml',res);
 })
 server.get('/analyzeIranIntl',(req,res)=>{
-    scrape('https://www.iranintl.com/feed',res);
+    scrapeRssFeed('https://www.iranintl.com/feed',res);
 })
 server.get('/analyzeRadioFarda',(req,res)=>{
-    scrape('https://www.radiofarda.com/api/zrttpoeuoupo',res);
+    scrapeRssFeed('https://www.radiofarda.com/api/zrttpoeuoupo',res);
 })
 server.get('/analyzeTasnim',(req,res)=>{
-    scrape('https://www.tasnimnews.com/fa/rss/feed/0/8/0/%D9%85%D9%87%D9%85%D8%AA%D8%B1%DB%8C%D9%86-%D8%A7%D8%AE%D8%A8%D8%A7%D8%B1',res);
+    scrapeRssFeed('https://www.tasnimnews.com/fa/rss/feed/0/8/0/%D9%85%D9%87%D9%85%D8%AA%D8%B1%DB%8C%D9%86-%D8%A7%D8%AE%D8%A8%D8%A7%D8%B1',res);
 })
 server.get('/analyzeShargh',(req,res)=>{
-    scrape('https://www.sharghdaily.com/feeds/',res);
+    scrapeRssFeed('https://www.sharghdaily.com/feeds/',res);
 })
 server.get('/analyzeFarsnews',(req,res)=>{
-    scrape('https://www.farsnews.ir/rss/chosennews',res);
+    scrapeRssFeed('https://www.farsnews.ir/rss/chosennews',res);
 })
 server.get('/analyzeEtemad',(req,res)=>{
-    scrape('https://www.etemadnewspaper.ir/fa/rss',res);
+    scrapeRssFeed('https://www.etemadnewspaper.ir/fa/rss',res);
+})
+server.get('/analyzeTelegramChannel/:channelName',(req,res)=>{
+    let channelName = req.params['channelName'];
+    console.info(channelName);
+    analyzeTelegramChannel(res,channelName)
 })
 server.listen(port,()=>{
     console.log(`Chat Server running on port ${port}`)
