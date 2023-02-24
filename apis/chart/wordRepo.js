@@ -62,7 +62,7 @@ const scrapeRssFeed = (url,res)=>{
     axios.get(url).then((response)=>{
         res.header('Content-Type','text/html');
         let fullText = response.data;
-        let rawTextArr = extractRssText(fullText);
+        let rawTextArr = extractRawRSSText(fullText);
         let chartResult = finalizeText(rawTextArr);
         res.send(chartResult);
     }).catch(function (error) {
