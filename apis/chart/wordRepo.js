@@ -31,6 +31,7 @@ const getExcludedWords = ()=>{
     map.set('شد');
     map.set('خواهد');
     map.set('بخوانید');
+    map.set('جمهوری اسلامی');
     return map;
 }
 const removeSpecialCharacters = (val) => {
