@@ -42,6 +42,8 @@ const getExcludedWords = ()=>{
     map.set('خبرها');
     map.set('می‌کند');
     map.set('درحالی');
+    map.set('نشده');
+    map.set('برخی');
     return map;
 }
 const removeSpecialCharacters = (val) => {
