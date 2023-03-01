@@ -32,6 +32,16 @@ const getExcludedWords = ()=>{
     map.set('خواهد');
     map.set('بخوانید');
     map.set('جمهوری اسلامی');
+    map.set('درباره');
+    map.set('درحالی');
+    map.set('هستند');
+    map.set('تاکنون');
+    map.set('دنبال');
+    map.set('درباره');
+    map.set('خبر');
+    map.set('خبرها');
+    map.set('می‌کند');
+    map.set('درحالی');
     return map;
 }
 const removeSpecialCharacters = (val) => {
