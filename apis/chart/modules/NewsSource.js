@@ -2,7 +2,8 @@ const {CoreModel} = require('./CoreModel');
 class NewsSource extends CoreModel{
 
     constructor(username,password,dbname){
-        super(username,password,dbname)
+
+        super()
         this.collectionName = 'news-srcs';
 
     }

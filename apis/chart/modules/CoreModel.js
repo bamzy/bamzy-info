@@ -1,7 +1,11 @@
 const {MongoClient} = require("mongodb");
+require('dotenv').config('/modules/.env')
 
 class CoreModel {
-    constructor(username,password,defaultDBName){
+    constructor(){
+        let username = process.env.MONGODB_USERNAME;
+        let password = process.env.MONGODB_PASSWORD;
+        let defaultDBName = process.env.MONGODB_NAME;
         this.uri = `mongodb+srv://${username}:${password}@bamzyinfo.ic5od21.mongodb.net/?retryWrites=true&w=majority`;
         this.client = new MongoClient(this.uri, { useNewUrlParser: true, useUnifiedTopology: true });
         this.defaultDBName = defaultDBName;

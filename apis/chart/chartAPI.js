@@ -50,19 +50,19 @@ server.listen(port,async ()=>{
     console.log(`Chart Server running on port ${port}`)
 });
 server.get('/getAllDatabases',async (req,res)=>{
-    let ns = new NewsSource(process.env.MONGODB_USERNAME,process.env.MONGODB_PASSWORD,process.env.MONGODB_NAME);
+    let ns = new NewsSource();
     let dbs = await ns.getAllDatabases();
     res.send({...dbs})
 })
 server.get('/getAllCollections/:dbName',async (req,res)=>{
     const dbName = req.params['dbName'];
-    let ns = new NewsSource(process.env.MONGODB_USERNAME,process.env.MONGODB_PASSWORD,process.env.MONGODB_NAME);
+    let ns = new NewsSource();
     let cols = await ns.getAllCollections(dbName);
     console.log(cols);
     res.send(cols)
 })
 server.get('/findAll',async (req,res)=>{
-    let ns = new NewsSource(process.env.MONGODB_USERNAME,process.env.MONGODB_PASSWORD,process.env.MONGODB_NAME);
+    let ns = new NewsSource();
     console.log(ns.getDBName());
     // return;
     // let resi= await ns.insertNewsSource({name:'BBC English',type:'RSS'});
