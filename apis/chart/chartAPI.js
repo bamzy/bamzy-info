@@ -2,6 +2,7 @@ const express = require('express')
 require('dotenv').config();
 const {scrapeRssFeed} = require('./wordRepo');
 const {analyzeTelegramChannel} = require('./telegram');
+const {NewsSource} = require('./modules/NewsSource');
 const axios = require('axios')
 const cors = require('cors')
 const server = express();
@@ -42,8 +43,31 @@ server.get('/analyzeVarzesh3',(req,res)=>{
 server.get('/analyzeTelegramChannel/:channelName',(req,res)=>{
     let channelName = req.params['channelName'];
     console.info(channelName);
+
     analyzeTelegramChannel(res,channelName)
 })
-server.listen(port,()=>{
-    console.log(`Chat Server running on port ${port}`)
+server.listen(port,async ()=>{
+    console.log(`Chart Server running on port ${port}`)
 });
+server.get('/getAllDatabases',async (req,res)=>{
+    let ns = new NewsSource(process.env.MONGODB_USERNAME,process.env.MONGODB_PASSWORD,process.env.MONGODB_NAME);
+    let dbs = await ns.getAllDatabases();
+    res.send({...dbs})
+})
+server.get('/getAllCollections/:dbName',async (req,res)=>{
+    const dbName = req.params['dbName'];
+    let ns = new NewsSource(process.env.MONGODB_USERNAME,process.env.MONGODB_PASSWORD,process.env.MONGODB_NAME);
+    let cols = await ns.getAllCollections(dbName);
+    console.log(cols);
+    res.send(cols)
+})
+server.get('/findAll',async (req,res)=>{
+    let ns = new NewsSource(process.env.MONGODB_USERNAME,process.env.MONGODB_PASSWORD,process.env.MONGODB_NAME);
+    console.log(ns.getDBName());
+    // return;
+    // let resi= await ns.insertNewsSource({name:'BBC English',type:'RSS'});
+    // console.log('insert-->'+resi);
+    let result = await ns.findAllNewsSource({type:'RSS'});
+    console.log('findAll-->'+result);
+    res.send(result)
+})
