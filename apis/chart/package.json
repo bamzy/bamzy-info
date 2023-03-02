@@ -4,7 +4,7 @@
   "description": "",
   "main": "chartAPI.js",
   "scripts": {
-    "start": "node chartAPI.js"
+    "start": "set DEBUG=express:* & node chartAPI.js"
   },
   "author": "Bamdad",
   "license": "ISC",
