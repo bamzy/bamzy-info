@@ -31,152 +31,154 @@
             </div>
         </nav>
         <section class="section"></section>
-        <section class="section py-0 px-2 mb-1">
+        <div class="px-5">
+            <section class="section py-0 px-2 mb-1">
 
-            <p>This is comparison between most popular news agencies about Iran that compares opposition vs. the state-sponsored news sources by crawling their social media (Telegram, IG)  and websites (RSS)</p>
-        </section>
-        <section class="section m-2 mt-5 p-1 pt-4">
-            <div class="row p-1">
-                <div class="col-md-6 text-center">
-                    <button class="btn btn-primary text-white load-chart-btn" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeBBC','bbc-container')"><span>BBC Persian</span><span> بی بی سی فارسی</span></button>
-                </div>
-                <div class="col-md-6 text-center">
-                    <button class="btn btn-primary text-white load-chart-btn" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeIranIntl','iranintl-container')"> <span>Iran International</span><span>ایران اینترنشنال</span></button>
-                </div>
-            </div>
-            <div class="row text-center">
-                <div class="col-md-6">
-                    <div id="bbc-container" class="wordcount-container border">
-                        <span class="img-wrapper">
-                            <img class="loading-img" src="./assets/loading.gif"/>
-                            <span class="bg-gray text-muted">click the above btn if taking too long</span>
-                        </span>
+                <p>This is comparison between most popular news agencies about Iran that compares opposition vs. the state-sponsored news sources by crawling their social media (Telegram, IG)  and websites (RSS)</p>
+            </section>
+            <section class="section m-2 mt-5 p-1 pt-4">
+                <div class="row p-1">
+                    <div class="col-md-6 text-center">
+                        <button class="btn btn-primary text-white load-chart-btn" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeBBC','bbc-container')"><span>BBC Persian</span><span> بی بی سی فارسی</span></button>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <button class="btn btn-primary text-white load-chart-btn" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeIranIntl','iranintl-container')"> <span>Iran International</span><span>ایران اینترنشنال</span></button>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div id="iranintl-container" class="wordcount-container border">
-                        <span class="img-wrapper">
-                            <img class="loading-img" src="./assets/loading.gif"/>
-                            <span class="bg-gray text-muted">click the above btn if taking too long</span>
-                        </span>
+                <div class="row text-center">
+                    <div class="col-md-6">
+                        <div id="bbc-container" class="wordcount-container border">
+                            <span class="img-wrapper">
+                                <img class="loading-img" src="./assets/loading.gif"/>
+                                <span class="bg-gray text-muted">click the above btn if taking too long</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div id="iranintl-container" class="wordcount-container border">
+                            <span class="img-wrapper">
+                                <img class="loading-img" src="./assets/loading.gif"/>
+                                <span class="bg-gray text-muted">click the above btn if taking too long</span>
+                            </span>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <section class="section m-2 p-1">
-            <div class="row p-1">
-                <div class="col-6 text-center">
-                    <button class="btn btn-primary text-white load-chart-btn" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeRadioFarda','radiofarda-container')"><span>Free Radio Europe</span><span>رادیو فردا</span></button>
-                </div>
-                <div class="col-6 text-center">
-                    <button class="btn btn-danger text-white load-chart-btn" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeTasnim','tasnim-container')"><span>Tasnim</span><span> تسنیم</span></button>
-                </div>
-            </div>
-            <div class="row text-center">
-                <div class="col-6">
-                    <div id="radiofarda-container" class="wordcount-container border">
-                        <span class="img-wrapper">
-                            <img class="loading-img" src="./assets/loading.gif"/>
-                            <span class="bg-gray text-muted">click the above btn if taking too long</span>
-                        </span>
+            </section>
+            <section class="section m-2 p-1">
+                <div class="row p-1">
+                    <div class="col-6 text-center">
+                        <button class="btn btn-primary text-white load-chart-btn" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeRadioFarda','radiofarda-container')"><span>Free Radio Europe</span><span>رادیو فردا</span></button>
+                    </div>
+                    <div class="col-6 text-center">
+                        <button class="btn btn-danger text-white load-chart-btn" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeTasnim','tasnim-container')"><span>Tasnim</span><span> تسنیم</span></button>
                     </div>
                 </div>
-                <div class="col-6">
-                    <div id="tasnim-container" class="wordcount-container border">
-                        <span class="img-wrapper">
-                            <img class="loading-img" src="./assets/loading.gif"/>
-                            <span class="bg-gray text-muted">click the above btn if taking too long</span>
-                        </span>
+                <div class="row text-center">
+                    <div class="col-6">
+                        <div id="radiofarda-container" class="wordcount-container border">
+                            <span class="img-wrapper">
+                                <img class="loading-img" src="./assets/loading.gif"/>
+                                <span class="bg-gray text-muted">click the above btn if taking too long</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div id="tasnim-container" class="wordcount-container border">
+                            <span class="img-wrapper">
+                                <img class="loading-img" src="./assets/loading.gif"/>
+                                <span class="bg-gray text-muted">click the above btn if taking too long</span>
+                            </span>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <section class="section m-2 p-1">
-            <div class="row p-1">
-                <div class="col-6 text-center">
-                    <button class="btn btn-danger text-white load-chart-btn" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeTelegramChannel/Fars_news1','farsnews-container')"><span> Fars News</span><span>خبرگزاری فارس</span></button>
-                </div>
-                <div class="col-6 text-center">
-                    <button class="btn bg-warning text-white load-chart-btn" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeShargh','shargh-container')"><span>Shargh News</span><span> شرق</span></button>
-                </div>
-            </div>
-            <div class="row text-center">
-                <div class="col-6">
-                    <div id="farsnews-container" class="wordcount-container border">
-                        <span class="img-wrapper">
-                            <img class="loading-img" src="./assets/loading.gif"/>
-                            <span class="bg-gray text-muted">click the above btn if taking too long</span>
-                        </span>
+            </section>
+            <section class="section m-2 p-1">
+                <div class="row p-1">
+                    <div class="col-6 text-center">
+                        <button class="btn btn-danger text-white load-chart-btn" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeTelegramChannel/Fars_news1','farsnews-container')"><span> Fars News</span><span>خبرگزاری فارس</span></button>
+                    </div>
+                    <div class="col-6 text-center">
+                        <button class="btn bg-warning text-white load-chart-btn" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeShargh','shargh-container')"><span>Shargh News</span><span> شرق</span></button>
                     </div>
                 </div>
-                <div class="col-6">
-                    <div id="shargh-container" class="wordcount-container border">
-                        <span class="img-wrapper">
-                            <img class="loading-img" src="./assets/loading.gif"/>
-                            <span class="bg-gray text-muted">click the above btn if taking too long</span>
-                        </span>
+                <div class="row text-center">
+                    <div class="col-6">
+                        <div id="farsnews-container" class="wordcount-container border">
+                            <span class="img-wrapper">
+                                <img class="loading-img" src="./assets/loading.gif"/>
+                                <span class="bg-gray text-muted">click the above btn if taking too long</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div id="shargh-container" class="wordcount-container border">
+                            <span class="img-wrapper">
+                                <img class="loading-img" src="./assets/loading.gif"/>
+                                <span class="bg-gray text-muted">click the above btn if taking too long</span>
+                            </span>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <section class="section m-2 p-1">
-            <div class="row p-1">
-                <div class="col-6 text-center">
-                    <button class="btn bg-warning text-white load-chart-btn" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeEtemad','etemad-container')"><span>Etemad News</span><span>خبرگزاری اعتماد</span></button>
-                </div>
-                <div class="col-6 text-center">
-                    <button class="btn bg-warning text-white load-chart-btn" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeVarzesh3','varzesh3-container')"><span>Varzesh3 News</span><span>ورزش سه</span></button>
-                </div>
-            </div>
-            <div class="row text-center">
-                <div class="col-6">
-                    <div id="etemad-container" class="wordcount-container border">
-                        <span class="img-wrapper">
-                            <img class="loading-img" src="./assets/loading.gif"/>
-                            <span class="bg-gray text-muted">click the above btn if taking too long</span>
-                        </span>
+            </section>
+            <section class="section m-2 p-1">
+                <div class="row p-1">
+                    <div class="col-6 text-center">
+                        <button class="btn bg-warning text-white load-chart-btn" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeEtemad','etemad-container')"><span>Etemad News</span><span>خبرگزاری اعتماد</span></button>
+                    </div>
+                    <div class="col-6 text-center">
+                        <button class="btn bg-warning text-white load-chart-btn" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeVarzesh3','varzesh3-container')"><span>Varzesh3 News</span><span>ورزش سه</span></button>
                     </div>
                 </div>
-                <div class="col-6">
-                    <div id="varzesh3-container" class="wordcount-container border">
-                        <span class="img-wrapper">
-                            <img class="loading-img" src="./assets/loading.gif"/>
-                            <span class="bg-gray text-muted">click the above btn if taking too long</span>
-                        </span>
+                <div class="row text-center">
+                    <div class="col-6">
+                        <div id="etemad-container" class="wordcount-container border">
+                            <span class="img-wrapper">
+                                <img class="loading-img" src="./assets/loading.gif"/>
+                                <span class="bg-gray text-muted">click the above btn if taking too long</span>
+                            </span>
+                        </div>
                     </div>
+                    <div class="col-6">
+                        <div id="varzesh3-container" class="wordcount-container border">
+                            <span class="img-wrapper">
+                                <img class="loading-img" src="./assets/loading.gif"/>
+                                <span class="bg-gray text-muted">click the above btn if taking too long</span>
+                            </span>
+                        </div>
 
-                </div>
-            </div>
-        </section>
-        <section class="section m-2 p-1">
-            <div class="row p-1">
-                <div class="col-6 text-center">
-                    <button class="btn bg-warning text-white load-chart-btn" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeTelegramChannel/VahidOnline','vahidonline-container')"><span>Vahid Online</span><span> وحید آنلاین</span></button>
-                </div>
-                <div class="col-6 text-center">
-                    <button class="btn bg-warning text-white load-chart-btn" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeTelegramChannel/bidarzani','bidarzani-container')"><span>Bidarzani</span><span>بیدارزنی</span></button>
-                </div>
-            </div>
-            <div class="row text-center">
-                <div class="col-6">
-                    <div id="vahidonline-container" class="wordcount-container border">
-                        <span class="img-wrapper">
-                            <img class="loading-img" src="./assets/loading.gif"/>
-                            <span class="bg-gray text-muted">click the above btn if taking too long</span>
-                        </span>
                     </div>
                 </div>
-                <div class="col-6">
-                    <div id="bidarzani-container" class="wordcount-container border">
-                        <span class="img-wrapper">
-                            <img class="loading-img" src="./assets/loading.gif"/>
-                            <span class="bg-gray text-muted">click the above btn if taking too long</span>
-                        </span>
+            </section>
+            <section class="section m-2 p-1">
+                <div class="row p-1">
+                    <div class="col-6 text-center">
+                        <button class="btn bg-warning text-white load-chart-btn" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeTelegramChannel/VahidOnline','vahidonline-container')"><span>Vahid Online</span><span> وحید آنلاین</span></button>
+                    </div>
+                    <div class="col-6 text-center">
+                        <button class="btn bg-warning text-white load-chart-btn" onclick="drawWordCloud('https://bamzy.info/api/chart?name=analyzeTelegramChannel/bidarzani','bidarzani-container')"><span>Bidarzani</span><span>بیدارزنی</span></button>
                     </div>
                 </div>
-            </div>
+                <div class="row text-center">
+                    <div class="col-6">
+                        <div id="vahidonline-container" class="wordcount-container border">
+                            <span class="img-wrapper">
+                                <img class="loading-img" src="./assets/loading.gif"/>
+                                <span class="bg-gray text-muted">click the above btn if taking too long</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div id="bidarzani-container" class="wordcount-container border">
+                            <span class="img-wrapper">
+                                <img class="loading-img" src="./assets/loading.gif"/>
+                                <span class="bg-gray text-muted">click the above btn if taking too long</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
 
-        </section>
+            </section>
+        </div>
         <style>
             @font-face {
                 font-family: Lalezar;
