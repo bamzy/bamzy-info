@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 
 // Custom components
-import Banner from "./components/Banner";
+import IranNewsMonitorBanner from "./components/IranNewsMonitorBanner";
 import TableTopCreators from "./components/TableTopCreators";
 import HistoryItem from "./components/HistoryItem";
 import NFT from "components/card/NFT";
@@ -35,7 +35,7 @@ import { tableColumnsTopCreators } from "./variables/tableColumnsTopCreators";
 
 export default function Marketplace() {
   // Chakra Color Mode
-  const textColor = useColorModeValue("secondaryGray.900", "white");
+  const textColor = useColorModeValue("brand.1000", "white");
   const textColorBrand = useColorModeValue("brand.500", "white");
   return (
     <Box pt={{ base: "180px", md: "80px", xl: "80px" }}>
@@ -48,7 +48,7 @@ export default function Marketplace() {
         <Flex
           flexDirection='column'
           gridArea={{ xl: "1 / 1 / 2 / 3", "2xl": "1 / 1 / 2 / 2" }}>
-          <Banner />
+          <IranNewsMonitorBanner />
           <Flex direction='column'>
             <Flex
               mt='45px'

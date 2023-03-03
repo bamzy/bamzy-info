@@ -1,7 +1,7 @@
-import React from "react";
-
+import React,{useEffect,useState} from "react";
+import axios from "axios";
 // Chakra imports
-import { Box, Flex, Icon, Text, useColorModeValue } from "@chakra-ui/react";
+import { Box, Flex, Icon, Text,Button, useColorModeValue } from "@chakra-ui/react";
 import BarChart from "components/charts/BarChart";
 
 // Custom components
@@ -16,9 +16,10 @@ import { RiArrowUpSFill } from "react-icons/ri";
 
 export default function DailyTraffic(props) {
   const { ...rest } = props;
-
+  const [charData, setChartData] = useState(barChartDataDailyTraffic);
+  const [count, setCount] = useState(0);
   // Chakra Color Mode
-  const textColor = useColorModeValue("secondaryGray.900", "white");
+  const textColor = useColorModeValue("brand.1000", "white");
   return (
     <Card align='center' direction='column' w='100%' {...rest}>
       <Flex justify='space-between' align='start' px='10px' pt='5px'>
@@ -47,6 +48,8 @@ export default function DailyTraffic(props) {
               fontWeight='500'>
               Visitors
             </Text>
+            <Text></Text>
+            <Button >Load {count}</Button>
           </Flex>
         </Flex>
         <Flex align='center'>
@@ -58,6 +61,7 @@ export default function DailyTraffic(props) {
       </Flex>
       <Box h='240px' mt='auto'>
         <BarChart
+            url='https://bamzy.info/api/chart?name=analyzeTelegramChannel/VahidOnline'
           chartData={barChartDataDailyTraffic}
           chartOptions={barChartOptionsDailyTraffic}
         />
