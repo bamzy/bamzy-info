@@ -1,4 +1,4 @@
-# [Iran News Monitor ️](https://horizon-ui.com/horizon-ui-chakra) 
+# [Iran News Monitor ️](https://bamzy.info) 
 
 ![version](https://img.shields.io/badge/version-0.0.1-brightgreen.svg)
 ![license](https://img.shields.io/badge/license-MIT-blue.svg)

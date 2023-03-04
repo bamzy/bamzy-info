@@ -11,23 +11,25 @@ class ColumnChart extends Component {
       chartOptions: {},
     };
   }
+  fitSize(arr,size){
+    if(arr.length<size) return arr;
+    return arr.slice(0,size);
+  }
   reloadData(){
     console.log("url:"+this.props.url)
+    let size = this.props.size? parseInt(this.props.size): 10;
     axios.get(this.props.url).then((resp)=>{
-      debugger;
+      // debugger;
       let newdata = resp.data.map((item)=>{
         return item.value;
       });
-      let xAxix = resp.data.map((item)=>{
+      let xAxisLabels = resp.data.map((item)=>{
         return item.x;
       });
-      let final = [{name: "Daily traffic",data: newdata}];
-      console.dir("reload called:"+final)
+      let finalData = [{name: this.props.name,data: this.fitSize(newdata,size)}];
       this.setState({
-        chartData: final,
-        // chartData: this.props.chartData,
-        chartOptions: this.getOptions(xAxix),
-        // chartOptions: this.props.chartOptions,
+        chartData: finalData,
+        chartOptions: this.getOptions(this.fitSize(xAxisLabels,size)),
       });
     });
   }
@@ -37,7 +39,7 @@ class ColumnChart extends Component {
 
   }
 
-  getOptions(cats){
+  getOptions(categoryNames){
     return {
       chart: {
         toolbar: {
@@ -58,7 +60,7 @@ class ColumnChart extends Component {
         theme: "dark",
       },
       xaxis: {
-        categories: cats,
+        categories: categoryNames,
         show: false,
         labels: {
           show: true,

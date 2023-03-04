@@ -362,7 +362,7 @@ export default function AuthNavbar(props) {
           h='14px'
           fontWeight='2000'
         />
-        <Menu isOpen={isOpenPages}>
+        <Menu isopen={isOpenPages}>
           <MenuList
             bg={menuBg}
             p='22px'
@@ -396,7 +396,7 @@ export default function AuthNavbar(props) {
           h='14px'
           fontWeight='2000'
         />
-        <Menu isOpen={isOpenAuth}>
+        <Menu isopen={isOpenAuth}>
           <MenuList
             bg={menuBg}
             p='22px'
@@ -461,7 +461,7 @@ export default function AuthNavbar(props) {
           h='14px'
           fontWeight='2000'
         />
-        <Menu isOpen={isOpenApplication}>
+        <Menu isopen={isOpenApplication}>
           <MenuList
             bg={menuBg}
             p='22px'
@@ -496,7 +496,7 @@ export default function AuthNavbar(props) {
           h='14px'
           fontWeight='2000'
         />
-        <Menu isOpen={isOpenEcommerce}>
+        <Menu isopen={isOpenEcommerce}>
           <MenuList
             bg={menuBg}
             p='22px'
@@ -560,7 +560,7 @@ export default function AuthNavbar(props) {
             />
           </Box>
           {linksAuth}
-          <Link href='https://www.horizon-ui.com/pro'>
+          <Link href=''>
             <Button
               bg={bgButton}
               color={colorButton}

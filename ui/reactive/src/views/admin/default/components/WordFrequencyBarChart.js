@@ -2,22 +2,18 @@ import React,{useEffect,useState} from "react";
 import axios from "axios";
 // Chakra imports
 import { Box, Flex, Icon, Text,Button, useColorModeValue } from "@chakra-ui/react";
-import BarChart from "components/charts/BarChart";
+import ColumnChart from "components/charts/ColumnChart";
 
 // Custom components
 import Card from "components/card/Card.js";
-import {
-  barChartDataDailyTraffic,
-  barChartOptionsDailyTraffic,
-} from "variables/charts";
+
 
 // Assets
 import { RiArrowUpSFill } from "react-icons/ri";
 
-export default function DailyTraffic(props) {
+export default function WordFrequencyBarChart(props) {
   const { ...rest } = props;
-  const [charData, setChartData] = useState(barChartDataDailyTraffic);
-  const [count, setCount] = useState(0);
+  // debugger;
   // Chakra Color Mode
   const textColor = useColorModeValue("brand.1000", "white");
   return (
@@ -30,7 +26,7 @@ export default function DailyTraffic(props) {
               color='secondaryGray.600'
               fontSize='sm'
               fontWeight='500'>
-              Daily Traffic
+              {props.title}
             </Text>
           </Flex>
           <Flex align='end'>
@@ -39,17 +35,16 @@ export default function DailyTraffic(props) {
               fontSize='34px'
               fontWeight='700'
               lineHeight='100%'>
-              2.579
+              {props.total}
             </Text>
             <Text
               ms='6px'
               color='secondaryGray.600'
               fontSize='sm'
               fontWeight='500'>
-              Visitors
+              Word Frequency
             </Text>
-            <Text></Text>
-            <Button >Load {count}</Button>
+
           </Flex>
         </Flex>
         <Flex align='center'>
@@ -60,10 +55,9 @@ export default function DailyTraffic(props) {
         </Flex>
       </Flex>
       <Box h='240px' mt='auto'>
-        <BarChart
-            url='https://bamzy.info/api/chart?name=analyzeTelegramChannel/VahidOnline'
-          chartData={barChartDataDailyTraffic}
-          chartOptions={barChartOptionsDailyTraffic}
+        <ColumnChart url={props.url} size={props.size}
+          chartData={null}
+          chartOptions={null}
         />
       </Box>
     </Card>

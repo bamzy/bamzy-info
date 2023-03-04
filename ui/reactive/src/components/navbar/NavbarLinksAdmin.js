@@ -96,10 +96,8 @@ export default function HeaderLinks(props) {
 					</Flex>
 					<Flex flexDirection="column">
 						<MenuItem _hover={{ bg: 'none' }} _focus={{ bg: 'none' }} px="0" borderRadius="8px" mb="10px">
-							<ItemContent info="Horizon UI Dashboard PRO" aName="Alicia" />
 						</MenuItem>
 						<MenuItem _hover={{ bg: 'none' }} _focus={{ bg: 'none' }} px="0" borderRadius="8px" mb="10px">
-							<ItemContent info="Horizon Design System Free" aName="Josh Henry" />
 						</MenuItem>
 					</Flex>
 				</MenuList>
@@ -121,12 +119,12 @@ export default function HeaderLinks(props) {
 					maxW={{ base: '360px', md: 'unset' }}>
 					<Image src={navImage} borderRadius="16px" mb="28px" />
 					<Flex flexDirection="column">
-						<Link w="100%" href="https://horizon-ui.com/pro">
+						<Link w="100%" href="">
 							<Button w="100%" h="44px" mb="10px" variant="brand">
-								Buy Horizon UI PRO
+								try more
 							</Button>
 						</Link>
-						<Link w="100%" href="https://horizon-ui.com/documentation/docs/introduction">
+						<Link w="100%" href="">
 							<Button
 								w="100%"
 								h="44px"
@@ -137,9 +135,9 @@ export default function HeaderLinks(props) {
 								See Documentation
 							</Button>
 						</Link>
-						<Link w="100%" href="https://github.com/horizon-ui/horizon-ui-chakra">
+						<Link w="100%" href="https://github.com/bamzy">
 							<Button w="100%" h="44px" variant="no-hover" color={textColor} bg="transparent">
-								Try Horizon Free
+								See the code
 							</Button>
 						</Link>
 					</Flex>

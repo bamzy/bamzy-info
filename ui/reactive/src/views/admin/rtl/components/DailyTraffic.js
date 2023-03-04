@@ -2,7 +2,7 @@ import React from "react";
 
 // Chakra imports
 import { Box, Flex, Icon, Text, useColorModeValue } from "@chakra-ui/react";
-import BarChart from "components/charts/BarChart";
+import BarChart from "components/charts/ColumnChart";
 
 // Custom components
 import Card from "components/card/Card.js";

@@ -10,7 +10,7 @@ import {MdFileCopy} from "react-icons/md";
 import {BsFileEarmarkWordFill} from "react-icons/bs";
 import CheckTable from "views/admin/default/components/CheckTable";
 import ComplexTable from "views/admin/default/components/ComplexTable";
-import DailyTraffic from "views/admin/default/components/DailyTraffic";
+import WordFrequencyBarChart from "views/admin/default/components/WordFrequencyBarChart";
 import PieCard from "views/admin/default/components/PieCard";
 import Tasks from "views/admin/default/components/Tasks";
 import TotalSpent from "views/admin/default/components/TotalSpent";
@@ -69,7 +69,7 @@ export default function UserReports() {
             />
         </SimpleGrid>
         <SimpleGrid columns={1} spacing={20} mb='20px'>
-            <DailyTraffic />
+            <WordFrequencyBarChart url={'https://bamzy.info/api/chart?name=analyzeTelegramChannel/VahidOnline'} title='VahidOnline' size='15' />
         </SimpleGrid>
         <SimpleGrid columns={{ base: 1, md: 2, xl: 2 }} gap='20px' mb='20px'>
             <TotalSpent />

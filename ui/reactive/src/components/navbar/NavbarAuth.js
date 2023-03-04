@@ -23,7 +23,6 @@ import {
 
 // Custom components
 import IconBox from "components/icons/IconBox";
-import { HorizonLogo } from "components/icons/Icons";
 import { SidebarResponsive } from "components/sidebar/Sidebar";
 import { SidebarContext } from "contexts/SidebarContext";
 
@@ -101,7 +100,6 @@ export default function AuthNavbar(props) {
       alignItems='center'
       color={mainText}>
       <Stack direction='row' spacing='12px' align='center' justify='center'>
-        <HorizonLogo h='26px' w='175px' color={logoColor} />
       </Stack>
       <Text fontsize='sm' mt='3px'>
         {logoText}
@@ -120,7 +118,6 @@ export default function AuthNavbar(props) {
         justifyContent='center'
         alignItems='center'
         color={mainText}>
-        <HorizonLogo h='26px' w='175px' my='32px' color={logoColor} />
       </Link>
     );
     // mainText = useColorModeValue("gray.700", "gray.200");
@@ -273,7 +270,7 @@ export default function AuthNavbar(props) {
             fontWeight='2000'
           />
         </Box>
-        <Menu isOpen={isOpenDashboards}>
+        <Menu isopen={isOpenDashboards}>
           <MenuList
             bg={menuBg}
             p='22px'
@@ -311,7 +308,7 @@ export default function AuthNavbar(props) {
             fontWeight='2000'
           />
         </Box>
-        <Menu isOpen={isOpenAuth}>
+        <Menu isopen={isOpenAuth}>
           <MenuList
             bg={menuBg}
             p='22px'
@@ -377,7 +374,7 @@ export default function AuthNavbar(props) {
             fontWeight='2000'
           />
         </Box>
-        <Menu isOpen={isOpenMain}>
+        <Menu isopen={isOpenMain}>
           <MenuList
             bg={menuBg}
             p='22px'
@@ -415,7 +412,7 @@ export default function AuthNavbar(props) {
             fontWeight='2000'
           />
         </Box>
-        <Menu isOpen={isOpenNft}>
+        <Menu isopen={isOpenNft}>
           <MenuList
             bg={menuBg}
             p='22px'
@@ -479,7 +476,7 @@ export default function AuthNavbar(props) {
             />
           </Box>
           {linksAuth}
-          <Link href='https://www.horizon-ui.com/pro'>
+          <Link href='https://www.bamzy.info'>
             <Button
               bg={bgButton}
               color={colorButton}
