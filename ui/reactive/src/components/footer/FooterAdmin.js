@@ -42,7 +42,7 @@ export default function Footer() {
           <Link
             mx='3px'
             color={textColor}
-            href='https://www.simmmple.com'
+            href='https://www.bamzy.info'
             target='_blank'
             fontWeight='700'>
             Bamzy
@@ -58,8 +58,8 @@ export default function Footer() {
           <Link
             fontWeight='500'
             color={textColor}
-            href='mailto:hello@simmmple.com'>
-            Support
+            href='mailto:bamdad.ag@gmail.com'>
+            Contact
           </Link>
         </ListItem>
         <ListItem
@@ -70,8 +70,8 @@ export default function Footer() {
           <Link
             fontWeight='500'
             color={textColor}
-            href='https://www.simmmple.com/licenses'>
-            License
+            href='https://github.com/bamzy'>
+            Git
           </Link>
         </ListItem>
         <ListItem
@@ -82,7 +82,7 @@ export default function Footer() {
           <Link
             fontWeight='500'
             color={textColor}
-            href='https://simmmple.com/terms-of-service'>
+            href=''>
             Terms of Use
           </Link>
         </ListItem>
@@ -90,7 +90,7 @@ export default function Footer() {
           <Link
             fontWeight='500'
             color={textColor}
-            href='https://www.blog.simmmple.com/'>
+            href=''>
             Blog
           </Link>
         </ListItem>

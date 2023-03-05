@@ -23,45 +23,42 @@ export default function GeneralInformation(props) {
         fontSize='2xl'
         mt='10px'
         mb='4px'>
-        General Information
+        Personal Credo
       </Text>
       <Text color={textColorSecondary} fontSize='md' me='26px' mb='40px'>
-        As we live, our hearts turn colder. Cause pain is what we go through as
-        we become older. We get insulted by others, lose trust for those others.
-        We get back stabbed by friends. It becomes harder for us to give others
-        a hand. We get our heart broken by people we love, even that we give
-        them all...
+        <i>Whatever does not spring from a man's free choice, or is only the result of instruction and guidance, does not enter into his very being, but still remains alien to his true nature; he does not perform it with truly human energies, but merely with mechanical exactness. <br/>
+        </i> - Wilhelm von Humboldt
       </Text>
       <SimpleGrid columns='2' gap='20px'>
         <Information
           boxShadow={cardShadow}
           title='Education'
-          value='Stanford University'
+          value='University of Alberta'
         />
         <Information
           boxShadow={cardShadow}
           title='Languages'
-          value='English, Spanish, Italian'
+          value='English, Persian, Arabic'
         />
         <Information
           boxShadow={cardShadow}
           title='Department'
-          value='Product Design'
+          value='Software Enginner'
         />
         <Information
           boxShadow={cardShadow}
           title='Work History'
-          value='Google, Facebook'
+          value='UofA, MA, '
         />
         <Information
           boxShadow={cardShadow}
           title='Organization'
-          value='Simmmple Web LLC'
+          value='bamzy.info'
         />
         <Information
           boxShadow={cardShadow}
           title='Birthday'
-          value='20 July 1986'
+          value='1989'
         />
       </SimpleGrid>
     </Card>

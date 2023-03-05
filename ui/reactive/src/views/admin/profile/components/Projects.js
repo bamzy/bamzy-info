@@ -28,31 +28,30 @@ export default function Projects(props) {
         All projects
       </Text>
       <Text color={textColorSecondary} fontSize='md' me='26px' mb='40px'>
-        Here you can find more details about your projects. Keep you user
-        engaged by providing meaningful information.
+        Here are what I've worked on out my own free will and I'm proud of
       </Text>
       <Project
         boxShadow={cardShadow}
         mb='20px'
         image={Project1}
         ranking='1'
-        link='#'
-        title='Technology behind the Blockchain'
+        link='https://goqueer.org/go-queer-goes-to-hastac/'
+        title='GoQueer App'
       />
       <Project
         boxShadow={cardShadow}
         mb='20px'
         image={Project2}
         ranking='2'
-        link='#'
-        title='Greatest way to a good Economy'
+        link='https://www.ualberta.ca/folio/2015/10/putting-homelessness-on-the-map.html'
+        title='Putting Homeless on the Map'
       />
       <Project
         boxShadow={cardShadow}
         image={Project3}
         ranking='3'
-        link='#'
-        title='Most essential tips for Burnout'
+        link='https://github.com/bamzy'
+        title='Github code samples'
       />
     </Card>
   );

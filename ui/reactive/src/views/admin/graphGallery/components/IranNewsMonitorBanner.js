@@ -1,25 +1,25 @@
 import React from "react";
 
 // Chakra imports
-import { Button, Flex, Link, Text } from "@chakra-ui/react";
+import { Button, Flex, Link, Text,Image } from "@chakra-ui/react";
 
 // Assets
-import banner from "assets/img/gallery/banner.png";
+import IranNewsMonitor from "assets/img/gallery/banner.png";
 
 export default function IranNewsMonitorBanner() {
   // Chakra Color Mode
   return (
     <Flex
       direction='column'
-      bgImage={banner}
+
       // bgSize='cover'
       width='100%'
       height='auto'
-      py={{ base: "30px", md: "56px" }}
-      px={{ base: "30px", md: "64px" }}
+      py={{ base: "5px", md: "5px" }}
+      px={{ base: "5px", md: "5px" }}
       borderRadius='30px'>
 
-
+      <Image src={IranNewsMonitor} alt='Iran News Monitor' />
 
     </Flex>
   );

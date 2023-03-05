@@ -26,7 +26,7 @@ import {
 } from "react-icons/md";
 import CheckTable from "views/admin/default/components/CheckTable";
 import ComplexTable from "views/admin/default/components/ComplexTable";
-import WordFrequencyBarChart from "views/admin/default/components/WordFrequencyBarChart";
+import WordFrequencyColumnChartCard from "views/admin/default/components/WordFrequencyColumnChartCard";
 import PieCard from "views/admin/default/components/PieCard";
 import Tasks from "views/admin/default/components/Tasks";
 import TotalSpent from "views/admin/default/components/TotalSpent";
@@ -133,7 +133,7 @@ export default function UserReports() {
       <SimpleGrid columns={{ base: 1, md: 1, xl: 2 }} gap='20px' mb='20px'>
         <CheckTable columnsData={columnsDataCheck} tableData={tableDataCheck} />
         <SimpleGrid columns={{ base: 1, md: 2, xl: 2 }} gap='20px'>
-          <WordFrequencyBarChart />
+          <WordFrequencyColumnChartCard />
           <PieCard />
         </SimpleGrid>
       </SimpleGrid>

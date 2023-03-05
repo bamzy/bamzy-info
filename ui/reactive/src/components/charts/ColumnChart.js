@@ -66,8 +66,9 @@ class ColumnChart extends Component {
           show: true,
           style: {
             colors: "#A3AED0",
-            fontSize: "14px",
+            fontSize: "15px",
             fontWeight: "500",
+            fontFamily: 'Lalezar'
           },
         },
         axisBorder: {
@@ -113,12 +114,12 @@ class ColumnChart extends Component {
             [
               {
                 offset: 0,
-                color: "#4318FF",
+                color: "#d74322",
                 opacity: 1,
               },
               {
                 offset: 100,
-                color: "rgba(67, 24, 255, 1)",
+                color: "rgb(168,168,3)",
                 opacity: 0.28,
               },
             ],

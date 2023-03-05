@@ -1,5 +1,4 @@
 import React,{useEffect,useState} from "react";
-import axios from "axios";
 // Chakra imports
 import { Box, Flex, Icon, Text,Button, useColorModeValue } from "@chakra-ui/react";
 import ColumnChart from "components/charts/ColumnChart";
@@ -7,13 +6,11 @@ import ColumnChart from "components/charts/ColumnChart";
 // Custom components
 import Card from "components/card/Card.js";
 
-
 // Assets
 import { RiArrowUpSFill } from "react-icons/ri";
 
-export default function WordFrequencyBarChart(props) {
+export default function WordFrequencyColumnChartCard(props) {
   const { ...rest } = props;
-  // debugger;
   // Chakra Color Mode
   const textColor = useColorModeValue("brand.1000", "white");
   return (
@@ -23,16 +20,16 @@ export default function WordFrequencyBarChart(props) {
           <Flex w='100%'>
             <Text
               me='auto'
-              color='secondaryGray.600'
-              fontSize='sm'
-              fontWeight='500'>
+              color='secondaryGray.1000'
+              fontSize='40px'
+              fontWeight='800'>
               {props.title}
             </Text>
           </Flex>
           <Flex align='end'>
             <Text
               color={textColor}
-              fontSize='34px'
+              fontSize='sm'
               fontWeight='700'
               lineHeight='100%'>
               {props.total}
@@ -48,9 +45,8 @@ export default function WordFrequencyBarChart(props) {
           </Flex>
         </Flex>
         <Flex align='center'>
-          <Icon as={RiArrowUpSFill} color='green.500' />
-          <Text color='green.500' fontSize='sm' fontWeight='700'>
-            +2.45%
+          <Text color='green.500' fontSize='36px' fontWeight='400' fontFamily='Lalezar'>
+            {props.altName}
           </Text>
         </Flex>
       </Flex>

@@ -12,7 +12,7 @@ import {
 import Card from "components/card/Card.js";
 import React from "react";
 // Assets
-import { MdEdit } from "react-icons/md";
+import { MdLink } from "react-icons/md";
 
 export default function Project(props) {
   const { title, ranking, link, image, ...rest } = props;
@@ -50,7 +50,7 @@ export default function Project(props) {
           me='16px'
           ms='auto'
           p='0px !important'>
-          <Icon as={MdEdit} color='secondaryGray.500' h='18px' w='18px' />
+          <Icon as={MdLink} color='secondaryGray.500' h='18px' w='18px' />
         </Link>
       </Flex>
     </Card>

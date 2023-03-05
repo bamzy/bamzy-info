@@ -37,22 +37,22 @@ export default function Banner(props) {
         bg={box}
       />
       <Text color={textColorPrimary} fontWeight='bold' fontSize='2xl' mt='10px'>
-        Your storage
+        DB storage
       </Text>
       <Text
         color={textColorSecondary}
         fontSize='md'
         maxW={{ base: "100%", xl: "80%", "3xl": "60%" }}
         mx='auto'>
-        Supervise your drive space in the easiest way
+        total amount of data stored in the system
       </Text>
       <Box w='100%' mt='auto'>
         <Flex w='100%' justify='space-between' mb='10px'>
           <Text color={textColorSecondary} fontSize='sm' maxW='40%'>
-            {used} GB
+            {used} MB
           </Text>
           <Text color={textColorSecondary} fontSize='sm' maxW='40%'>
-            {total} GB
+            {total} MB
           </Text>
         </Flex>
         <Progress

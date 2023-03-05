@@ -11,7 +11,7 @@ export function SidebarBrand() {
 
   return (
     <Flex align='center' direction='column'>
-        <img src={BamzyLogo} alt="Logo" />
+        <img src={BamzyLogo} alt="Logo" style={{width:'90%',borderRadius:'10px',height:'70%'}} className='pb-1' />
       <HSeparator mb='20px' />
     </Flex>
   );

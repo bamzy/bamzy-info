@@ -45,6 +45,7 @@ export const globalStyles = {
       700: "#e5a86c",
       800: "#e39a52",
       900: "#f8942c",
+      1000: "#25241e",
     },
     red: {
       100: "#FEEFEE",

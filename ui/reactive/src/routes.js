@@ -38,9 +38,9 @@ const routes = [
     component: DataTables,
   },
   {
-    name: "Profile",
+    name: "Creators",
     layout: "/admin",
-    path: "/profile",
+    path: "/creator",
     icon: <Icon as={MdPerson} width={sidebarIconSize} height={sidebarIconSize} color='inherit' />,
     component: Profile,
   },
@@ -51,13 +51,13 @@ const routes = [
     icon: <Icon as={MdLock} width={sidebarIconSize} height={sidebarIconSize} color='inherit' />,
     component: SignInCentered,
   },
-  {
-    name: "RTL Admin",
-    layout: "/rtl",
-    path: "/rtl-default",
-    icon: <Icon as={MdHome} width={sidebarIconSize} height={sidebarIconSize} color='inherit' />,
-    component: RTL,
-  },
+  // {
+  //   name: "RTL Admin",
+  //   layout: "/rtl",
+  //   path: "/rtl-default",
+  //   icon: <Icon as={MdHome} width={sidebarIconSize} height={sidebarIconSize} color='inherit' />,
+  //   component: RTL,
+  // },
 ];
 
 export default routes;
