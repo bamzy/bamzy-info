@@ -10,11 +10,10 @@ app.get('/codestats', function (req, res) {
             console.log(`error: ${error.message}`);
             res.status(500).send(error.message)
             return;
-        }
-        if (stderr) {
-            res.status(200).send(stderr)
-            console.log(`stderr: ${stderr}`);
-            return;
+        } else {
+
+            res.status(200).send(stdout)
+            console.log(`stderr: ${stdout}`);
         }
     });
 
