@@ -9,6 +9,7 @@ import React, {useState} from "react";
 // Assets
 import { MdQueryStats } from "react-icons/md";
 import axios from "axios";
+import randomColor from "randomcolor";
 import {parse} from "stylis";
 
 export default class CodeAnalysis extends React.Component{
@@ -17,7 +18,6 @@ export default class CodeAnalysis extends React.Component{
         super(props);
         this.state = {badges:<Spinner />};
 
-        this.colors = [ "gray" , "red" , "orange" , "yellow" , "green" , "teal" , "blue" , "cyan" , "purple" , "pink" , "#1dce52" , "#ce1da9" , "messenger" , "whatsapp" , "twitter" , "telegram"]
 
     }
     componentDidMount() {
@@ -27,33 +27,22 @@ export default class CodeAnalysis extends React.Component{
     }
     loadBadges(){
         axios.get(Constants.codestatsAPIUrl).then((resp)=>{
-            // debugger;
             let badges = resp.data.items.map((item,index)=>{
-                // return (<Tooltip label={item['Language']}>line of code: {item['code']}</Tooltip>);
-                // let index = parseInt(Math.random()*this.colors.length);
-                let color = this.colors[index];
-                // if
-                console.log(index);
-                if(item['code']==0) return null;
+                let color = randomColor();
+                if(item['code']===0) return null;
                 return (
-                    <Stat bg={color} color='black' style={{borderRadius:'25%',fontSize:'7px',padding:'5px'}} >
+                    <Stat bg={color} key={index} color='black' style={{borderRadius:'25%',fontSize:'7px',padding:'5px'}} >
                         <StatLabel >{item['Language']}</StatLabel>
                         <StatNumber style={{fontSize:'10px'}}>{item['code']}</StatNumber>
                     </Stat>
                 )
             });
-            // debugger;
             this.setState({badges:badges})
         });
     }
-    // textColorPrimary = useColorModeValue("secondaryGray.900", "white");
-    // brandColor = useColorModeValue("brand.500", "white");
     render(){
-         const   textColorSecondary = "gray.400";
 
           const { used, total } = this.props;
-          // Chakra Color Mode
-          // const box = useColorModeValue(, "whiteAlpha.100");
           return (
             <Card mb={{ base: "0px", lg: "20px" }} align='center'>
               <Flex w='100%'>

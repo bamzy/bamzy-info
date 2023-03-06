@@ -22,7 +22,7 @@ export default function Overview() {
       <Grid
         templateColumns={{
           base: "1fr",
-          lg: "1.34fr 1fr",
+          lg: "0.8fr 1.2fr",
         }}
         templateRows={{
           base: "repeat(3, 1fr)",
