@@ -59,4 +59,4 @@ app.use((err, req, res, next) => {
     res.status(403).send('Request body was not signed or verification failed')
 })
 
-app.listen(port, () => console.log("Listening on port 5000"))
+app.listen(port, () => console.log(`Listening deployWebhook on port ${port}`))
