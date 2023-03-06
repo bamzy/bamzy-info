@@ -1,7 +1,9 @@
 const { exec } = require("child_process");
 const express = require('express')
 const app = express()
+const cors = require('cors')
 require('dotenv').config();
+app.use(cors());
 let port = process.env.PORT;
 const baseDir=process.env.BASE_DIR
 app.get('/codestats', function (req, res) {

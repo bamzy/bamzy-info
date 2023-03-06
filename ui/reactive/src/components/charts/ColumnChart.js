@@ -15,7 +15,7 @@ class ColumnChart extends Component {
     if(arr.length<size) return arr;
     return arr.slice(0,size);
   }
-  reloadData(){
+  loadData(){
     console.log("url:"+this.props.url)
     let size = this.props.size? parseInt(this.props.size): 10;
     axios.get(this.props.url).then((resp)=>{
@@ -35,7 +35,7 @@ class ColumnChart extends Component {
   }
   componentDidMount() {
     console.log('did mount')
-    if(this.props.url) this.reloadData();
+    if(this.props.url) this.loadData();
 
   }
 
