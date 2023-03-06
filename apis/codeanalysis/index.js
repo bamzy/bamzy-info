@@ -1,6 +1,5 @@
 const { exec } = require("child_process");
 const express = require('express')
-const cloc = require('cloc')
 const app = express()
 require('dotenv').config();
 let port = process.env.PORT;
