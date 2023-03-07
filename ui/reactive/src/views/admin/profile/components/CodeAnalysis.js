@@ -1,5 +1,20 @@
 // Chakra imports
-import {Stat,StatLabel,StatNumber,StatHelpText,Spinner,Box, Flex, Icon, Progress, Text, Badge,Tooltip, useColorModeValue,} from "@chakra-ui/react";
+import {
+    Stat,
+    StatLabel,
+    StatNumber,
+    StatHelpText,
+    Spinner,
+    Box,
+    Flex,
+    Icon,
+    Progress,
+    Text,
+    Badge,
+    Tooltip,
+    useColorModeValue,
+    SimpleGrid,
+} from "@chakra-ui/react";
 // Custom components
 import Card from "components/card/Card.js";
 import IconBox from "components/icons/IconBox";
@@ -31,10 +46,10 @@ export default class CodeAnalysis extends React.Component{
                 let color = randomColor();
                 if(item['code']===0) return null;
                 return (
-                    <Stat bg={color} key={index} color='black' style={{borderRadius:'25%',fontSize:'7px',padding:'5px'}} >
-                        <StatLabel >{item['Language']}</StatLabel>
-                        <StatNumber style={{fontSize:'10px'}}>{item['code']}</StatNumber>
-                    </Stat>
+                    <span  key={index} color='black' style={{backgroundColor:color,borderRadius:'30%',fontSize:'10px',fontWeight:"bold",padding:'5px'}} >
+                        <div >{item['Language']}</div>
+                        <div style={{fontSize:'10px'}}>LOC: {item['code']}</div>
+                    </span>
                 )
             });
             this.setState({badges:badges})
@@ -60,11 +75,11 @@ export default class CodeAnalysis extends React.Component{
               <Text color={"secondaryGray.900"} fontWeight='bold' fontSize='2xl' mt='10px'>
                     Repo Breakdown
               </Text>
-                <Box class="p-3">
-                    <Flex>
-                    {this.state.badges}
-                    </Flex>
-                </Box>
+
+                <SimpleGrid columns={{ base: 5, md: 5, lg: 5, "2xl": 3 }} gap='5px' className='my-2'>
+                {this.state.badges}
+                </SimpleGrid>
+
               <Text
                 color={"secondaryGray.600"}
                 fontSize='md'
