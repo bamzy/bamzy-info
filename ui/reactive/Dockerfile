@@ -1,23 +1,21 @@
-# pull official base image
-FROM node:19-alpine3.16
+FROM node:16
 
-# set working directory
-WORKDIR /app
+# Create app directory
+WORKDIR /usr/src/app
 
-# add `/app/node_modules/.bin` to $PATH
-ENV PATH /home/ubuntu/workspace/bamzy-info/ui/reactive/node_modules/.bin:$PATH
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
+COPY package*.json ./
 
-# install app dependencies
-COPY package.json ./
-COPY package-lock.json ./
-RUN npm install --silent
-RUN npm install react-scripts@3.4.1 -g --silent
+RUN npm install
+# If you are building your code for production
+# RUN npm ci --only=production
 
-# add app
-COPY . ./
+# Bundle app source
+COPY . .
 
-# start app
-CMD ["npm", "start"]
+EXPOSE 3000
+CMD [ "npm", "start" ]
 
-# docker build -t ui-react-app .
-# docker run -it  --rm  -v ${PWD}:/app  -v /app/node_modules -p 3001:3000 -e CHOKIDAR_USEPOLLING=true ui-react-app
+
