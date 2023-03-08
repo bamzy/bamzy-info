@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/iran/static/css/main.564ca6d9.css",
+    "main.js": "/iran/static/js/main.83ee83de.js",
+    "static/media/Project2.png": "/iran/static/media/Project2.ba884a96ef1d5ba34921.png",
+    "static/media/auth.png": "/iran/static/media/auth.aab0220337cd9ba5c099.png",
+    "static/media/Lalezar-Regular.ttf": "/iran/static/media/Lalezar-Regular.4cbab4c9f26cf13014c6.ttf",
+    "static/media/Project1.png": "/iran/static/media/Project1.4b41fc1dcd070777dcc5.png",
+    "static/media/banner.png": "/iran/static/media/banner.111d1201823e88bc9ca9.png",
+    "static/media/bamdadAvatar.jpg": "/iran/static/media/bamdadAvatar.33c684ae487bde210f3a.jpg",
+    "static/media/Nft2.png": "/iran/static/media/Nft2.7897c45d2601ee3adfb5.png",
+    "static/media/avatar2.png": "/iran/static/media/avatar2.5692c39db4f8c0ea999e.png",
+    "static/media/avatar3.png": "/iran/static/media/avatar3.9f646ac5920fa40adf00.png",
+    "static/media/avatar1.png": "/iran/static/media/avatar1.eeef2af6dfcd3ff23cb8.png",
+    "static/media/Nft4.png": "/iran/static/media/Nft4.5fc37877b25c9fb9a52d.png",
+    "static/media/Nft3.png": "/iran/static/media/Nft3.3b3e6a4b3ada7618de6c.png",
+    "static/media/Nft6.png": "/iran/static/media/Nft6.9ff5403226e81a6fd390.png",
+    "static/media/Navbar.png": "/iran/static/media/Navbar.f96a9f58c491b9acda99.png",
+    "static/media/Nft1.png": "/iran/static/media/Nft1.0fea34cca5aed6cad72b.png",
+    "static/media/avatar4.png": "/iran/static/media/avatar4.54d5c1de851c273b2cd9.png",
+    "static/media/logo.jpg": "/iran/static/media/logo.28222e655af9b37d1fd5.jpg",
+    "static/media/Nft5.png": "/iran/static/media/Nft5.62dbaf7dd91b4180035c.png",
+    "index.html": "/iran/index.html",
+    "main.564ca6d9.css.map": "/iran/static/css/main.564ca6d9.css.map",
+    "main.83ee83de.js.map": "/iran/static/js/main.83ee83de.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.564ca6d9.css",
+    "static/js/main.83ee83de.js"
+  ]
+}
