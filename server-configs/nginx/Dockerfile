@@ -8,8 +8,8 @@ RUN mkdir /etc/nginx/ssl
 # where available (npm@5+)
 COPY default.config /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY /home/ubuntu/ssl/ssl-bundle.crt /etc/nginx/ssl/
-COPY /home/ubuntu/ssl/bamzy.info_key.txt /etc/nginx/ssl/
+COPY ssl-bundle.crt /etc/nginx/ssl/ssl-bundle.crt
+COPY bamzy.info_key.txt /etc/nginx/ssl/bamzy.info_key.txt
 RUN nginx -t
 # If you are building your code for production
 # RUN npm ci --only=production
