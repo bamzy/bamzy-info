@@ -47,7 +47,7 @@ export default function CheckTable(props) {
   } = tableInstance;
   initialState.pageSize = 11;
 
-  const textColor = useColorModeValue("secondaryGray.900", "white");
+  const textColor = useColorModeValue("secondaryGray.1000", "white");
   const borderColor = useColorModeValue("gray.200", "whiteAlpha.100");
   return (
     <Card
@@ -61,7 +61,7 @@ export default function CheckTable(props) {
           fontSize='22px'
           fontWeight='700'
           lineHeight='100%'>
-          Check Table
+          News Table
         </Text>
         <Menu />
       </Flex>

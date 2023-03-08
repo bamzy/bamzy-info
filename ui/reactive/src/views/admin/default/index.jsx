@@ -1,10 +1,11 @@
-import {Avatar, Box, Flex, FormLabel, Icon, Select, Center, SimpleGrid, useColorModeValue,} from "@chakra-ui/react";
+import {Avatar,Text,Heading, Box, Flex, FormLabel, Icon, Select, Center, SimpleGrid, useColorModeValue,} from "@chakra-ui/react";
 // Assets
 import Usa from "assets/img/dashboards/usa.png";
 // Custom components
 import MiniCalendar from "components/calendar/MiniCalendar";
 import MiniStatistics from "components/card/MiniStatistics";
 import IconBox from "components/icons/IconBox";
+import Card from "components/card/Card";
 import React from "react";
 import {ImCamera} from "react-icons/im";
 import {MdFileCopy} from "react-icons/md";
@@ -29,7 +30,19 @@ export default function NewsDashboardReport() {
   const boxBg = useColorModeValue("secondaryGray.300", "whiteAlpha.100");
   return (
     <Box pt={{ base: "130px", md: "80px", xl: "80px" }}>
-      <SimpleGrid columns={{ base: 1, md: 2, lg: 3, "2xl": 3 }} gap='20px' mb='20px'>
+        <Card my='10px'>
+            <Flex
+                my='auto'
+                h='100%'
+                align={{ base: "center", xl: "start" }}
+                justify={{ base: "center", xl: "center" }}>
+                <Heading as='h4' size='sm'>
+                    I dont' think computers are capable of understanding politics, but this personal project of mine aims at confirming patterns that most observers of Iran events are already anticipating.<br/>
+                    Below you can find
+                </Heading>
+            </Flex>
+        </Card>
+        <SimpleGrid columns={{ base: 1, md: 2, lg: 3, "2xl": 3 }} gap='20px' mb='20px'>
             <MiniStatistics
               startContent={
                   <IconBox w='56px' h='56px' bg={boxBg}
@@ -58,6 +71,7 @@ export default function NewsDashboardReport() {
             />
         </SimpleGrid>
         <SimpleGrid columns={1} spacing={20} mb='20px'>
+            <WordFrequencyColumnChartCard url={`${Constants.rssAPIUrl}?name=analyzeBBC`} title='BBC Persian' altName='بی بی سی فارسی' size='15' />
             <WordFrequencyColumnChartCard url={`${Constants.telegramAPIUrl}/VahidOnline`} title='VahidOnline' altName='وحید آنلاین' size='15' />
             <WordFrequencyColumnChartCard url={`${Constants.telegramAPIUrl}/bidarzani`} title='Bidarzani' altName='بیدارزنی' size='15' />
             <WordFrequencyColumnChartCard url={`${Constants.telegramAPIUrl}/Fars_news1`} title='Fars News' altName='فارس نیوز' size='15' />
