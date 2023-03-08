@@ -31,15 +31,26 @@ export default function NewsDashboardReport() {
   return (
     <Box pt={{ base: "130px", md: "80px", xl: "80px" }}>
         <Card my='10px'>
+            <Flex>
+                <Heading as='h4' size='lg' w='100%'>Iran News Monitor</Heading>
+
+            </Flex>
             <Flex
                 my='auto'
                 h='100%'
                 align={{ base: "center", xl: "start" }}
-                justify={{ base: "center", xl: "center" }}>
-                <Heading as='h4' size='sm'>
+                justify={{ base: "center", xl: "center" }}
+                my='10px'>
+                <Heading as='h4' size='sm' w='100%'>
                     I dont' think computers are capable of understanding politics, but this personal project of mine aims at confirming patterns that most observers of Iran events are already anticipating.<br/>
-                    Below you can find
                 </Heading>
+
+            </Flex>
+            <Flex my='auto' h='100%' my='10px'>
+                <Text as='h5' size='xs'>
+                    Below you can find charts about showing the live word frequency of the Iranian news articles according to most popular news sources.
+                </Text>
+
             </Flex>
         </Card>
         <SimpleGrid columns={{ base: 1, md: 2, lg: 3, "2xl": 3 }} gap='20px' mb='20px'>
