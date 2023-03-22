@@ -38,7 +38,7 @@ const routes = [
     component: DataTables,
   },
   {
-    name: "Creators",
+    name: "About Creator",
     layout: "/admin",
     path: "/creator",
     icon: <Icon as={MdPerson} width={sidebarIconSize} height={sidebarIconSize} color='inherit' />,

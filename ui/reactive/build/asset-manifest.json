@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/iran/static/css/main.564ca6d9.css",
-    "main.js": "/iran/static/js/main.a5c5ec56.js",
+    "main.css": "/iran/static/css/main.db0ec837.css",
+    "main.js": "/iran/static/js/main.8a518af8.js",
     "static/media/Project2.png": "/iran/static/media/Project2.ba884a96ef1d5ba34921.png",
     "static/media/auth.png": "/iran/static/media/auth.aab0220337cd9ba5c099.png",
     "static/media/Lalezar-Regular.ttf": "/iran/static/media/Lalezar-Regular.4cbab4c9f26cf13014c6.ttf",
@@ -21,11 +21,11 @@
     "static/media/logo.jpg": "/iran/static/media/logo.28222e655af9b37d1fd5.jpg",
     "static/media/Nft5.png": "/iran/static/media/Nft5.62dbaf7dd91b4180035c.png",
     "index.html": "/iran/index.html",
-    "main.564ca6d9.css.map": "/iran/static/css/main.564ca6d9.css.map",
-    "main.a5c5ec56.js.map": "/iran/static/js/main.a5c5ec56.js.map"
+    "main.db0ec837.css.map": "/iran/static/css/main.db0ec837.css.map",
+    "main.8a518af8.js.map": "/iran/static/js/main.8a518af8.js.map"
   },
   "entrypoints": [
-    "static/css/main.564ca6d9.css",
-    "static/js/main.a5c5ec56.js"
+    "static/css/main.db0ec837.css",
+    "static/js/main.8a518af8.js"
   ]
 }

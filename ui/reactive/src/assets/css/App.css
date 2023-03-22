@@ -10,3 +10,17 @@ option {
   font-family: Lalezar;
   src: url('../font/Lalezar-Regular.ttf');
 }
+
+.pill {
+  background-color: #ddd;
+  border: none;
+  color: black;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+

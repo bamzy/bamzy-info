@@ -34,10 +34,10 @@ export default function Overview() {
           banner={banner}
           avatar={avatar}
           name='Bamdad Kord'
-          job='Software Developers'
+          job='Software Engineer'
           posts='17'
-          followers='9.7k'
-          following='274'
+          exp='13'
+          pos='Senior Software Engineer'
         />
         <CodeAnalysis
           gridArea={{ base: "2 / 1 / 3 / 2", lg: "1 / 2 / 2 / 3" }}
@@ -76,8 +76,8 @@ export default function Overview() {
           gridArea='1 / 2 / 2 / 2'
           banner={banner}
           avatar={avatar}
-          name='Adela Parkson'
-          job='Product Designer'
+          name=''
+          job=''
           posts='17'
           followers='9.7k'
           following='274'

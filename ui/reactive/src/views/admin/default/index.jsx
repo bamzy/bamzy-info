@@ -28,6 +28,10 @@ export default function NewsDashboardReport() {
   // Chakra Color Mode
   const brandColor = useColorModeValue("brand.500", "white");
   const boxBg = useColorModeValue("secondaryGray.300", "whiteAlpha.100");
+  const handler =  (event)=>{
+      console.log(event.keyCode);
+
+  }
   return (
     <Box pt={{ base: "130px", md: "80px", xl: "80px" }}>
         <Card my='10px'>
@@ -50,6 +54,7 @@ export default function NewsDashboardReport() {
                 <Text as='h5' size='xs'>
                     Below you can find charts about showing the live word frequency of the Iranian news articles according to most popular news sources.
                 </Text>
+                <input type='text' onKeyPress={(event)=>{handler(event)}} />
 
             </Flex>
         </Card>

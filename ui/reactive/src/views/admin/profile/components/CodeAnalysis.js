@@ -36,7 +36,6 @@ export default class CodeAnalysis extends React.Component{
 
     }
     componentDidMount() {
-        console.log('did mount')
          this.loadBadges();
 
     }
@@ -46,7 +45,7 @@ export default class CodeAnalysis extends React.Component{
                 let color = randomColor();
                 if(item['code']===0) return null;
                 return (
-                    <span  key={index} color='black' style={{backgroundColor:color,borderRadius:'30%',fontSize:'10px',fontWeight:"bold",padding:'5px'}} >
+                    <span  key={index} color='black' className='pill' style={{backgroundColor:color}} >
                         <div >{item['Language']}</div>
                         <div style={{fontSize:'10px'}}>LOC: {item['code']}</div>
                     </span>

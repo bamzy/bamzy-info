@@ -4,7 +4,7 @@ import Card from "components/card/Card.js";
 import React from "react";
 
 export default function Banner(props) {
-  const { banner, avatar, name, job, posts, followers, following } = props;
+  const { banner, avatar, name, job, posts, exp, pos } = props;
   // Chakra Color Mode
   const textColorPrimary = useColorModeValue("secondaryGray.900", "white");
   const textColorSecondary = "gray.400";
@@ -37,30 +37,31 @@ export default function Banner(props) {
         {job}
       </Text>
       <Flex w='max-content' mx='auto' mt='26px'>
-        <Flex mx='auto' me='60px' align='center' direction='column'>
-          <Text color={textColorPrimary} fontSize='2xl' fontWeight='700'>
+        <Flex mx='auto' align='center' direction='column'>
+          <Text color={textColorPrimary} fontSize='lg' fontWeight='700'>
+              {pos}
+          </Text>
+          <Text color={textColorSecondary} fontSize='' fontWeight='400'>
+              Current Position
+          </Text>
+        </Flex>
+        <Flex mx='auto' me='40px' align='center' direction='column'>
+          <Text color={textColorPrimary} fontSize='lg' fontWeight='700'>
             {posts}
           </Text>
-          <Text color={textColorSecondary} fontSize='sm' fontWeight='400'>
-            Posts
+          <Text color={textColorSecondary} fontSize='' fontWeight='400'>
+            Blog Posts
           </Text>
         </Flex>
-        <Flex mx='auto' me='60px' align='center' direction='column'>
-          <Text color={textColorPrimary} fontSize='2xl' fontWeight='700'>
-            {followers}
+        <Flex mx='auto' me='40px' align='center' direction='column'>
+          <Text color={textColorPrimary} fontSize='lg' fontWeight='700'>
+            {exp}
           </Text>
-          <Text color={textColorSecondary} fontSize='sm' fontWeight='400'>
-            Followers
-          </Text>
-        </Flex>
-        <Flex mx='auto' align='center' direction='column'>
-          <Text color={textColorPrimary} fontSize='2xl' fontWeight='700'>
-            {following}
-          </Text>
-          <Text color={textColorSecondary} fontSize='sm' fontWeight='400'>
-            Following
+          <Text color={textColorSecondary} fontSize='' fontWeight='400'>
+            Years of Experience
           </Text>
         </Flex>
+
       </Flex>
     </Card>
   );
