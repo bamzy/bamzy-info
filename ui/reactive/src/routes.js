@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Icon } from "@chakra-ui/react";
-import {MdBarChart, MdPerson, MdHome, MdLock} from "react-icons/md";
+import {MdBarChart, MdPerson, MdHome, MdLock,MdCake} from "react-icons/md";
 import {GiNewspaper} from 'react-icons/gi'
 import {RiGalleryFill} from 'react-icons/ri'
 // Admin Imports
@@ -9,7 +9,7 @@ import MainDashboard from "views/admin/default";
 import GraphGallery from "views/admin/graphGallery";
 import Profile from "views/admin/profile";
 import DataTables from "views/admin/dataTables";
-import RTL from "views/admin/rtl";
+import Demo from "views/admin/demo";
 
 // Auth Imports
 import SignInCentered from "views/auth/signIn";
@@ -45,19 +45,19 @@ const routes = [
     component: Profile,
   },
   {
+    name: "Demo",
+    layout: "/demo",
+    path: "/samples",
+    icon: <Icon as={MdCake} width={sidebarIconSize} height={sidebarIconSize} color='inherit' />,
+    component: Demo,
+  },
+  {
     name: "Sign In",
     layout: "/auth",
     path: "/sign-in",
     icon: <Icon as={MdLock} width={sidebarIconSize} height={sidebarIconSize} color='inherit' />,
     component: SignInCentered,
   },
-  // {
-  //   name: "RTL Admin",
-  //   layout: "/rtl",
-  //   path: "/rtl-default",
-  //   icon: <Icon as={MdHome} width={sidebarIconSize} height={sidebarIconSize} color='inherit' />,
-  //   component: RTL,
-  // },
 ];
 
 export default routes;

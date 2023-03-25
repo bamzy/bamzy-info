@@ -1,6 +1,4 @@
-import {Avatar,Text,Heading, Box, Flex, FormLabel, Icon, Select, Center, SimpleGrid, useColorModeValue,} from "@chakra-ui/react";
-// Assets
-import Usa from "assets/img/dashboards/usa.png";
+import {Text,Heading, Box, Flex,  Icon,SimpleGrid, useColorModeValue,} from "@chakra-ui/react";
 // Custom components
 import MiniCalendar from "components/calendar/MiniCalendar";
 import MiniStatistics from "components/card/MiniStatistics";
@@ -11,19 +9,16 @@ import {ImCamera} from "react-icons/im";
 import {MdFileCopy} from "react-icons/md";
 import {BsFileEarmarkWordFill} from "react-icons/bs";
 import CheckTable from "views/admin/default/components/CheckTable";
-import ComplexTable from "views/admin/default/components/ComplexTable";
 import WordFrequencyColumnChartCard from "views/admin/default/components/WordFrequencyColumnChartCard";
-import PieCard from "views/admin/default/components/PieCard";
-import Tasks from "views/admin/default/components/Tasks";
 import TotalSpent from "views/admin/default/components/TotalSpent";
 import WeeklyRevenue from "views/admin/default/components/WeeklyRevenue";
+import "assets/css/TicTac.css";
 import {
   columnsDataCheck,
-  columnsDataComplex,
 } from "views/admin/default/variables/columnsData";
 import tableDataCheck from "views/admin/default/variables/tableDataCheck.json";
-import tableDataComplex from "views/admin/default/variables/tableDataComplex.json";
 import Constants from 'utils/constants';
+
 export default function NewsDashboardReport() {
   // Chakra Color Mode
   const brandColor = useColorModeValue("brand.500", "white");
@@ -46,7 +41,7 @@ export default function NewsDashboardReport() {
                 justify={{ base: "center", xl: "center" }}
                 my='10px'>
                 <Heading as='h4' size='sm' w='100%'>
-                    I dont' think computers are capable of understanding politics, but this personal project of mine aims at confirming patterns that most observers of Iran events are already anticipating.<br/>
+                    I don't think computers are capable of understanding politics, but this personal project of mine aims at confirming patterns that most observers of Iran events are already anticipating.<br/>
                 </Heading>
 
             </Flex>
