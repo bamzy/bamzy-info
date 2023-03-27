@@ -4,14 +4,19 @@ export default function VariableTicTac({size}){
     let len = size*size;
     let [moves,setMoves] = useState(Array(len).fill(null))
     let [turn,setTurn] = useState(0);
-    let [result,setResult] = useState('game continues');
+    let [result,setResult] = useState('player x should start...');
+    let [won,setWon] = useState(false);
 
     function clickHandler(index){
         if(moves[index]!=null) return;
+        if(won) return;
         let thisVal = 'x';
         if(turn%2===1) thisVal = 'o'
         let newMoves = [...moves.slice(0,index),thisVal,...moves.slice(index+1)];
-        if(isWinner(newMoves,index,size)) setResult('Player '+ thisVal + " is the winner")
+        if(isWinner(newMoves,index,size)) {
+            setResult('Player '+ thisVal + " is the winner")
+            setWon(true);
+        } else setResult("game continues...")
         setMoves(newMoves);
         setTurn(turn+1);
 
@@ -30,10 +35,15 @@ export default function VariableTicTac({size}){
         if(rowBingo||columnBingo) return true;
         return false;
     }
+    function refresh(){
+        setMoves(Array(len).fill(null))
+        setWon(false);
+        setTurn(0);
+    }
     let blocks = moves.map((move,index) => <Block val={move} index={index} clickHandler={()=>clickHandler(index)} />);
     return (
         <div>
-            <div>{result}</div>
+            <div>{result} {won && <RefreshButton handler={()=>refresh()}/>}</div>
             <div style={{display:"grid",gridTemplateColumns: "repeat("+size+",1fr)",gridTemplateRows:"repeat("+size+",1fr)",width:size*40+"px"}}>
                 {blocks}
             </div>
@@ -46,4 +56,7 @@ function Block({val,index,clickHandler}){
     return (
         <div style={{background:'white',border:"1px solid black",width:'40px',height:'40px',display:"flex",alignItems:"center",justifyContent:"center"}} onClick={clickHandler}>{dispVal}</div>
     )
+}
+function RefreshButton({handler}){
+    return <button  onClick={handler}>🔃</button>
 }
