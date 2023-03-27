@@ -1,11 +1,16 @@
 pipeline {
-  agent any
-  stages {
-    stage('Wait a bit') {
-      steps {
-        sleep 5
-      }
+    agent {
+        docker {
+            image 'node:lts-bullseye-slim'
+            args '-p 3000:3000'
+        }
     }
-
-  }
+    stages {
+        stage('Build') {
+            steps {
+                sh 'cd ui/reactive'
+                sh 'npm install'
+            }
+        }
+    }
 }
