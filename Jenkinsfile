@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'cd ui/reactive && npm install'
+                sh 'cd ui/reactive && npm install && npm run build'
             }
         }
     }
