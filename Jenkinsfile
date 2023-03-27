@@ -22,7 +22,9 @@ pipeline {
             }
         }
         stage('Archive') {
-          archiveArtifacts "ui/reactive/*"
+            steps {
+                archiveArtifacts "ui/reactive/*"
+            }
         }
     }
 }
