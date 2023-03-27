@@ -1,13 +1,13 @@
-import React,{useEffect,useState} from "react";
+import React from "react";
 // Chakra imports
-import { Box, Flex, Icon, Text,Button, useColorModeValue } from "@chakra-ui/react";
+import { Box, Flex, Text, useColorModeValue } from "@chakra-ui/react";
 import ColumnChart from "components/charts/ColumnChart";
 
 // Custom components
 import Card from "components/card/Card.js";
 
 // Assets
-import { RiArrowUpSFill } from "react-icons/ri";
+
 
 export default function WordFrequencyColumnChartCard(props) {
   const { ...rest } = props;

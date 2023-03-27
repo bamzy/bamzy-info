@@ -1,18 +1,11 @@
 // Chakra imports
 import {
-    Stat,
-    StatLabel,
-    StatNumber,
-    StatHelpText,
     Spinner,
     Box,
     Flex,
     Icon,
     Progress,
     Text,
-    Badge,
-    Tooltip,
-    useColorModeValue,
     SimpleGrid,
 } from "@chakra-ui/react";
 // Custom components
@@ -20,12 +13,11 @@ import Card from "components/card/Card.js";
 import IconBox from "components/icons/IconBox";
 import Menu from "components/menu/MainMenu";
 import Constants from "utils/constants";
-import React, {useState} from "react";
+import React from "react";
 // Assets
 import { MdQueryStats } from "react-icons/md";
 import axios from "axios";
 import randomColor from "randomcolor";
-import {parse} from "stylis";
 
 export default class CodeAnalysis extends React.Component{
 

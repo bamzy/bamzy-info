@@ -35,7 +35,7 @@ export default function NewsDashboardReport() {
 
             </Flex>
             <Flex
-                my='auto'
+
                 h='100%'
                 align={{ base: "center", xl: "start" }}
                 justify={{ base: "center", xl: "center" }}
@@ -45,7 +45,7 @@ export default function NewsDashboardReport() {
                 </Heading>
 
             </Flex>
-            <Flex my='auto' h='100%' my='10px'>
+            <Flex h='100%' my='10px'>
                 <Text as='h5' size='xs'>
                     Below you can find charts about showing the live word frequency of the Iranian news articles according to most popular news sources.
                 </Text>

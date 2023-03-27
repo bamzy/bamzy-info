@@ -1,7 +1,7 @@
 import React from "react";
 
 // Chakra imports
-import { Button, Flex, Link, Text,Image } from "@chakra-ui/react";
+import { Flex,Image } from "@chakra-ui/react";
 
 // Assets
 import IranNewsMonitor from "assets/img/gallery/banner.png";

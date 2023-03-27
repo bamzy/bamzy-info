@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Icon } from "@chakra-ui/react";
-import {MdBarChart, MdPerson, MdHome, MdLock,MdCake} from "react-icons/md";
+import {MdBarChart, MdPerson,  MdLock,MdCake} from "react-icons/md";
 import {GiNewspaper} from 'react-icons/gi'
 import {RiGalleryFill} from 'react-icons/ri'
 // Admin Imports

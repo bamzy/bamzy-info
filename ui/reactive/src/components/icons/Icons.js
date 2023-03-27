@@ -1,5 +1,4 @@
 import { createIcon } from "@chakra-ui/icons";
-import { Image,Box } from '@chakra-ui/react'
 export const AdobexdLogo = createIcon({
   displayName: "AdobexdLogo",
   viewBox: "0 0 24 24",
