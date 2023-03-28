@@ -25,8 +25,9 @@ pipeline {
             steps {
                 script {
                      iacname = env.JOB_NAME
+                     buildNumber = env.BUILD_NUMBER
                 }
-                sh "tar -czv ui/reactive/build -f artifact-" + iacname
+                sh "tar -czv ui/reactive/build -f ui/reactive/react-ui-artifact" + buildNumber + ".tar.gz"
             }
         }
         stage('Archive') {
