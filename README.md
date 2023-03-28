@@ -29,6 +29,6 @@ currently these are the noticeable features:<br>
   <img src="https://bamzy.info/assets/imgs/Screenshot7.png" width="300" height="300px" /> 
   <img src="https://bamzy.info/assets/imgs/Screenshot8.png" width="300" height="300px"/>
 </p>
-     * Jenkins runs an npm docker to build the app
-     * it uploads the artifact to S3 bucket
-     * deploy.sh picks it up and puts it on the server
+* Jenkins runs an npm docker to build the app<br>
+* it uploads the artifact to S3 bucket<br>
+* deploy.sh picks it up and puts it on the server<br>
