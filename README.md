@@ -24,7 +24,7 @@ currently these are the noticeable features:<br>
   * as a result we have paths like this <b>bamzy.info/api/chart?name=xxxx</b>
 * <i><b>[Update: March 8, 2023]</b></i>  There is a new and independent react-app under the [/iran](https://bamzy.info/iran) path with some exciting charts
   * its an independent react-app which is behind a reverse proxy and ties to the same chartAPI that the static site uses
-* <i><b>[Update: March 27, 2023]</b></i>  Jenkins server was introduced to build the final artifact for the react-app
+* <i><b>[Update: March 27, 2023]</b></i>  Jenkins server was introduced to build the final artifact for the react-app using this [jenkinsfile](https://github.com/bamzy/bamzy-info/blob/main/Jenkinsfile)
      * Jenkins runs an npm docker to build the app
      * it uploads the artifact to S3 bucket
      * deploy.sh picks it up and puts it on the server
