@@ -22,8 +22,10 @@ pipeline {
             }
         }
         stage('Archive') {
-            script {
-                 iacname = env.JOB_NAME
+            steps {
+                script {
+                     iacname = env.JOB_NAME
+                }
             }
             steps {
                 sh "tar -czv ui/reactive/build -f artifact-" + iacname
