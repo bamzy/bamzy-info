@@ -21,14 +21,16 @@ pipeline {
                 sh 'cd ui/reactive && npm run build'
             }
         }
-        stage('Archive') {
+        stage('Export Artifact'){
             steps {
                 script {
                      iacname = env.JOB_NAME
                 }
-            }
-            steps {
                 sh "tar -czv ui/reactive/build -f artifact-" + iacname
+            }
+        }
+        stage('Archive') {
+            steps {
                 archiveArtifacts "ui/reactive/build/*"
             }
         }
