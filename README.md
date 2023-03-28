@@ -1,9 +1,15 @@
 # Bamzy.info 
-![image](https://bamzy.info/assets/imgs/Screenshot1.png)
-![image](https://bamzy.info/assets/imgs/Screenshot2.png)
-![image](https://bamzy.info/assets/imgs/Screenshot3.png)
-![image](https://bamzy.info/assets/imgs/Screenshot4.png)
-![image](https://bamzy.info/assets/imgs/Screenshot5.png)
+<p float="left">
+  <img src="https://bamzy.info/assets/imgs/Screenshot2.png" width="100" /> 
+  <img src="https://bamzy.info/assets/imgs/Screenshot1.png" width="100" />
+  <img src="https://bamzy.info/assets/imgs/Screenshot3.png" width="100" />
+</p>
+<p float="left">
+  <img src="https://bamzy.info/assets/imgs/Screenshot4.png" width="100" /> 
+  <img src="https://bamzy.info/assets/imgs/Screenshot5.png" width="100" />
+  <img src="https://bamzy.info/assets/imgs/Screenshot6.png" width="100" />
+</p>
+
 This is the code to my personal website. feel free to re-use at your own risk. its going to grow over time,
 currently these are the noticeable features:<br>
     Internal APIs + charts for scraping news websites.<br>
