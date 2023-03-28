@@ -27,12 +27,12 @@ pipeline {
                      iacname = env.JOB_NAME
                      buildNumber = env.BUILD_NUMBER
                 }
-                sh "tar -czv ui/reactive/build -f ui/reactive/react-ui-artifact" + buildNumber + ".tar.gz"
+                sh "tar -czv ui/reactive/build -f ui/reactive/build/react-ui-artifact-" + buildNumber + ".tar.gz"
             }
         }
-        stage('Archive') {
+        stage('Archive Artifact .tar.gz') {
             steps {
-                archiveArtifacts "ui/reactive/build/*"
+                archiveArtifacts "ui/reactive/build/react-ui-artifact-" + buildNumber + ".tar.gz"
             }
         }
     }
