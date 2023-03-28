@@ -41,7 +41,7 @@ pipeline {
         stage("Upload"){
             steps{
                 withAWS(region:"${region}", credentials:"${aws_credential}"){
-                    s3Upload(file:"ui/reactive/react-ui-artifact-" + buildNumber + ".tar.gz", bucket:"${bucket}", path:"{buildNumber}/")
+                    s3Upload(file:"ui/reactive/react-ui-artifact-" + buildNumber + ".tar.gz", bucket:"${bucket}", path:"react-ui/${buildNumber}/")
                 }
             }
         }
