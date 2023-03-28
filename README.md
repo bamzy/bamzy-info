@@ -2,10 +2,12 @@
 <p float="left">
   <img src="https://bamzy.info/assets/imgs/Screenshot2.png" width="300" /> 
   <img src="https://bamzy.info/assets/imgs/Screenshot1.png" width="300" />
-  <img src="https://bamzy.info/assets/imgs/Screenshot3.png" width="300" />
 </p>
 <p float="left">
+  <img src="https://bamzy.info/assets/imgs/Screenshot3.png" width="300" />
   <img src="https://bamzy.info/assets/imgs/Screenshot4.png" width="300" /> 
+</p>
+<p float="left">
   <img src="https://bamzy.info/assets/imgs/Screenshot5.png" width="300" />
   <img src="https://bamzy.info/assets/imgs/Screenshot6.png" width="300" />
 </p>
