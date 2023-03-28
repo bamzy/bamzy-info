@@ -32,3 +32,4 @@ currently these are the noticeable features:<br>
 * Jenkins runs an npm docker to build the app<br>
 * it uploads the artifact to S3 bucket<br>
 * deploy.sh picks it up and puts it on the server<br>
+* s3 lifecycle rule clean up artifacts that are older than 30  days
