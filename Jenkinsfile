@@ -9,6 +9,9 @@ pipeline {
         CI = 'False'
         HOME = '.'
         npm_config_cache = 'npm-cache'
+        aws_credential = "s3-uploader"
+        bucket = "bamzy-info-builds"
+        region = "ca-central-1"
       }
     stages {
         stage('Install React UI Dependency') {
@@ -33,6 +36,13 @@ pipeline {
         stage('Archive Artifact .tar.gz') {
             steps {
                 archiveArtifacts "ui/reactive/react-ui-artifact-" + buildNumber + ".tar.gz"
+            }
+        }
+        stage("Upload"){
+            steps{
+                withAWS(region:"${region}", credentials:"${aws_credential}"){
+                    s3Upload(file:"ui/reactive/react-ui-artifact-" + buildNumber + ".tar.gz", bucket:"${bucket}", path:"{buildNumber}/")
+                }
             }
         }
     }
