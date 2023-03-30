@@ -25,11 +25,16 @@ currently these are the noticeable features:<br>
 * <i><b>[Update: March 8, 2023]</b></i>  There is a new and independent react-app under the [/iran](https://bamzy.info/iran) path with some exciting charts
   * its an independent react-app which is behind a reverse proxy and ties to the same chartAPI that the static site uses
 * <i><b>[Update: March 27, 2023]</b></i>  Jenkins server was introduced to build the final artifact for the react-app using this [jenkinsfile](https://github.com/bamzy/bamzy-info/blob/main/Jenkinsfile)
+    * Jenkins runs an npm docker to build the app<br>
+    * it uploads the artifact to S3 bucket<br>
+    * deploy.sh picks it up and puts it on the server<br>
+    * s3 lifecycle rule clean up artifacts that are older than 30  days (plugins [S3 Publisher](https://plugins.jenkins.io/s3), [AWS Steps](https://plugins.jenkins.io/pipeline-aws) )
 <p float="left">
   <img src="https://bamzy.info/assets/imgs/Screenshot7.png" width="300" height="300px" /> 
   <img src="https://bamzy.info/assets/imgs/Screenshot8.png" width="300" height="300px"/>
 </p>
-* Jenkins runs an npm docker to build the app<br>
-* it uploads the artifact to S3 bucket<br>
-* deploy.sh picks it up and puts it on the server<br>
-* s3 lifecycle rule clean up artifacts that are older than 30  days
+
+* <i><b>[Update: March 29, 2023]</b></i>
+  * Moved jenkins Controller into a public subdomain [http://jenkins.bamzy.info](http://jenkins.bamzy.info/) for more flexibility
+  * separated Jenkins Agent to another micro server on oracle cloud to perform bandwidth-rich operation
+  * spin up a local Jenkins agent to do computation heavy operation such as ```npm run build``` for react apps that runs into heap overflow on machines even with 1GB of memory 
