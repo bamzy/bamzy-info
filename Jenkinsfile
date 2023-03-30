@@ -30,12 +30,7 @@ pipeline {
                      iacname = env.JOB_NAME
                      buildNumber = env.BUILD_NUMBER
                 }
-                sh "tar -czv ui/reactive/build -f ui/reactive/react-ui-artifact-" + buildNumber + ".tar.gz"
-            }
-        }
-        stage('Archive Artifact .tar.gz') {
-            steps {
-                archiveArtifacts "ui/reactive/react-ui-artifact-" + buildNumber + ".tar.gz"
+                sh "tar -czv ui/reactive/build -f react-ui-artifact-" + buildNumber + ".tar.gz"
             }
         }
         stage("Upload To S3 Bucket"){
