@@ -1,9 +1,10 @@
 pipeline {
     agent {
         docker {
-        build.inside('-w /D:/jenkins-agent/workspace/bamzy-info_main/') {
-            image 'node:lts-bullseye-slim'
-            args '-p 3000:3000'
+            build.inside('-w /D:/jenkins-agent/workspace/bamzy-info_main/') {
+                image 'node:lts-bullseye-slim'
+                args '-p 3000:3000'
+            }
         }
     }
     environment {
