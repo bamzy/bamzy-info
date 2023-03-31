@@ -126,7 +126,7 @@ function extractTar(res) {
 }
 function moveFile(res){
 
-    fs.rmSync('./data/build', { recursive: true, force: true });
+    // fs.rmSync('./data/build', { recursive: true, force: true });
     // fs.mkdir('./data/build', { recursive: true }, (err) => {
     //     if (err) throw err;
     // });
