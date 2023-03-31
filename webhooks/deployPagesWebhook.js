@@ -131,10 +131,17 @@ function moveFile(res){
     //     if (err) throw err;
     // });
     console.log(process.env.DEPLOY_PATH);
-    fse.move('./data/extracted/ui/reactive/build', process.env.DEPLOY_PATH, err => {
-        if(err)  throw err;
-        res.send('done');
-    });
+    // fse.move('./data/extracted/ui/reactive/build', process.env.DEPLOY_PATH, err => {
+    //     if(err)  throw err;
+    //     res.send('done');
+    // });
+    fse.move('./data/extracted/ui/reactive/build', process.env.DEPLOY_PATH, { overwrite: true })
+        .then(() => {
+            console.log("File moved to the destination");
+            res.send('done');
+        }).catch((e) => {
+            throw e;
+        });
 
 
 }
