@@ -5,6 +5,9 @@ pipeline {
             args '-p 3000:3000'
         }
     }
+    options {
+            ansiColor('xterm')
+    }
     environment {
         CI = 'False'
         HOME = '.'
