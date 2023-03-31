@@ -41,7 +41,7 @@ export default function NewsDashboardReport() {
                 justify={{ base: "center", xl: "center" }}
                 my='10px'>
                 <Heading as='h4' size='sm' w='100%'>
-                    I don't think computers are capable of understanding politics, but this personal project of mine aims at confirming patterns that most observers of Iran events are already anticipating.<br/>
+                    I do NOT think computers are capable of understanding politics, but this personal project of mine aims at confirming patterns that most observers of Iran events are already anticipating.<br/>
                 </Heading>
 
             </Flex>

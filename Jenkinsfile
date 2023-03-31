@@ -42,7 +42,7 @@ pipeline {
         }
         stage('Call Deploy Webhook') {
             steps {
-                sh 'curl http://bamzy.info:5000/s3Download?fileKey='+buildNumber;
+                sh '/usr/bin/curl http://bamzy.info:5000/s3Download?fileKey='+buildNumber;
             }
         }
     }
