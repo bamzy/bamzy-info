@@ -41,11 +41,13 @@ pipeline {
 //             }
 //         }
         stage('Call Deploy Webhook') {
-            node('linux'){
-                steps {
-                    sh '/usr/bin/curl http://bamzy.info:5000/s3Download?fileKey='+buildNumber;
-                }
+            agent {
+                label 'hammer'
             }
+            steps {
+                sh '/usr/bin/curl http://bamzy.info:5000/s3Download?fileKey='+buildNumber;
+            }
+
         }
     }
 }
