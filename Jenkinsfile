@@ -45,7 +45,11 @@ pipeline {
                 label 'hammer'
             }
             steps {
-                sh '/usr/bin/curl http://bamzy.info:5000/s3Download?fileKey='+buildNumber;
+                script {
+                     iacname = env.JOB_NAME
+                     buildNumber1 = env.BUILD_NUMBER
+                }
+                sh '/usr/bin/curl http://bamzy.info:5000/s3Download?fileKey='+buildNumber1;
             }
 
         }
