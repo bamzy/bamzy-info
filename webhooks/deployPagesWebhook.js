@@ -75,9 +75,8 @@ app.get('/s3Download',  (req,res)=>{
     // download the file via aws s3 here
     var fileKey = req.query['fileKey'];
     var fullFilePath = `react-ui/${fileKey}/react-ui-artifact-${fileKey}.tar.gz`
-    console.log('Trying to download file', fileKey);
-    console.log('accessKey', accesskey);
-    console.log('secretKey', secretkey);
+    console.log('Going to download file', fileKey);
+
 
     AWS.config.update(
         {
@@ -91,17 +90,27 @@ app.get('/s3Download',  (req,res)=>{
         Key    : fullFilePath,
     };
 
-    var writableStream = fs.createWriteStream('./data/artifact.tar.gz');
-    var fileStream = s3.getObject(options).createReadStream();
-    fileStream.on('data', function(chunk) {
-        writableStream.write(chunk);
-    });
-    fileStream.on('end', function() {
-        res.send('Finished downloading successfully')
-        writableStream.end();
-        extractTar(res);
+    try {
+        var writableStream = fs.createWriteStream('./data/artifact.tar.gz');
+        var fileStream = s3.getObject(options).createReadStream();
+        fileStream.on('data', function(chunk) {
+            writableStream.write(chunk);
+        });
+        fileStream.on('error', function(err) {
+            let msg = "Error happened when downloading from S3: " + err.message;
+            console.log(msg)
+            res.send(msg)
+        });
+        fileStream.on('end', function() {
+            console.log('Finished downloading successfully')
+            writableStream.end();
+            extractTar(res);
 
-    });
+        });
+
+    } catch (err){
+        res.send(err.message);
+    }
 
 })
 function extractTar(res) {
@@ -110,16 +119,23 @@ function extractTar(res) {
             decompressTargz()
         ]
     }).then(() => {
-        console.log('Extract Tar file succeedd')
+        console.log('Extract Tar file succeeded')
         moveFile(res);
         // res.send('Files decompressed');
     });
 }
 function moveFile(res){
+
     fs.rmSync('./data/build', { recursive: true, force: true });
+    // fs.mkdir('./data/build', { recursive: true }, (err) => {
+    //     if (err) throw err;
+    // });
+    console.log(process.env.DEPLOY_PATH);
     fse.move('./data/extracted/ui/reactive/build', process.env.DEPLOY_PATH, err => {
-        if(err)  console.error(err);
-        console.log('success!');
+        if(err)  throw err;
+        res.send('done');
     });
+
+
 }
 app.listen(port, () => console.log(`Listening deployWebhook on port ${port}`))
