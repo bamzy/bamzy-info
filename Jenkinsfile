@@ -52,7 +52,7 @@ pipeline {
                      iacname = env.JOB_NAME
                      buildNumber1 = env.BUILD_NUMBER
                 }
-                sh '/usr/bin/curl http://bamzy.info:5000/s3Download?fileKey='+buildNumber1;
+                sh '/usr/bin/curl http://bamzy.info:5000/s3Deploy?buildNumber='+buildNumber1;
             }
 
         }
