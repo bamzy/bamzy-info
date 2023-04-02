@@ -38,3 +38,6 @@ currently these are the noticeable features:<br>
   * Moved jenkins Controller into a public subdomain [http://jenkins.bamzy.info](http://jenkins.bamzy.info/) for more flexibility
   * separated Jenkins Agent to another micro server on oracle cloud to perform bandwidth-rich operation
   * spin up a local Jenkins agent to do computation heavy operation such as ```npm run build``` for react apps that runs into heap overflow on machines even with 1GB of memory 
+
+* <i><b>[Update: April 2, 2023]</b></i>
+  * Setup jenkins job to run unit-tests, [codestats](https://github.com/bamzy/bamzy-info/blob/main/apis/codeanalysis/Jenkinsfile)
