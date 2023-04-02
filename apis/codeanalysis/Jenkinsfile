@@ -1,0 +1,32 @@
+pipeline {
+    agent {
+        docker {
+            image 'node:lts-bullseye-slim'
+            args '-p 3000:3000'
+        }
+    }
+    options {
+            ansiColor('xterm')
+    }
+    environment {
+        CI = 'False'
+        HOME = '.'
+        npm_config_cache = 'npm-cache'
+        aws_credential = "s3-uploader"
+        bucket = "bamzy-info-builds"
+        region = "ca-central-1"
+      }
+    stages {
+        stage('Build codestats') {
+            steps {
+                sh 'cd apis/codestats && npm install'
+            }
+        }
+        stage('Run jest tests') {
+            steps {
+                sh 'npm test'
+            }
+        }
+
+    }
+}

@@ -43,7 +43,7 @@ pipeline {
                 }
             }
         }
-        stage('Call Deploy Webhook') {
+        stage('Call UI Deploy Webhook') {
             agent {
                 label 'hammer'
             }
