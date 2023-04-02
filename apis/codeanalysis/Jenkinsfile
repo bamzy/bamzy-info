@@ -19,6 +19,7 @@ pipeline {
     stages {
         stage('Build codestats') {
             steps {
+                sh ' npm install -g npx'
                 sh 'cd apis/codeanalysis && npm install'
                 sh 'cp apis/codeanalysis/.env-copy apis/codeanalysis/.env'
                 sh 'echo \'PORT=5001 \n BASE_DIR=./\' >> apis/codeanalysis/.env'
