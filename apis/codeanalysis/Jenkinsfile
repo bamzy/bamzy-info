@@ -21,8 +21,8 @@ pipeline {
             steps {
                 sh 'cd apis/codeanalysis && npm install'
                 sh 'cp apis/codeanalysis/.env-copy apis/codeanalysis/.env'
-                sh 'echo "PORT=5001
-                          BASE_DIR=./" >> apis/codeanalysis/.env'
+                sh 'echo \'PORT=5001
+                          BASE_DIR=./\' >> apis/codeanalysis/.env'
             }
         }
         stage('Run jest tests') {
