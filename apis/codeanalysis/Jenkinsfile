@@ -24,7 +24,7 @@ pipeline {
         }
         stage('Run jest tests') {
             steps {
-                sh 'npm test'
+                sh 'cd apis/codeanalysis && npm test'
             }
         }
 
