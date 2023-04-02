@@ -215,7 +215,7 @@
 
                 axios.get(url).then((response)=>{
                     console.log('drawWordCound called on '+url);
-                    var data = response.data;
+                    var data = response.data.freqs;
                     var chart = anychart.tagCloud(data);
                     var angels = [];
                     for (i=0; i<data.length;i++)

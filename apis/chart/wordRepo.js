@@ -88,20 +88,19 @@ const finalizeText = (newsTextArr) => {
 }
 const scrapeRssFeed = (url,res)=>{
     axios.get(url).then((response)=>{
-        res.header('Content-Type','text/html');
+        // res.header('Content-Type','text/html');
         let fullText = response.data;
         let rawTextArr = extractRawRSSText(fullText);
         let chartResult = finalizeText(rawTextArr);
-        res.send(chartResult);
+        res.json({freqs:chartResult,size:chartResult.length});
     }).catch(function (error) {
-        res.send(
-            [
+        res.send({freqs:[
                 {x:'Please',value:10},
                 {x:'Try',value:10},
                 {x:'Again',value: 20},
                 {x:'Error',value:50},
                 {x:error.message,value:25}
-            ]
+            ],size:0}
         );
     })
 }

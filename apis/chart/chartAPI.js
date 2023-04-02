@@ -1,12 +1,10 @@
 const express = require('express')
-require('dotenv').config();
+
 const {scrapeRssFeed} = require('./wordRepo');
-const {analyzeTelegramChannel} = require('./telegram');
+const {analyzeTelegramChannel} = require('./telegram-api');
 const {NewsSource} = require('./modules/NewsSource');
-const axios = require('axios')
 const cors = require('cors')
 const app = express();
-const port = process.env.PORT
 
 
 //Middlewares
@@ -15,10 +13,10 @@ app.use(express.urlencoded());
 app.use(cors());
 
 app.use((req, res, next) => {
-    console.log('Time:', Date.now())
+    // console.log('Time:', Date.now())
     next()
 })
-app.get('/analyzeBBC',(req,res)=>{
+app.get('/analyzeBBC',async (req,res)=>{
 
     scrapeRssFeed('https://feeds.bbci.co.uk/persian/rss.xml',res);
 })
@@ -49,9 +47,6 @@ app.get('/analyzeTelegramChannel/:channelName',(req,res)=>{
 
     analyzeTelegramChannel(res,channelName)
 })
-app.listen(port,async ()=>{
-    console.log(`Chart Server running on port ${port}`)
-});
 app.get('/getAllDatabases',async (req,res)=>{
     let ns = new NewsSource();
     let dbs = await ns.getAllDatabases();
@@ -67,9 +62,6 @@ app.get('/getAllCollections/:dbName',async (req,res)=>{
 app.get('/findAll',async (req,res)=>{
     let ns = new NewsSource();
     console.log(ns.getDBName());
-    // return;
-    // let resi= await ns.insertNewsSource({name:'BBC English',type:'RSS'});
-    // console.log('insert-->'+resi);
     let result = await ns.findAllNewsSource({type:'RSS'});
     console.log('findAll-->'+result);
     res.send(result)
@@ -78,19 +70,5 @@ app.get('/user:userid',(req,res)=>{
     console.log(req.params);
     res.send(req.params['userid'])
 })
-const cb0 = function (req, res, next) {
-    console.log('CB0')
-    next()
-}
 
-const cb1 = function (req, res, next) {
-    console.log('CB1')
-    next()
-}
-
-app.get('/example/d', [cb0, cb1], (req, res, next) => {
-    console.log('the response will be sent by the next function ...')
-    next()
-}, (req, res) => {
-    res.send('Hello from D!')
-})
+module.exports = {app}

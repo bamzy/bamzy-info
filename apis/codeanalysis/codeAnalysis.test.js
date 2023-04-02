@@ -3,7 +3,7 @@ const {parseStatsTable,app} = require('./codeAnalysis')
 const request = require("supertest");
 
 
-describe("Test the main path", () => {
+describe("Test the code breakdown path", () => {
     test("The body should not be empty", done => {
         request(app)
             .get("/codestats")

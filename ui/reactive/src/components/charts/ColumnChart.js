@@ -20,10 +20,10 @@ class ColumnChart extends Component {
     let size = this.props.size? parseInt(this.props.size): 10;
     axios.get(this.props.url).then((resp)=>{
       // debugger;
-      let newdata = resp.data.map((item)=>{
+      let newdata = resp.data.freqs.map((item)=>{
         return item.value;
       });
-      let xAxisLabels = resp.data.map((item)=>{
+      let xAxisLabels = resp.data.freqs.map((item)=>{
         return item.x;
       });
       let finalData = [{name: this.props.name,data: this.fitSize(newdata,size)}];

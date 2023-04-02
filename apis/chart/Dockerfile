@@ -16,4 +16,4 @@ RUN npm install
 COPY . .
 
 EXPOSE 8081
-CMD [ "node", "chartAPI.js" ]
+CMD [ "npm", "start" ]
