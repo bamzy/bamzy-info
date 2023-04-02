@@ -20,7 +20,7 @@ app.get('/codestats', function (req, res) {
     });
 
 })
-app.listen(port, () => console.log(`Listening CodeAnalyzer on port ${port}`))
+
 const parseStatsTable = (text)=>{
     let lines = text.split('\n')
     let dataLines = lines.filter((value)=>{
@@ -55,3 +55,4 @@ const parseStatsTable = (text)=>{
 
 }
 
+module.exports = {parseStatsTable,app}
