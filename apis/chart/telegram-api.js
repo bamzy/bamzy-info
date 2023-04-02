@@ -39,6 +39,7 @@ const analyzeTelegramChannel = async (res,channelName)=>{
         return  removeSpecialCharacters(item.message);
     })
 
-    res.send(finalizeText(rawTextNewsArr));
+    let data = finalizeText(rawTextNewsArr);
+    res.json({freqs: data,size:data.length});
 }
 module.exports = {analyzeTelegramChannel}
