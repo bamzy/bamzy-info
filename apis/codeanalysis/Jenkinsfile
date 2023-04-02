@@ -19,7 +19,7 @@ pipeline {
     stages {
         stage('Build codestats') {
             steps {
-                sh 'cd apis/codestats && npm install'
+                sh 'cd apis/codeanalysis && npm install'
             }
         }
         stage('Run jest tests') {
