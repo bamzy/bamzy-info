@@ -11,6 +11,7 @@ pipeline {
     environment {
         CI = 'False'
         HOME = '.'
+        NODE_ENV=development
         npm_config_cache = 'npm-cache'
         aws_credential = "s3-uploader"
         bucket = "bamzy-info-builds"
