@@ -21,7 +21,7 @@ pipeline {
             steps {
                 sh 'cd apis/chart && npm install'
                 sh 'cp apis/chart/.env-copy apis/chart/.env'
-                sh 'echo \'PORT=8081 \n'  >> apis/chart/.env'
+                sh 'echo \'PORT=8081 \n \'  >> apis/chart/.env'
             }
         }
         stage('Run jest tests for chartAPI') {
