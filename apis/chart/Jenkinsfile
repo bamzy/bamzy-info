@@ -20,15 +20,14 @@ pipeline {
     stages {
         stage('Build chartAPI') {
             steps {
-                sh 'cd apis/chart && npm install && npm i jest'
-                sh 'cd apis/chart && npm i -g jest'
+                sh 'cd apis/chart && npm install'
                 sh 'cp apis/chart/.env-copy apis/chart/.env'
                 sh 'echo \'PORT=8081 \n \'  >> apis/chart/.env'
             }
         }
         stage('Run jest tests for chartAPI') {
             steps {
-                sh 'cd apis/codeanalysis && npm test'
+                sh 'cd apis/codeanalysis && npx jest'
             }
         }
 
