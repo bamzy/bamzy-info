@@ -8,7 +8,7 @@ describe("Test the code breakdown path", () => {
         request(app)
             .get("/codestats")
             .then(async response => {
-                console.debug("-->"+response.body);
+                // console.debug("-->"+response.body);
                 expect(response.body).not.toBe('');
                 expect(response.statusCode).toBe(200);
                 done();
