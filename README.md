@@ -40,4 +40,7 @@ currently these are the noticeable features:<br>
   * spin up a local Jenkins agent to do computation heavy operation such as ```npm run build``` for react apps that runs into heap overflow on machines even with 1GB of memory 
 
 * <i><b>[Update: April 2, 2023]</b></i>
-  * Setup jenkins job to run unit-tests, [codestats](https://github.com/bamzy/bamzy-info/blob/main/apis/codeanalysis/Jenkinsfile)
+  * Setup jenkins job to run unit tests written in Mocha & Jest, [codestats](https://github.com/bamzy/bamzy-info/blob/main/apis/codeanalysis/Jenkinsfile), [chart](https://github.com/bamzy/bamzy-info/blob/main/apis/chart/Jenkinsfile)
+    
+* <i><b>[Update: April 3, 2023]</b></i>
+  * Connect GitHub webhooks to run jenkins unit test upon git push with some cool colors!
