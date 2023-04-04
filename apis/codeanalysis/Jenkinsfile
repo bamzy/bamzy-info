@@ -19,6 +19,7 @@ pipeline {
     stages {
         stage('Build codestats') {
             steps {
+                echo '\033[32m'
                 sh 'cd apis/codeanalysis && npm install'
                 sh 'cp apis/codeanalysis/.env-copy apis/codeanalysis/.env'
                 sh 'echo \'PORT=5001 \n BASE_DIR=./\' >> apis/codeanalysis/.env'
@@ -26,6 +27,7 @@ pipeline {
         }
         stage('Run jest tests') {
             steps {
+                echo '\033[34m'
                 sh 'cd apis/codeanalysis && npm test'
             }
         }
