@@ -20,7 +20,7 @@ pipeline {
     stages {
         stage('Build chartAPI') {
             steps {
-                echo '\033[0m'
+                echo '\033[32m'
                 sh 'cd apis/chart && npm install'
                 sh 'cp apis/chart/.env-copy apis/chart/.env'
                 sh 'echo \'PORT=8081 \n \'  >> apis/chart/.env'
