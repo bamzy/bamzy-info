@@ -44,3 +44,11 @@ currently these are the noticeable features:<br>
     
 * <i><b>[Update: April 3, 2023]</b></i>
   * Connect GitHub webhooks to run jenkins unit test upon git push with some cool colors!
+
+* <i><b>[Update: April 5, 2023]</b></i>
+    * moved the bamzt.info doman behind Cloudflare and configured cloudflare rules to use my own SSL for main and ignore SSL for jenkins.bamzy.info subdomain
+## Paid Services Used
+1) Godaddy: .info Domain : 7.04/y CAD
+2) Godaddy: Admin Email for SSL: 9.03 CAD 
+3) SSLS: single SSL certificate: 3.09/y CAD
+4) AWS: Elastic IP: 12/m CAD

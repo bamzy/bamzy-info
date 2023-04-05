@@ -12,24 +12,29 @@ app.use(cors());
 
 
 const initClient = (url,user,pass)=>{
-    return new Client({
-        node: url,
-        auth: {
-            username: user,
-            password: pass
-        },
-        tls: {
-            // ca: fs.readFileSync('./http_ca.crt'),
-            rejectUnauthorized: false
-        }
-    });
+    try{
+
+        return new Client({
+            node: url,
+            auth: {
+                username: user,
+                password: pass
+            },
+            tls: {
+                // ca: fs.readFileSync('./http_ca.crt'),
+                rejectUnauthorized: false
+            }
+        });
+    } catch (err){
+        console.log('err');
+    }
 
 }
 const { Client } = require('@elastic/elasticsearch')
 app.get('/ping',async (req,res)=> {
 
-    let client = initClient(process.env.elasticURL,process.env.elasticUserName,process.env.elasticPassword,)
     try {
+        let client = initClient(process.env.elasticURL,process.env.elasticUserName,process.env.elasticPassword,)
         client.ping({
             requestTimeout: 1000
         }, err => {
@@ -41,12 +46,12 @@ app.get('/ping',async (req,res)=> {
 
 
     } catch (err){
-        res.send(err.message)
+        res.status(500).send("Error: " +err.message)
     }
 });
 app.get('/test', async (req,res)=>{
-    let client = initClient(process.env.elasticURL,process.env.elasticUserName,process.env.elasticPassword,)
     try {
+        let client = initClient(process.env.elasticURL,process.env.elasticUserName,process.env.elasticPassword,)
         const result= await client.search({
             index: 'overseas-trade',
             query: {
@@ -58,7 +63,7 @@ app.get('/test', async (req,res)=>{
         res.json(result.hits.hits)
 
     } catch (err){
-        console.log(err.message)
+        res.status(500).send("Error: " +err.message)
     }
 
 })
