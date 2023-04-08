@@ -1,0 +1,50 @@
+elastic-server:
+    image: elasticsearch:8.7.0
+    container_name: elastic-server
+    environment:
+      - node.name=activity
+      - discovery.type=single-node
+      - cluster.name=ws-es-data-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms2048m -Xmx2048m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - D:\workspace\elasticsearch\data:/usr/share/elasticsearch/data
+    expose:
+      - "9200"
+      - "9300"
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+
+version: "3.0"
+services:
+  elasticsearch:
+    container_name: elastic-server
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.7.0
+    environment:
+      - xpack.security.enabled=false
+      - "discovery.type=single-node"
+      - "ES_JAVA_OPTS=-Xms2048m -Xmx2048m"
+    networks:
+      - elastic-network
+    ports:
+      - 9200:9200
+      - 9300:9300
+  kibana:
+    container_name: kb-container
+    image: docker.elastic.co/kibana/kibana:7.11.0
+    environment:
+      - ELASTICSEARCH_HOSTS=http://localhost:9200
+    networks:
+      - es-net
+    depends_on:
+      - elasticsearch
+    ports:
+      - 5601:5601
+networks:
+  es-net:
+    driver: bridge
