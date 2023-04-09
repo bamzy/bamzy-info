@@ -21,12 +21,12 @@ const initClient = (url,user,pass)=>{
                 password: pass
             },
             tls: {
-                // ca: fs.readFileSync('./http_ca.crt'),
+                ca: fs.readFileSync('./http_ca.crt'),
                 rejectUnauthorized: false
             }
         });
     } catch (err){
-        console.log('err');
+        console.log('err'+ err.message);
     }
 
 }
@@ -53,9 +53,9 @@ app.get('/test', async (req,res)=>{
     try {
         let client = initClient(process.env.elasticURL,process.env.elasticUserName,process.env.elasticPassword,)
         const result= await client.search({
-            index: 'overseas-trade',
+            index: 'customers',
             query: {
-                match: { STATUS: 'FINAL' }
+                match: { Email: 'ablevins@bright.com' }
             }
         })
         console.log(`test endpoint called and returned ${result.hits.hits.length} results` )

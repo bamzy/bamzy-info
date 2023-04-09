@@ -21,4 +21,33 @@ docker run --name kibana-server --net elastic-network -p 5601:5601 docker.elasti
 ```
 
 
-# **baseic concepts**
+# **basic concepts**
+<img src="./snapshots/1.png" width="300" height="auto" />
+<img src="./snapshots/2.png" width="300" height="auto" />
+
+* use cases
+  * Query data/document
+  * Aggregate Data
+  * Application Performance Management (APM): analyze app logs and system metrics
+  * Forecast future values with machine learning
+  * Anomaly Detection
+
+
+* data is stored as documents ~~ row in relation database
+* a document then contains fields ~~ column in table
+* documents are stored as json in elasticsearch
+* elasticsearch is written in java 
+* its de-centralized by nature and easy to scale
+
+
+* Elastic Stack:
+  *   Elasticsearch,
+  *   Kibana: UI, visualization dashboard
+  *   Logstash: streams application logs to elasticsearch
+  *   X-Pack: adds features such as security, OAuth, LDAP, monitoring CPU and RAM, setup Alerts, gen reports, export csv, PDF, allow ML, allows using SQL in elastic
+  *   Beats: this is a collection of agents (data shippers) that send logs and status to Logstash and are installed on monitored servers, FileBeat, MetricBeat, PacketBeat, WinLogBeat
+
+* ELK Stack (from olden times): Elasticsearch, LogStash, Kibana
+<img src="./snapshots/3.png" width="500" height="auto" />
+<img src="./snapshots/4.png" width="500" height="auto" />
+<img src="./snapshots/5.png" width="500" height="auto" />
