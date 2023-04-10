@@ -12,7 +12,10 @@ docker network create elastic-newrok
 ```
 3) then run the elasticsearch container
 ```shell
-docker run --name elasticsearch-server --net elastic-network -p 9200:9200 -p 9300:9300 -v d:\workspace\elasticdata:/usr/share/elasticsearch/data -e "discovery.type=single-node" -e ES_JAVA_OPTS="-Xms1g -Xmx1g" elasticsearch:8.7.0
+docker run --name elasticsearch-server --net elastic-network -p 9200:9200 -p 9300:9300 -v d:\workspace\elastic\data:/usr/share/elasticsearch/data -v d:\workspace\elastic\config:/usr/share/elasticsearch/config -e "discovery.type=single-node" -e ES_JAVA_OPTS="-Xms2g -Xmx2g"  -e "xpack.security.enabled=false" elasticsearch:8.7.0
+
+
+docker run --name elasticsearch-server --net elastic-network -p 9200:9200 -it -e "xpack.security.enabled=false" -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:8.7.0
 ```
 
 4) copy related info from the log and run the kiban container

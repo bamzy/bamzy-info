@@ -49,6 +49,10 @@ currently these are the noticeable features:<br>
     * moved the bamzt.info doman behind Cloudflare and configured cloudflare rules to use my own SSL for main and ignore SSL for jenkins.bamzy.info subdomain
 ## Paid Services Used
 1) Godaddy: .info Domain : 7.04/y CAD
-2) Godaddy: Admin Email for SSL: 9.03 CAD 
-3) SSLS: single SSL certificate: 3.09/y CAD
+2) Godaddy: Admin Email for SSL verification: 9.03 CAD 
+3) SSLs: single SSL certificate: 3.09/y CAD
 4) AWS: Elastic IP: 12/m CAD
+
+
+## useful links: 
+[AWS Free Tier Spec](https://aws.amazon.com/free/?all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=*all&awsf.Free%20Tier%20Categories=*all)
