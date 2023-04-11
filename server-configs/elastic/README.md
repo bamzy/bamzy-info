@@ -179,7 +179,7 @@ POST /posts/_update/101
 DELETE /posts/_doc/1
 
 
-#Multi-row update, IMPORTANT: bulk updates are not transactional
+#Multi-row update, IMPORTANT: such updates are not transactional
 POST /posts/_update_by_query
 {
   "script": {
@@ -197,6 +197,19 @@ POST /posts/_delete_by_query
     "match_all" : {}
   }
 }
+
+#using bulk create/index (index == create), Note: this is not transactional
+POST /_bulk 
+{ "index": {"_index":"posts","_id":200}}
+{ "name" : "Ali", "title": "Mr."}
+{ "create": {"_index":"posts","_id":201}}
+{ "name" : "Reza", "title": "Mr."}
+
+#using bulk update/delete, Note: this is not transactional
+POST /_bulk 
+{ "update": {"_index":"posts","_id":200}}
+{ "doc" : { "name" : "Alireza", "title": "Ms." } }
+{ "delete": {"_index":"posts","_id":201}}
 
 
 ``` 
@@ -225,5 +238,10 @@ curl --insecure -XGET -u bamzy-info-elastic https://kibana.bamzy.info
 
 
 #this is a working curl query to retrieve all from kibana_sample_data_logs index
->curl --insecure -XGET -u bamzy-info-elastic -H "Content-type:application/json" https://kibana.bamzy.info/kibana_sample_data_logs/_search -d "{ \"query\": { \"match_all\": { } } }" 
+curl --insecure -XGET -u bamzy-info-elastic -H "Content-type:application/json" https://kibana.bamzy.info/kibana_sample_data_logs/_search -d "{ \"query\": { \"match_all\": { } } }" 
+
+
+#curl to  bulk index
+curl --insecure -XPOST -u bamzy-info-elastic -H "Content-type:application/x-ndjson" https://kibana.bamzy.info/products/_bulk --data-binary "@products-bulk.json" 
+
 ```
