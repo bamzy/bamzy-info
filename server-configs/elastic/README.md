@@ -1,3 +1,5 @@
+<img src="https://avatars.githubusercontent.com/u/6764390?s=200&v=4" width="200" height="auto" />
+
 # **What you need to know about elasticsearch**
 ## **how to setup up**
 
@@ -123,7 +125,98 @@ PUT /posts
 
 #delete an index
 DELETE /posts
+
+#create a more complex index
+PUT /posts 
+{
+  "settings" : {
+    "number_of_shards":2,
+    "number_of_replicas": 2
+  }
+}
+
+#Insert to posts and if ID is not specified, its auto-generated
+POST /posts/_doc 
+{
+  "name": "bamdad"
+}
+
+#search by ID=100 
+GET /posts/_doc/100
+
+#update by ID
+POST /posts/_update/100
+{
+  "doc": {"name":"bamzy"}
+}
+
+#this is called a scripted update with params which is optional
+POST /posts/_update/1 
+{
+    "script" : {
+        "source":"ctx._source.name=params.prefix  + ctx._source.name  "
+        "params" : {
+            "prefix": "Mr. "
+        }
+    }
+} 
+
+#Upsert: conditionally either insert or update. In below example, if ID 101 does not exist, a new document with upsert object 
+POST /posts/_update/101
+{
+    "script" : {
+        "source":"ctx._source.name=params.prefix  + ctx._source.name  "
+        "params" : {
+            "prefix": "Mr. "
+        }
+    }
+    "upsert" : {
+        "name": "new name"
+    }
+} 
+
+#This is how to delete documents
+DELETE /posts/_doc/1
+
+
+#Multi-row update, IMPORTANT: bulk updates are not transactional
+POST /posts/_update_by_query
+{
+  "script": {
+    "source": "ctx._source.name +=|",
+    "query": {
+      "match_all" : {}
+    }
+  }
+}
+
+#Multi-row delete
+POST /posts/_delete_by_query
+{
+  "query": {
+    "match_all" : {}
+  }
+}
+
+
 ``` 
+
+* elastic documents are immutable aka update == delete + add with the same ID, in other words there is no changing a document
+
+## **Routing**
+* Routing is the process of finding the correct shard where the document is stored/read
+* This is the default routing formula in elastic
+* by default the _id is using for the value of _routing
+<img src="./snapshots/8.png" width="500" height="auto" />
+
+* this is how elastic reads data
+<img src="./snapshots/9.png" width="500" height="auto" />
+
+* this is how elastic writes data (note: it always goes to primary shard)
+* replication into replica shards is NOT part of the transaction
+* _version field only tells you how many time a document has been touched, but there is no revision history in elasticsearch
+<img src="./snapshots/10.png" width="500" height="auto" />
+
 
 ## useful CURL commands
 ```shell

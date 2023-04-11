@@ -46,7 +46,11 @@ currently these are the noticeable features:<br>
   * Connect GitHub webhooks to run jenkins unit test upon git push with some cool colors!
 
 * <i><b>[Update: April 5, 2023]</b></i>
-    * moved the bamzt.info doman behind Cloudflare and configured cloudflare rules to use my own SSL for main and ignore SSL for jenkins.bamzy.info subdomain
+    * moved the bamzy.info doman behind Cloudflare and configured cloudflare rules to use my own SSL for main and ignore SSL for jenkins.bamzy.info subdomain
+
+* <i><b>[Update: April 10, 2023]</b></i>
+  * Introduced [OpenSearch](https://kibana.bamzy.info/_dashboards/app/home#/) into the infrastructure to monitor the system and allow future text search on the coming features
+  * Added opensearchAPI & elasticAPI to handle CRUD in both variations 
 ## Paid Services Used
 1) Godaddy: .info Domain : 7.04/y CAD
 2) Godaddy: Admin Email for SSL verification: 9.03 CAD 

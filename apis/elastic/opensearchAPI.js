@@ -28,19 +28,27 @@ const initClient = (url,user,pass)=>{
     }
 
 }
-// const { Client } = require('@elastic/elasticsearch')
-app.get('/ping',async (req,res)=> {
+app.get('/add',async (req,res)=> {
 
     try {
         let client = initClient(process.env.elasticURL,process.env.elasticUserName,process.env.elasticPassword,)
-        client.ping({
-            requestTimeout: 1000
-        }, err => {
-            if (err) {
-                console.error(err)
-                process.exit(1)
-            }
-        })
+        var document = {
+            title: "The Outsider",
+            author: "Stephen King",
+            year: "2018",
+            genre: "Crime fiction",
+          };
+          
+          var id = "2";
+          
+          var result = await client.index({
+            // id: id,
+            index: 'posts',
+            body: document,
+            refresh: true,
+          });
+          res.status(200).json(result);
+          
 
 
     } catch (err){
