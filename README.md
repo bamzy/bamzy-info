@@ -51,12 +51,25 @@ currently these are the noticeable features:<br>
 * <i><b>[Update: April 10, 2023]</b></i>
   * Introduced [OpenSearch](https://kibana.bamzy.info/_dashboards/app/home#/) into the infrastructure to monitor the system and allow future text search on the coming features
   * Added opensearchAPI & elasticAPI to handle CRUD in both variations 
+
+* <i><b>[Update: April 12, 2023]</b></i>
+  * Brought [jenkins](https://jenkins.bamzy.info) behind cloudflare instead of nginx reverse proxy
+  * 
+
+
 ## Paid Services Used
-1) Godaddy: .info Domain : 7.04/y CAD
-2) Godaddy: Admin Email for SSL verification: 9.03 CAD 
+1) GoDaddy: .info Domain : 7.04/y CAD
+2) GoDaddy: Admin Email for SSL verification: 9.03 CAD 
 3) SSLs: single SSL certificate: 3.09/y CAD
 4) AWS: Elastic IP: 12/m CAD
 
+
+## All Endpoints
+
+1. [https://infra.bamzy.info/deploy](https://infra.bamzy.info/deploy): Deploy Code webhook
+2. [https://elastic.bamzy.info/_dashboard](https://elatic.bamzy.info/_dashboard) : OpenSearch UI
+3. [https://elastic.bamzy.info/](https://elastic.bamzy.info/) : Elastic API Endpoint
+4. [https://jenkins.bamzy.info/](https://jenkins.bamzy.info/) : Our Jenkins CD/CI
 
 ## useful links: 
 [AWS Free Tier Spec](https://aws.amazon.com/free/?all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=*all&awsf.Free%20Tier%20Categories=*all)
