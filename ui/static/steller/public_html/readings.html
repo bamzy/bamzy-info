@@ -53,7 +53,7 @@
                         <li><a target="_blank" href="https://hackernoon.com/14-patterns-to-ace-any-coding-interview-question-c5bb3357f6ed">14 Patterns to Ace Any Coding Interview Question</a></li>
                     </ul>
                     <ul>
-                        <li><a target="_blank" href="https://www.udemy.com/course/elasticsearch-complete-guide">Best Deep Dive Course to Elastic Ecosystem I've seen</a></li>
+                        <li><a target="_blank" href="https://www.udemy.com/course/elasticsearch-complete-guide">My Favorite Deep Dive Course to Elastic Ecosystem</a></li>
                     </ul>
                 </p>
             </div>
@@ -65,7 +65,7 @@
         <!-- Modal -->
             <div class="row">
                 <div class="col-12 text-center">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" onclick="fetchquote()">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" onclick="fetchQuote()">
                         Random Anime Quote
                     </button>
                     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -76,7 +76,7 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
-                                    <button type="" class="p-2 ti-reload border-0 bg-white" onclick="fetchquote()" aria-label="Refresh">
+                                    <button type="" class="p-2 ti-reload border-0 bg-white" onclick="fetchQuote()" aria-label="Refresh">
                                     </button>
                                 </div>
                                 <div  class="modal-body h4 font-italic">
@@ -94,7 +94,7 @@
         </div>
     </section>
         <script>
-            function fetchquote(){
+            function fetchQuote(){
                 axios.get('https://animechan.vercel.app/api/random').then((resp)=>{
                     document.getElementById('anime-modal-title').innerHTML = resp.data.anime;
                     document.getElementById('anime-modal-body').innerHTML = '<span class="h2">"</span>' + resp.data.quote + '<span class="h2">"</span>';
