@@ -245,3 +245,48 @@ curl --insecure -XGET -u bamzy-info-elastic -H "Content-type:application/json" h
 curl --insecure -XPOST -u bamzy-info-elastic -H "Content-type:application/x-ndjson" https://kibana.bamzy.info/products/_bulk --data-binary "@products-bulk.json" 
 
 ```
+
+## **Text Analysis**
+* Store text in a data structure that is easy to search on 
+<img src="./snapshots/11.png" width="500" height="auto" />
+
+* This is what happens inside a typical analyzer:
+  *  It has one tokenizer that breaks down the text into smaller units like words
+  *  Token filter: it works on the tokens from above and transforms each one
+
+<img src="./snapshots/12.png" width="500" height="auto" />
+
+
+* elastic uses an inverted index data structure which makes it super easy to search for words across multiple documents
+* Inverted indexes are build for EACH text field in document
+* Other field types like numeric, date and coordinate use BKD trees
+<img src="./snapshots/13.png" width="500" height="auto" />
+
+
+## **Mapping**
+* Defines the structure of document fields and their data type
+* 
+
+
+
+## **Using analyzer API**
+```shell
+
+#this will break down text into array of tokens with info about each token
+POST /_analyze
+{
+  "text" :"bamdad is not funny",
+  "analyzer": "standard"
+}
+
+#the standard analyzer above is the equivalent of API call below
+POST /_analyze 
+{
+  "text": "bamdad is not funny",
+  "char_filter" : [],
+  "tokenizer": "standard",
+  "filter" : ["lowercase"]
+}
+```
+
+
