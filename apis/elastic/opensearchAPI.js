@@ -7,79 +7,115 @@ require('dotenv').config();
 
 //Middlewares
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended:true}));
 app.use(cors());
 
 const { Client } = require("@opensearch-project/opensearch");
-var host = "localhost";
-var protocol = "https";
 const initClient = (url,user,pass)=>{
+  let usedURL =  url.substring(8);
     try{
         let auth = `${user}:${pass}`;
         return new Client({            
-            node: 'http://' + auth + "@" + "kibana.bamzy.info" + ":80" ,           
-            // tls: {
-            //     ca: fs.readFileSync('./http_ca.crt'),
-                rejectUnauthorized: false
-            // }
+            node: 'http://' + auth + "@" + usedURL + ":80" ,           
         });
     } catch (err){
         console.log('err'+ err.message);
     }
-
 }
-app.get('/add',async (req,res)=> {
-
+app.post('/insertDoc',async (req,res)=> {
     try {
         let client = initClient(process.env.elasticURL,process.env.elasticUserName,process.env.elasticPassword,)
-        var document = {
-            title: "The Outsider",
-            author: "Stephen King",
-            year: "2018",
-            genre: "Crime fiction",
-          };
-          
-          var id = "2";
-          
-          var result = await client.index({
-            // id: id,
-            index: 'posts',
-            body: document,
-            refresh: true,
-          });
-          res.status(200).json(result);
-          
-
-
+        let document = req.body.document;
+        let indexName = req.body.indexName;   
+        var result = await client.index({
+          index: indexName,
+          body: document,
+          refresh: true,
+        });
+        res.status(200).json(result.body);
+        
     } catch (err){
-        res.status(500).send("Error1: " +err.message)
+        res.status(500).send("Error: " +err.message)
     }
 });
-app.get('/test', async (req,res)=>{
+
+app.get('/describe',async (req,res)=> {
+    try {
+        let client = initClient(process.env.elasticURL,process.env.elasticUserName,process.env.elasticPassword,)
+        let indexName = req.body.indexName;  
+        var result = await client.indices.getMapping({
+          index: indexName,
+        });
+        res.status(200).json(result.body);
+        
+    } catch (err){
+        res.status(500).send("Error: " +err.message)
+    }
+});
+
+app.get('/list',async (req,res)=> {
+    try {
+        let client = initClient(process.env.elasticURL,process.env.elasticUserName,process.env.elasticPassword,)
+        let indexName = req.body.indexName;  
+        var result = await client.indices.getMapping({
+          index: indexName,
+        });
+        res.status(200).json(result.body);
+        
+    } catch (err){
+        res.status(500).send("Error: " +err.message)
+    }
+});
+
+app.get('/search',async (req,res)=> {
+  try {
+      let client = initClient(process.env.elasticURL,process.env.elasticUserName,process.env.elasticPassword,)
+      let indexName = req.body.indexName;  
+      let bodyQuery = req.body.query;  
+      
+      var query = {
+        query: bodyQuery,
+      };
+      var result = await client.search({
+        index: indexName,
+        body: query,
+      });
+      res.status(200).json(result.body.hits);
+      
+  } catch (err){
+      res.status(500).send("Error: " +err.message)
+  }
+});
+
+app.post('/createIndex',async (req,res)=> {
+  try {
+      let client = initClient(process.env.elasticURL,process.env.elasticUserName,process.env.elasticPassword,)
+      let indexName = req.body.indexName;  
+      var settings = {
+        settings: {
+          index: {
+            number_of_shards: 1,
+            number_of_replicas: 1,
+          },
+        },
+      };
+
+    var result = await client.indices.create({
+      index: indexName,
+      body: settings,
+    });
+      res.status(200).json(result);
+      
+  } catch (err){
+      res.status(500).send("Error: " +err.message)
+  }
+});
+app.get('/healthCheck', async (req,res)=>{
     try {
         
         let client = initClient(process.env.elasticURL,process.env.elasticUserName,process.env.elasticPassword,)
-        var query = {
-            query: {
-              match: {
-                ip: {
-                  query: "110.248.232.101",
-                },
-              },
-            },
-          };
-          
-          var result = await client.search({
-            index: 'kibana_sample_data_logs',
-            body: query,
-          });
-          
-
-        
-        // console.log(`test endpoint called and returned ${result.body.hits.length} results` )
-
-        res.json(result.body.hits.hits)
-
+        var result = await client.cluster.health(); 
+        res.json(result.body)
     } catch (err){
         res.status(500).send("Error: " +err.message)
     }

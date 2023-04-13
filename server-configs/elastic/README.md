@@ -265,9 +265,121 @@ curl --insecure -XPOST -u bamzy-info-elastic -H "Content-type:application/x-ndjs
 
 ## **Mapping**
 * Defines the structure of document fields and their data type
-* 
+* elasticsearch data types: object, integer, long, boolean, text, double, short, date, float, IP, coordinates
+* a mapping dictates how fields will be stored
+
+```shell
+# this explicitly defines a map on an index called news
+PUT /news 
+{
+  "mappings": {
+    "properties": {
+      "post_id": {"type":"integer"},
+      "content": {"type":"text"},
+      "rating": {"type":"float"},
+      "author" : {
+        "properties":{
+          "first_name": {"type":"text"},
+          "last_name": {"type":"text"},
+          "email": {"type":"keyword"}
+        }
+      }
+    }
+  }
+}
+# now you can insert your first document with a query like this:
+PUT /news/_doc/1
+{
+  "post_id":7,
+  "content":"this is some news",
+  "rating": 4.555550000000342342123123,
+  "author": {
+    "first_name": "bamdad",
+    "last_name": "kordi",
+    "email": "a@b.c"
+    }
+  }
+}
+#but if your input document field does not match and is not coercible like the one below, then you'll get an error
+PUT /news/_doc/1
+{
+  "post_id":7,
+  "content":"this is some news",
+  "rating": 4.555550000000342342123123,
+  "author": {
+    "first_name": "bamdad",
+    "last_name": "kordi",
+    "email": {"name": "a@b.c"}
+    }
+  }
+}
 
 
+#you can retrieve thw whole mapping for your index by running this
+GET /news/_mapping
+
+#or you can be more granular and get mapping for specific fields
+GET /news/_mapping/field/author.email
+#or
+GET /news/_mapping/field/content
+
+
+#the mapping created earlier can be simplified using dot notation as well
+PUT /news2 
+{
+  "mappings": {
+    "properties": {
+      "post_id": {"type":"integer"},
+      "content": {"type":"text"},
+      "rating": {"type":"float"},
+      "author.first_name": {"type":"text"},
+      "author.last_name": {"type":"text"},
+      "author.email": {"type":"keyword"}
+    }
+  }
+}
+
+#you can later add mapping for indexes that already have data
+PUT /news/_mapping 
+{
+  "properties": {
+    "created_at": {"type":"date"}
+  }
+}
+
+#BUT you can NOT update/delete existing mappings because the data might be already indexed based on the mapping. However  you can always do re-index like this
+POST /_reindex
+{
+  "source" : {
+    "index": "news"
+  },
+  "dest" : {
+    "index": "news2"
+  },
+  "script" : """
+    if(ctx._source.post_id != null ){
+      ctx._source.post_id = ctx._source.post_id.toString();
+    }
+  """
+}
+
+#you can also define index templates meaning its a mapping template for all the future indexes that are not created yet but will apply to them if their name matches a pattern for example:
+
+PUT /_template/news-temp
+{
+  "index_patterns": ['news-daily-*'],
+  "settings": {
+    "number_of_shards":2,
+    "index.mapping.coerce":false
+  }
+  "mappings": {
+    "properties" : {
+      "timestamp": {"type":"date"},
+      "name" : {"type": "text"}
+    }
+  }
+}
+```
 
 ## **Using analyzer API**
 ```shell
