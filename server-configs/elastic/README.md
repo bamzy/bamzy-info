@@ -402,3 +402,129 @@ POST /_analyze
 ```
 
 
+## **Stemming**
+* attempting to find the root of a word for example turning Drinking to Drink
+  
+## **Stop Words**
+* useless words such as: at, in, the, or, for that are usually skipped
+
+```shell
+#Defining the custom analyzer for persian language to be used in my Iran News Monitor project
+
+PUT /iran_news_monitor
+{
+  "settings": {
+    "analysis": {
+      "char_filter": {
+        "zero_width_spaces": {
+            "type":       "mapping",
+            "mappings": [ "\\u200C=>\\u0020"] 
+        }
+      },
+      "filter": {
+        "persian_stop": {
+          "type":       "stop",
+          "stopwords":  "_persian_" 
+        }
+      },
+      "analyzer": {
+        "bamzy_persian_analyzer": {
+          "tokenizer":     "standard",
+          "char_filter": [ "zero_width_spaces","html_strip" ],
+          "filter": [
+            "lowercase",
+            "decimal_digit",
+            "arabic_normalization",
+            "persian_normalization",
+            "persian_stop"
+          ]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "post_id": {"type":"keyword"},
+      "content": {"type":"text","analyzer": "bamzy_persian_analyzer"},
+      "source_name": {"type":"keyword"},
+      "fetch_date": {"type":"date"},
+      "initiator" : {
+        "properties":{
+          "email": {"type":"keyword"}
+        }
+      }
+    }
+  }
+}
+
+
+# you can run this to test it
+POST /iran_news_monitor/_analyze 
+{
+  "analyzer": "bamzy_persian_analyzer",
+  "text": " که تجمعات اعتراض کارگران به افزایش ۲۷ درصدی دستمزد آنها در سال جدید در گوشه و کنار کشور ادامه دارد، نامه درخواست لغو این مصوبه با نزدیک به ۲۰ هزار امضا به دفتر ریاست جمهوری ارسال شده است."
+}
+
+#this is how you close  and open an index for changes such as adding/updating analyzers, otherwise you will get an error
+PUT /iran_news_monitor/_close
+PUT /iran_news_monitor/_open
+```
+
+# And finally the Search 
+
+```shell
+
+#the simplest search of all time on an index called: product
+GET /products/_search 
+{
+  "query" : {
+    "match_all":{}
+  }
+}
+
+#term level query: this is similar to where clause in the sense that you are looking for exact values and makes sense only for data types such as keyword, integer, long, float. Don't use it on text fields. Eg: this looks for lowercase nike brand and there is no partial match
+GET /products/_search
+{
+  "query": {
+    "term": {
+      "brand.keyword" = "nike"
+    }
+  }
+}
+
+# search for exact but multi-terms
+GET /products/_search
+{
+  "query": {
+    "term": {
+      "brand.keyword" = ["nike","adidas"]
+    }
+  }
+}
+
+#search by doc ID
+GET /products/_search 
+{
+  "query": {
+    "ids": {
+      "values" : [100,200]
+    }
+  }
+}
+
+#search within ranges
+GET /products/_search 
+{
+  "query": {
+    "range" : {
+      "in_stock" : {
+        "gte": 1,
+        "lte" 5
+      },
+      "rate" : {
+        "gt" : 4.5
+      }
+    }
+  }
+}
+```
