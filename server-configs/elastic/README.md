@@ -470,7 +470,7 @@ PUT /iran_news_monitor/_close
 PUT /iran_news_monitor/_open
 ```
 
-# And finally the Search 
+# **term Search**
 
 ```shell
 
@@ -527,4 +527,127 @@ GET /products/_search
     }
   }
 }
+
+
+#there is term search query only based on prefix:
+GET /products/_search
+{
+  "query": {
+    "prefix": {
+      "name.keyword" : {
+        "value": "Past"
+      }
+    }
+  }
+}
+
+#using wildcards is still an example of term query. These are the two wildcards available 
+#   (*) matches zero to multiple characters
+#   (?) matches exactly one character
+# Note: do NOT put wildcards at the begninning of 
+GET /products/_search
+{
+  "query": {
+    "wildcard": {
+      "name.keyword" : {
+        "value": "P?ast*"
+      }
+    }
+  }
+}
+
+# you also have regex!!
+GET /products/_search
+{
+  "query" : {
+    "regexp" : {
+      "tags.keyword" : {
+        "value": "Bee(r|f)+"
+      }      
+    }
+  }
+}
+
+#you can also search by existence of a field
+GET /products/_search {
+  "query" : {
+    "exists": {
+      "field": "tags"
+    }
+  }
+}
 ```
+
+
+
+<img src="./snapshots/14.png" width="500" height="auto" />
+<img src="./snapshots/15.png" width="500" height="auto" />
+<img src="./snapshots/16.png" width="500" height="auto" />
+
+
+# **Finally the Full Text Search**
+```shell
+# a typical match query that looks for each words and is not case sensitive 
+GET /products/_search
+{
+  "query": {
+    "match" : {
+      "name": "pasta chicken"
+    }
+  },
+  "fields": ["name"],
+  "_source": "false",
+}
+```
+<img src="./snapshots/17.png" width="700" height="auto" />
+
+```shell
+
+#you can make elastic to look for both terms
+GET /products/_search
+{
+  "query": 
+  {
+    "match" : 
+    {
+      "name": 
+      {
+        "query" : "pasta chicken",
+        "operator" "and"
+      }
+    }
+  },
+  "fields": ["name"],
+  "_source": "false"
+}
+
+# how to search on multiple field
+GET /products/_search 
+{
+  "query" : {
+    "multi_match" : {
+      "query": "vegetable",
+      "fields": ["name","description"]
+    }
+  }
+}
+```
+<img src="./snapshots/18.png" width="700" height="auto" />
+
+
+```shell
+#if you want the order of words to matter you should use phrase match. Also adjacency matters with matching phrases and extra words in between the words of your phrase would cause mismatch
+GET /products/_search
+{
+  "query" : {
+    "match_phrase" : {
+      "description" : "complete guide to life"
+    }
+  }
+}
+```
+<img src="./snapshots/19.png" width="700" height="auto" />
+<img src="./snapshots/20.png" width="700" height="auto" />
+
+
+
