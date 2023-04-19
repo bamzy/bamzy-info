@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>info.bamzy</groupId>
 	<artifactId>news.query.api</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<name>news.query.api</name>
 	<description>This api reads news info</description>
 	<properties>
@@ -44,6 +44,22 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.axonframework</groupId>
+			<artifactId>axon-spring-boot-starter</artifactId>
+			<version>4.7.3</version>
+		</dependency>
+		<dependency>
+			<groupId>info.bamzy</groupId>
+			<artifactId>news.core</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>info.bamzy</groupId>
+			<artifactId>news.core</artifactId>
+			<version>1.0</version>
+			<scope>compile</scope>
 		</dependency>
 	</dependencies>
 

@@ -41,6 +41,16 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.axonframework</groupId>
+			<artifactId>axon-spring-boot-starter</artifactId>
+			<version>4.7.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.axonframework.extensions.mongo</groupId>
+			<artifactId>axon-mongo</artifactId>
+			<version>4.7.0</version>
+		</dependency>
 	</dependencies>
 
 
