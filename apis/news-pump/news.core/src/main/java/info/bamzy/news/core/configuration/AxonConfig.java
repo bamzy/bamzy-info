@@ -2,12 +2,14 @@ package info.bamzy.news.core.configuration;
 
 
 import com.mongodb.ServerAddress;
+
+
 import com.mongodb.client.MongoClient;
-import org.axonframework.metrics.*;
 import org.axonframework.eventhandling.tokenstore.TokenStore;
 import org.axonframework.eventsourcing.eventstore.EmbeddedEventStore;
 import org.axonframework.eventsourcing.eventstore.EventStorageEngine;
 import org.axonframework.eventsourcing.eventstore.EventStore;
+
 import org.axonframework.extensions.mongo.DefaultMongoTemplate;
 import org.axonframework.extensions.mongo.MongoTemplate;
 import org.axonframework.extensions.mongo.eventsourcing.eventstore.MongoEventStorageEngine;
@@ -34,46 +36,61 @@ public class AxonConfig {
     private String mongoDatabaseName;
 
     @Bean
-    public MongoClient mongoClient(){
+    public com.mongodb.client.MongoClient mongoBuild() {
         var mongoFactory = new MongoFactory();
-        var mongoSettingFactory = new MongoSettingsFactory();
-        mongoSettingFactory.setMongoAddresses(Collections.singletonList(new ServerAddress(mongoHostURL,mongoPortNumber)));
-        mongoFactory.setMongoClientSettings(mongoSettingFactory.createMongoClientSettings());
+        var mongoSettings = new MongoSettingsFactory();
+        mongoSettings
+                .setMongoAddresses(
+                        Collections.singletonList(new ServerAddress(mongoHostURL, mongoPortNumber))
+                );
+        mongoFactory.setMongoClientSettings(mongoSettings.createMongoClientSettings());
+
+
         return mongoFactory.createMongo();
     }
+//
     @Bean
     public MongoTemplate axonMongoTemplate() {
         return DefaultMongoTemplate.builder()
-                .mongoDatabase(mongoClient(),mongoDatabaseName)
+                .mongoDatabase(mongoBuild(), mongoDatabaseName)
                 .build();
     }
 
     @Bean
-    public TokenStore getTokenStore(Serializer serializer){
-        return MongoTokenStore.builder().mongoTemplate(axonMongoTemplate()).serializer(serializer).build();
-    }
-
-    @Bean
-    public EventStorageEngine storageEngine(MongoClient mongoClient){
-        return MongoEventStorageEngine.builder().mongoTemplate(DefaultMongoTemplate.builder().mongoDatabase(mongoClient).build()).build();
-    }
-
-    @Bean
-    public EmbeddedEventStore eventStore(EventStorageEngine storageEngine, AxonCon config){
-        config.
-        return EmbeddedEventStore.builder().storageEngine(storageEngine).messageMonitor(config.messageMonitor(EventStore.class,"eventStore"))
+    public TokenStore tokenStore(Serializer serializer) {
+        return MongoTokenStore.builder()
+                .mongoTemplate(axonMongoTemplate())
+                .serializer(serializer)
                 .build();
     }
-
+//
     @Bean
-    public EventStore eventStore(EventStorageEngine storageEngine,
-                                 GlobalMetricRegistry metricRegistry) {
+    public EventStorageEngine storageEngine(MongoClient client) {
+        return MongoEventStorageEngine.builder()
+                .mongoTemplate(DefaultMongoTemplate.builder()
+                        .mongoDatabase(client)
+                        .build())
+                .build();
+    }
+//
+    @Bean
+    public EmbeddedEventStore eventStore(EventStorageEngine storageEngine, Axon configuration) {
+        var configurer = new AxonAutoConfiguration()
         return EmbeddedEventStore.builder()
                 .storageEngine(storageEngine)
-                .messageMonitor(metricRegistry.registerEventBus("eventStore"))
-                .spanFactory(spanFactory)
-                // ...
+                .messageMonitor(configuration.messageMonitor(EventStore.class, "eventStore"))
                 .build();
     }
+
+//    @Bean
+//    public EventStore eventStore(EventStorageEngine storageEngine,
+//                                 GlobalMetricRegistry metricRegistry) {
+//        return EmbeddedEventStore.builder()
+//                .storageEngine(storageEngine)
+//                .messageMonitor(metricRegistry.registerEventBus("eventStore"))
+//                .spanFactory(spanFactory)
+//                // ...
+//                .build();
+//    }
 
 }
