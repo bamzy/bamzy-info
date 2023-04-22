@@ -16,8 +16,10 @@ const initClient = (url,user,pass)=>{
     try{
         let auth = `${user}:${pass}`;
         return new Client({            
-            node: 'http://' + auth + "@" + usedURL + ":80" ,           
+            node: 'https://' + auth + "@" + usedURL ,           
         });
+
+        
     } catch (err){
         console.log('err'+ err.message);
     }
@@ -27,11 +29,13 @@ app.post('/insertDoc',async (req,res)=> {
         let client = initClient(process.env.elasticURL,process.env.elasticUserName,process.env.elasticPassword,)
         let document = req.body.document;
         let indexName = req.body.indexName;   
+        console.log(document)
         var result = await client.index({
           index: indexName,
           body: document,
           refresh: true,
         });
+        console.log(result)
         res.status(200).json(result.body);
         
     } catch (err){
@@ -46,6 +50,7 @@ app.get('/describe',async (req,res)=> {
         var result = await client.indices.getMapping({
           index: indexName,
         });
+        console.log(result)
         res.status(200).json(result.body);
         
     } catch (err){
