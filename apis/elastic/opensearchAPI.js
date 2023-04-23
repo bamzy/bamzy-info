@@ -26,6 +26,7 @@ const initClient = (url,user,pass)=>{
 }
 app.post('/insertDoc',async (req,res)=> {
     try {
+        console.log(req.body);
         let client = initClient(process.env.elasticURL,process.env.elasticUserName,process.env.elasticPassword,)
         let document = req.body.document;
         let indexName = req.body.indexName;   
@@ -35,7 +36,7 @@ app.post('/insertDoc',async (req,res)=> {
           body: document,
           refresh: true,
         });
-        console.log(result)
+        
         res.status(200).json(result.body);
         
     } catch (err){
@@ -58,15 +59,12 @@ app.get('/describe',async (req,res)=> {
     }
 });
 
-app.get('/list',async (req,res)=> {
+app.get('/listIndexes',async (req,res)=> {
     try {
         let client = initClient(process.env.elasticURL,process.env.elasticUserName,process.env.elasticPassword,)
         let indexName = req.body.indexName;  
-        var result = await client.indices.getMapping({
-          index: indexName,
-        });
+        var result = await client.indices.getMapping();
         res.status(200).json(result.body);
-        
     } catch (err){
         res.status(500).send("Error: " +err.message)
     }
@@ -77,6 +75,7 @@ app.get('/search',async (req,res)=> {
       let client = initClient(process.env.elasticURL,process.env.elasticUserName,process.env.elasticPassword,)
       let indexName = req.body.indexName;  
       let bodyQuery = req.body.query;  
+      let size = req.body.size;  
       
       var query = {
         query: bodyQuery,
@@ -84,6 +83,7 @@ app.get('/search',async (req,res)=> {
       var result = await client.search({
         index: indexName,
         body: query,
+        size: size
       });
       res.status(200).json(result.body.hits);
       
