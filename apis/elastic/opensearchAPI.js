@@ -5,11 +5,16 @@ const app = express();
 require('dotenv').config();
 
 
+
 //Middlewares
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cors());
 
+
+function mysleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 const { Client } = require("@opensearch-project/opensearch");
 const initClient = (url,user,pass)=>{
   let usedURL =  url.substring(8);
@@ -71,6 +76,7 @@ app.get('/listIndexes',async (req,res)=> {
 });
 
 app.post('/search',async (req,res)=> {
+  await mysleep(5000)
   try {
       let client = initClient(process.env.elasticURL,process.env.elasticUserName,process.env.elasticPassword,)
       let indexName = req.body.indexName;  
