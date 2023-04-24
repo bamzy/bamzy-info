@@ -7,6 +7,7 @@ export default function Elastic(props){
 
     const [cards,setCards] = useState(null);
     const [pageSize,setPageSize] = useState(10);
+    const [isLoading,setIsLoading] = useState(true);
 
     const fetchData = async ()=>{
 
@@ -25,6 +26,7 @@ export default function Elastic(props){
             const logCards =response.data.hits.map((item,index)=>{
                     return <LogCard log={item} indexNumber={index+1} key={index} />
             })
+            setIsLoading(false);
             setCards(logCards);            
         })
         .catch((err) => console.log(err));
@@ -34,7 +36,7 @@ export default function Elastic(props){
         
     }
     const handlePageSizeChange = (event) =>{ 
-        
+        setIsLoading(true);
         setPageSize(event.target.value);        
         console.log(pageSize)
         // fetchData();
@@ -60,7 +62,7 @@ export default function Elastic(props){
                 <MenuItem value={30}>30</MenuItem>
             </Select>
             <div>
-                {cards!=null? cards:<span><CirclesWithBar
+                {isLoading? <span><CirclesWithBar
                                         height="50%"
                                         width="80%"
                                         radius="90"
@@ -68,7 +70,7 @@ export default function Elastic(props){
                                         ariaLabel="loading"
                                         wrapperStyle
                                         wrapperClass
-                                        /></span>}  
+                                        /></span>: cards}  
             </div>
         </>
     );

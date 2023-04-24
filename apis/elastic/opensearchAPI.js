@@ -76,7 +76,7 @@ app.get('/listIndexes',async (req,res)=> {
 });
 
 app.post('/search',async (req,res)=> {
-  await mysleep(5000)
+  // await mysleep(5000)
   try {
       let client = initClient(process.env.elasticURL,process.env.elasticUserName,process.env.elasticPassword,)
       let indexName = req.body.indexName;  
