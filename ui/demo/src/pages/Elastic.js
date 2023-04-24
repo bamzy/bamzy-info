@@ -2,7 +2,11 @@ import { useEffect, useState } from "react"
 import LogCard from "../components/LogCard"
 import axios from "axios";
 import {MenuItem,Select,InputLabel} from "@mui/material"
-import { Audio,LineWave,Oval,CirclesWithBar } from 'react-loader-spinner'
+import BamzySpinner from "../components/BamzySpinner"
+import './Elastic.css';
+import IconButton from '@mui/material/IconButton';
+import ArrowUpward from '@mui/icons-material/ArrowUpward';
+
 export default function Elastic(props){
 
     const [cards,setCards] = useState(null);
@@ -42,6 +46,8 @@ export default function Elastic(props){
         // fetchData();
         
     }
+    const goup = ()=>{
+    }
     useEffect(()=>{
         fetchData();
     },[pageSize]);
@@ -57,21 +63,19 @@ export default function Elastic(props){
             >
                 <MenuItem value={5}>5</MenuItem>
                 <MenuItem value={10}>10</MenuItem>
-                <MenuItem value={15}>15</MenuItem>
-                <MenuItem value={20}>20</MenuItem>
-                <MenuItem value={30}>30</MenuItem>
+                <MenuItem value={25}>25</MenuItem>
+                <MenuItem value={50}>50</MenuItem>
+                <MenuItem value={100}>100</MenuItem>                
             </Select>
-            <div>
-                {isLoading? <span><CirclesWithBar
-                                        height="50%"
-                                        width="80%"
-                                        radius="90"
-                                        color="green"
-                                        ariaLabel="loading"
-                                        wrapperStyle
-                                        wrapperClass
-                                        /></span>: cards}  
+            <div id="elastic-log-cards-container">
+                {isLoading? <span><BamzySpinner /></span>: cards}  
             </div>
+            <IconButton id="go-up-button"  aria-label="fingerprint" color="secondary">
+                <a href="#page-size-label">
+                    <ArrowUpward />
+
+                </a>
+            </IconButton>
         </>
     );
 

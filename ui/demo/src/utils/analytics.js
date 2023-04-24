@@ -4,7 +4,7 @@ export default function sendToAnalytics(metric) {
     elasticBody.indexName = 'react_logs' 
     const body = JSON.stringify(elasticBody);
     const url = 'http://localhost:8083/insertDoc';
-    var blob = new Blob([body], { type: "application/json" });
+    // var blob = new Blob([body], { type: "application/json" });
     // navigator.sendBeacon(url, blob);
     fetch(url, { body, method: 'POST', keepalive: true,headers:{'Content-Type':'application/json'} });
   }

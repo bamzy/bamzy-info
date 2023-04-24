@@ -1,7 +1,7 @@
 import  Typography  from "@mui/material/Typography";
-import { styled } from '@mui/material/styles';
+
 import {Error} from '@mui/icons-material';
-import {Link,Grid,Paper} from "@mui/material";
+import {Grid} from "@mui/material";
 
 // const Item = styled(Paper)(({ theme }) => ({
 //   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -35,7 +35,7 @@ const ErrorPage = (props) => {
                 <Typography variant="h4" mt={0} color="text.secondary" align="center" >
                      please try again later
                 </Typography>
-
+                
                 {/* </Item> */}
             </Grid>
             
