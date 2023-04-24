@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import sendToAnalytics from './utils/analytics';
 import reportWebVitals from './reportWebVitals';
-import Login from './pages/Login';
+import Elastic from './pages/Elastic';
 
 
 
@@ -12,7 +12,9 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Login from './pages/Login';
 import ErrorPage from './pages/ErrorPage';
+import Elastic from './pages/Elastic';
 
 
 const router = createBrowserRouter([
@@ -23,6 +25,9 @@ const router = createBrowserRouter([
   },{
     path: "/login",
     element: <Login />,
+  },{
+    path: "/elastic",
+    element: <Elastic />,
   }
 ]); 
 

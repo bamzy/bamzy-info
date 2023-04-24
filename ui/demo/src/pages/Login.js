@@ -12,19 +12,9 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import bgImage from '../assets/signin-cover.jpeg';
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+import bgImage from '../assets/login-cover.jpeg';
+import Copyright from '../components/Copyright'
+
 
 const theme = createTheme();
 
@@ -42,11 +32,8 @@ export default function SignInSide() {
     <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
-        <Grid
-          item
-          xs={false}
-          sm={4}
-          md={7}
+        
+        <Grid item xs={false} sm={4} md={7}
           sx={{
             backgroundImage: 'url(' + bgImage + ')',
             backgroundRepeat: 'no-repeat',
@@ -66,10 +53,13 @@ export default function SignInSide() {
               alignItems: 'center',
             }}
           >
+            <Typography component="h1"  variant="h5">
+              Welcome to Bamzy Monitoring Center
+            </Typography>
             <Avatar sx={{ m: 1, bgcolor: 'red' }}>
               <LockOutlinedIcon />
             </Avatar>
-            <Typography component="h1" variant="h5">
+            <Typography component="h2" variant="h5">
               Sign in
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>

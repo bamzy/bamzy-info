@@ -2,12 +2,15 @@ import React from 'react';
 import './Sidebar.css';
 import { bubble as Menu } from 'react-burger-menu';
 import Button from '@mui/material/Button';
-const props= () => {
+export default function Sidebar(props)  {
   return (
     
       <Menu>
         <a className="menu-item" href="/">
           Home
+        </a>
+        <a className="menu-item" href="/elastic">
+          Elastic
         </a>
         <a className="menu-item" href="/login">
           Login
@@ -22,17 +25,3 @@ const props= () => {
     
   );
 };
-
-
-function Home() {
-  return <h2>Home</h2>;
-}
-function About() {  
-  return <h2>About</h2>;
-}
-
-function Login() {
-  return <h2>Login</h2>;
-
-}
-export default props;
