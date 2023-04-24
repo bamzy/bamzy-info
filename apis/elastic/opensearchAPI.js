@@ -70,7 +70,7 @@ app.get('/listIndexes',async (req,res)=> {
     }
 });
 
-app.get('/search',async (req,res)=> {
+app.post('/search',async (req,res)=> {
   try {
       let client = initClient(process.env.elasticURL,process.env.elasticUserName,process.env.elasticPassword,)
       let indexName = req.body.indexName;  
