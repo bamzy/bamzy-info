@@ -5,7 +5,9 @@ export default function GuestLayout() {
         <>
             <Sidebar />
             <div id="body-content">
-                this is guest
+                <h3>
+                    Guest Layout
+                </h3>
                 <Outlet />
             </div>
         </>

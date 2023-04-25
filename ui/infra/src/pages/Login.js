@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React,{useState}  from 'react';
+import { useNavigate } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -14,22 +15,17 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import bgImage from '../assets/login-cover.jpeg';
 import Copyright from '../components/Copyright'
-import { useAuth } from '../hooks/useAuth';
-
+import {logMeIn} from '../utils/authUtil'
 const theme = createTheme();
 
-export default function SignInSide() {
-  const { login } = useAuth();
-  // const [user, setUser] = useLocalStorage("user", null);
-  const handleSubmit = (event) => {
+export default function Login() {
+  
+  const navigate = useNavigate();
+  const handleLogin = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const newLocal = {
-      email: data.get('email'),
-      password: data.get('password'),
-    };
-    login(newLocal)
-    console.log(newLocal);
+    logMeIn(data)    
+    navigate('/elastic');  
   };
 
   return (
@@ -66,7 +62,7 @@ export default function SignInSide() {
             <Typography component="h2" variant="h5">
               Sign in
             </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <Box component="form" noValidate onSubmit={handleLogin} sx={{ mt: 1 }}>
               <TextField
                 margin="normal"
                 required

@@ -4,7 +4,8 @@ export default function GuestLayout() {
     return (
         <>
             <Sidebar />
-            <div id="body-content"> this is protected
+            <div id="body-content"> 
+                <h3>Protected Layout</h3>
                 <Outlet />
             </div>
         </>
