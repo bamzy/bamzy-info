@@ -75,7 +75,7 @@ function App() {
 	return (
 		<React.Fragment>
       <div>from app</div>
-	<Outlet />				
+	    <Outlet />				
 		</React.Fragment>
     )
 }

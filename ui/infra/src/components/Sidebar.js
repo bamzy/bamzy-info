@@ -36,7 +36,7 @@ export default function Sidebar(props)  {
   return (       
     <>
     <div id="sidebar">
-      <h5>{isLoggedIn? 'Admin':'Guest Sidebar'}</h5>
+      <h5>{isLoggedIn? 'Admin':'Guest'}</h5>
       <div>
         <form id="search-form" role="search">
           <input

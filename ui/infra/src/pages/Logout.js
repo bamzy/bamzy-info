@@ -7,7 +7,7 @@ import {Grid} from "@mui/material";
 const Logout = (props) => {    
     return (
         <Grid container spacing={1} mt={10}>
-            <Grid item xs={12} justifyContent={"center"} alignItems={"center"}>
+            <Grid item  xs={12} justifyContent={"center"} alignItems={"center"}>
                 <Typography  align="center" >
                     <Info   color="warning" sx={{fontSize:100}} />
                 </Typography>

@@ -30,20 +30,16 @@ export default function Login() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: '100vh' }}>
-        <CssBaseline />
-        
-        <Grid item xs={false} sm={4} md={7}
-          sx={{
-            backgroundImage: 'url(' + bgImage + ')',
+      <Grid container component="main" sx={{ height: '100vh', backgroundImage: 'url(' + bgImage + ')',
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
             backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+            backgroundPosition: 'center' }}>
+        <CssBaseline />
+        
+        <Grid item xs={3} sm={3} md={3} /> 
+        <Grid item xs={6} sm={6} md={6} component={Paper} elevation={6} square mt={10} mb={50}>
           <Box
             sx={{
               my: 8,
@@ -111,6 +107,7 @@ export default function Login() {
             </Box>
           </Box>
         </Grid>
+        <Grid item xs={3} sm={3} md={3} /> 
       </Grid>
     </ThemeProvider>
   );
