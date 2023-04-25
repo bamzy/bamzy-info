@@ -1,5 +1,10 @@
-import React from 'react';
+import {StrictMode} from 'react';
 import ReactDOM from 'react-dom/client';
+import {
+  createBrowserRouter,
+  RouterProvider, BrowserRouter
+} from "react-router-dom";
+
 import './index.css';
 import App from './App';
 import sendToAnalytics from './utils/analytics';
@@ -7,48 +12,50 @@ import reportWebVitals from './reportWebVitals';
 
 
 
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import Login from './pages/Login';
-import ErrorPage from './pages/Error';
-import Elastic from './pages/Elastic';
-import About from './pages/About';
-import OutlinedCard from './components/LogCard';
+import { ProtectedRoute } from './utils/ProtectedRoute';
+import { AuthProvider } from './hooks/useAuth';
 
+// const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <App />,
+//     errorElement: <ErrorPage />,
+//     children: [
+//       {
+//         path: "/elastic",
+//         element: <ProtectedRoute><Elastic /></ProtectedRoute>,
+//       },{
+//         path: "/about",
+//         element: <About />,
+//       }, 
+//       {
+//         path: "elasticlogs/:logid",
+//         element: <OutlinedCard />,
+//       }
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        path: "/elastic",
-        element: <Elastic />,
-      },{
-        path: "/about",
-        element: <About />,
-      }, 
-      {
-        path: "elasticlogs/:logid",
-        element: <OutlinedCard />,
-      }
-
-    ]
-  },{
-    path: "/login",
-    element: <Login />,
-  }
-]); 
+//     ]
+//   },{
+//     path: "/login",
+//     element: <Login />,
+//   }
+// ]); 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+// root.render(
 
-  <React.StrictMode>
-     <RouterProvider router={router} />
-  </React.StrictMode>
+//   <React.StrictMode>
+//      <RouterProvider router={router} />
+//   </React.StrictMode>
+// );
+root.render(
+  <StrictMode>
+    <BrowserRouter>
+      <AuthProvider>        
+          <App />        
+      </AuthProvider>
+    </BrowserRouter>
+  </StrictMode>
 );
+
 
 reportWebVitals(sendToAnalytics);

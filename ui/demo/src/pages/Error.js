@@ -12,6 +12,7 @@ import {Grid} from "@mui/material";
 // }));
 
 const ErrorPage = (props) => {
+    
     return (
         <Grid container spacing={1} mt={10}>
             <Grid xs={12} justifyContent={"center"} alignItems={"center"}>

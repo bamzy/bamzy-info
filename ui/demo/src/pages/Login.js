@@ -14,18 +14,22 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import bgImage from '../assets/login-cover.jpeg';
 import Copyright from '../components/Copyright'
-
+import { useAuth } from '../hooks/useAuth';
 
 const theme = createTheme();
 
 export default function SignInSide() {
+  const { login } = useAuth();
+  // const [user, setUser] = useLocalStorage("user", null);
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+    const newLocal = {
       email: data.get('email'),
       password: data.get('password'),
-    });
+    };
+    login(newLocal)
+    console.log(newLocal);
   };
 
   return (

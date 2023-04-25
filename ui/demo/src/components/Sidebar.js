@@ -2,10 +2,12 @@ import React from 'react';
 import './Sidebar.css';
 import {Button} from '@mui/material';
 import {Link} from 'react-router-dom';
+import { useAuth } from '../hooks/useAuth';
 export default function Sidebar(props)  {
-  return (
-    
-      
+
+  const {logout} = useAuth();
+ 
+  return (       
     <>
     <div id="sidebar">
       
@@ -35,17 +37,17 @@ export default function Sidebar(props)  {
       <nav>
         <ul>
           <li>
-          <Link to={`elastic`}>Elastic</Link>
+          <Link to={`/dashboard/elastic`}>Elastic</Link>
           </li>
           <li>
             <Link to={`about`}>About</Link>
           </li>
           <li>
-            <Link to={`login`}>Login</Link>
+            <Link to={`/login`}>Login</Link>
           </li>
           <li>
             <a className="menu-item" href="/desserts">
-              <Button variant='contained' color='success'>New</Button>
+              <Button variant='contained' color='error' onClick={logout}>Logout</Button>
             </a>
           </li>
         </ul>
