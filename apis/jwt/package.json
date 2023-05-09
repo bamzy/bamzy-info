@@ -1,6 +1,6 @@
 {
-  "name": "jwt-server",
-  "version": "1.0.0",
+  "name": "jwt-proper",
+  "version": "0.0.1",
   "description": "",
   "main": "authAPI.js",
   "scripts": {

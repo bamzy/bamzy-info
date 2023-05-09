@@ -5,33 +5,43 @@ const app = express();
 require('dotenv').config();
 
 
+
 //Middlewares
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cors());
 
+
+function mysleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 const { Client } = require("@opensearch-project/opensearch");
 const initClient = (url,user,pass)=>{
   let usedURL =  url.substring(8);
     try{
         let auth = `${user}:${pass}`;
         return new Client({            
-            node: 'http://' + auth + "@" + usedURL + ":80" ,           
+            node: 'https://' + auth + "@" + usedURL ,           
         });
+
+        
     } catch (err){
         console.log('err'+ err.message);
     }
 }
 app.post('/insertDoc',async (req,res)=> {
     try {
+        console.log(req.body);
         let client = initClient(process.env.elasticURL,process.env.elasticUserName,process.env.elasticPassword,)
         let document = req.body.document;
         let indexName = req.body.indexName;   
+        console.log(document)
         var result = await client.index({
           index: indexName,
           body: document,
           refresh: true,
         });
+        
         res.status(200).json(result.body);
         
     } catch (err){
@@ -46,6 +56,7 @@ app.get('/describe',async (req,res)=> {
         var result = await client.indices.getMapping({
           index: indexName,
         });
+        console.log(result)
         res.status(200).json(result.body);
         
     } catch (err){
@@ -53,25 +64,24 @@ app.get('/describe',async (req,res)=> {
     }
 });
 
-app.get('/list',async (req,res)=> {
+app.get('/listIndexes',async (req,res)=> {
     try {
         let client = initClient(process.env.elasticURL,process.env.elasticUserName,process.env.elasticPassword,)
         let indexName = req.body.indexName;  
-        var result = await client.indices.getMapping({
-          index: indexName,
-        });
+        var result = await client.indices.getMapping();
         res.status(200).json(result.body);
-        
     } catch (err){
         res.status(500).send("Error: " +err.message)
     }
 });
 
-app.get('/search',async (req,res)=> {
+app.post('/search',async (req,res)=> {
+  // await mysleep(5000)
   try {
       let client = initClient(process.env.elasticURL,process.env.elasticUserName,process.env.elasticPassword,)
       let indexName = req.body.indexName;  
       let bodyQuery = req.body.query;  
+      let size = req.body.size;  
       
       var query = {
         query: bodyQuery,
@@ -79,6 +89,7 @@ app.get('/search',async (req,res)=> {
       var result = await client.search({
         index: indexName,
         body: query,
+        size: size
       });
       res.status(200).json(result.body.hits);
       
