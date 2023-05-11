@@ -16,22 +16,27 @@ class ColumnChart extends Component {
     return arr.slice(0,size);
   }
   loadData(){
-    console.log("url:"+this.props.url)
-    let size = this.props.size? parseInt(this.props.size): 10;
-    axios.get(this.props.url).then((resp)=>{
-      // debugger;
-      let newdata = resp.data.freqs.map((item)=>{
-        return item.value;
-      });
-      let xAxisLabels = resp.data.freqs.map((item)=>{
-        return item.x;
-      });
-      let finalData = [{name: this.props.name,data: this.fitSize(newdata,size)}];
-      this.setState({
-        chartData: finalData,
-        chartOptions: this.getOptions(this.fitSize(xAxisLabels,size)),
-      });
-    });
+    try {
+        console.log("url:"+this.props.url)
+        let size = this.props.size? parseInt(this.props.size): 10;
+        axios.get(this.props.url).then((resp)=>{
+          // debugger;
+          let newdata = resp.data.freqs.map((item)=>{
+            return item.value;
+          });
+          let xAxisLabels = resp.data.freqs.map((item)=>{
+            return item.x;
+          });
+          let finalData = [{name: this.props.name,data: this.fitSize(newdata,size)}];
+          this.setState({
+            chartData: finalData,
+            chartOptions: this.getOptions(this.fitSize(xAxisLabels,size)),
+          });
+        });
+
+    } catch(e){
+      console.log(e.message);
+    }
   }
   componentDidMount() {
     console.log('did mount')

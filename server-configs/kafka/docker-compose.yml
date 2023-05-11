@@ -54,6 +54,7 @@ services:
       KAFKA_LOG_DIRS: '/tmp/kraft-combined-logs'
     volumes:
       - D:\workspace\bamzy-info\server-configs\kafka\scripts\update_run.sh:/tmp/update_run.sh
+      - D:\workspace\kafka0-data:/var/lib/kafka/data
     command: "bash -c 'if [ ! -f /tmp/update_run.sh ]; then echo \"ERROR: Did you forget the update_run.sh file that came with this docker-compose.yml file?\" && exit 1 ; else /tmp/update_run.sh && /etc/confluent/docker/run ; fi'"
 
   kafka1:
@@ -82,6 +83,7 @@ services:
       KAFKA_LOG_DIRS: '/tmp/kraft-combined-logs'
     volumes:
       - D:\workspace\bamzy-info\server-configs\kafka\scripts\update_run.sh:/tmp/update_run.sh
+      - D:\workspace\kafka1-data:/var/lib/kafka/data
     command: "bash -c 'if [ ! -f /tmp/update_run.sh ]; then echo \"ERROR: Did you forget the update_run.sh file that came with this docker-compose.yml file?\" && exit 1 ; else /tmp/update_run.sh && /etc/confluent/docker/run ; fi'"
 
   schemaregistry0:
