@@ -1,5 +1,5 @@
 import {
-    Heading,Button
+    Button
   } from "@chakra-ui/react";
 import VirtualizedList from "./VirtualizedList";
 import { useState } from "react";

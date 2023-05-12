@@ -8,11 +8,9 @@ const fetchDictionary = async () => {
 }
 
 export const useDictionary = () => {
-    console.log('use dictionary called');
   const [dictionary, setDictionary] = useState([]);
   useEffect(() => {
     fetchDictionary().then(setDictionary);
-    console.log('useEffect in dictionary called');
   }, []);
 
   return dictionary;

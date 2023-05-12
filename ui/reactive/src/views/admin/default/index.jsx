@@ -23,10 +23,7 @@ export default function NewsDashboardReport() {
   // Chakra Color Mode
   const brandColor = useColorModeValue("brand.500", "white");
   const boxBg = useColorModeValue("secondaryGray.300", "whiteAlpha.100");
-  const handler =  (event)=>{
-      console.log(event.keyCode);
-
-  }
+  
   return (
     <Box pt={{ base: "130px", md: "80px", xl: "80px" }}>
         <Card my='10px'>

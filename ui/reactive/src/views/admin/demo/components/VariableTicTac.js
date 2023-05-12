@@ -40,7 +40,7 @@ export default function VariableTicTac({size}){
         setWon(false);
         setTurn(0);
     }
-    let blocks = moves.map((move,index) => <Block val={move} index={index} clickHandler={()=>clickHandler(index)} />);
+    let blocks = moves.map((move,index) => <Block val={move} index={index} key={index} clickHandler={()=>clickHandler(index)} />);
     return (
         <div>
             <div>{result} {won && <RefreshButton handler={()=>refresh()}/>}</div>

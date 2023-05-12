@@ -23,6 +23,7 @@ export function ThemeEditor(props) {
 }
 
 function ThemeEditorButton({ onOpen, navbarIcon, ...rest }) {
+  delete rest.isOpen;
   return (
     <Button
         variant='no-hover'

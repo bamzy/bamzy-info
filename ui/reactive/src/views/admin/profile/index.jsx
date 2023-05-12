@@ -5,10 +5,8 @@ import { Box, Grid } from "@chakra-ui/react";
 // Custom components
 import Banner from "views/admin/profile/components/Banner";
 import General from "views/admin/profile/components/General";
-import Notifications from "views/admin/profile/components/Notifications";
 import Projects from "views/admin/profile/components/Projects";
 import CodeAnalysis from "views/admin/profile/components/CodeAnalysis";
-import Upload from "views/admin/profile/components/Upload";
 
 // Assets
 import banner from "assets/img/auth/banner.png";
