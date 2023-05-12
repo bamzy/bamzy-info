@@ -13,9 +13,8 @@ export default function UseRefHookExample() {
 
   return (
     <>
-        <div>
-            <Divider />
-                
+      <div>
+            <Divider />      
             <Heading size="sm" py={3}><b>useRef: </b> Its similar to an static variable that exists only once per the function and not its instances  
             </Heading>  
             <div>
