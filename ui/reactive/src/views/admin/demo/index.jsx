@@ -34,7 +34,7 @@ export default function Demo() {
       </Card>
 
       <Card my="10px" height="100%">         
-        <Heading as='h4' size='lg' w='100%'>Basic hook behavior:</Heading>
+        <Heading as='h4' size='lg' py={3} w='100%'>Basic hook behavior:</Heading>
         <BasicHooks />        
       </Card>
       

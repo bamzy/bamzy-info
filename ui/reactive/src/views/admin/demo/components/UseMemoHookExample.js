@@ -1,6 +1,6 @@
 import {useState,useMemo} from 'react';
 import {
-    Button,Heading,Flex
+    Button,Heading,Flex,Divider
  } from "@chakra-ui/react";
 
 const expensiveCalculation = (num) => {
@@ -23,13 +23,16 @@ export default function UseMemoHookExample(){
   };
 
   return (
+    <>
     <div>
-        <hr />
-      <p><b>useMemo: </b>This is a basic example of why we need useMemo to prevent expensive calculations when we don't have to. In this case adding items does not depend on the expensiveCalculation but each re-render is going to call it, unless we put it inside useMemo(()=>expensiveCalculation,[count]) </p>  
+    <Divider />
+        
+      <Heading size="sm" py={3}><b>useMemo: </b>This is a basic example of why we need useMemo to prevent expensive calculations when we don't have to. In this case adding items does not depend on the expensiveCalculation but each re-render is going to call it, unless we put it inside useMemo(()=expensiveCalculation,[count]) 
+      </Heading>  
       <div>
         <Heading size="md" p={5}>My List </Heading>
         {todos.map((todo, index) => {
-          return <Heading bg="teal" size="sm" p={2} key={index}>{todo}</Heading>;
+          return <Heading bg="teal" size="sm" p={2} m={1} key={index}>{todo}</Heading>;
         })}
         <Button colorScheme='green' onClick={addTodo}>Add Item</Button>
       </div>
@@ -43,7 +46,8 @@ export default function UseMemoHookExample(){
         <Heading size="md" p={5}>Expensive Calc: {calculation} </Heading>
         
       </div>
-      <hr />
+    <Divider />
     </div>
+    </>
   );
 }

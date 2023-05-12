@@ -39,7 +39,7 @@ class ColumnChart extends Component {
     }
   }
   componentDidMount() {
-    console.log('did mount')
+    
     if(this.props.url) this.loadData();
 
   }

@@ -3,11 +3,17 @@ import {
     Button,Heading,Flex
  } from "@chakra-ui/react";
 import UseMemoHookExample from "./UseMemoHookExample";
-export default function(){
+import UseRefHookExample from "./UseRefHookExample";
+export default function BasicHooks(){
 
     return (
-        <Flex>
-                <UseMemoHookExample />
-        </Flex>
+        <>
+            <Flex p={2} pt={3}>
+                    <UseMemoHookExample />
+            </Flex>
+            <Flex p={2} pt={3}>
+                    <UseRefHookExample />
+            </Flex>
+        </>
     );
 }
