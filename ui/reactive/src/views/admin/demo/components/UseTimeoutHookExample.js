@@ -6,7 +6,7 @@ function UseTimeoutHookExample(){
     const [reset,clear] = useTimeout(()=>{setCounter(counter-1);console.log("im callback w "+counter)},5000);
     return (<div>
         <Divider />
-        <Heading size="sm" py={3}><b><Link color="teal.500" href="https://github.com/bamzy/bamzy-info/blob/main/ui/reactive/src/views/admin/demo/hooks/useToggle.js" isExternal>useTimeout:</Link> </b> This one is  very interesting, if you click reset, a 5 sec timer kicks in and decrease your counter by 1, you can clear the counter before it expires using the clear button and increase just increases the counter</Heading>  
+        <Heading size="sm" py={3}><b><Link color="teal.500" href="https://github.com/bamzy/bamzy-info/blob/main/ui/reactive/src/views/admin/demo/hooks/useTimeout.js" isExternal>useTimeout:</Link> </b> This one is  very interesting, if you click reset, a 5 sec timer kicks in and decrease your counter by 1, you can clear the counter before it expires using the clear button and increase just increases the counter</Heading>  
         <Heading size="md">
             counter is: {counter}
         </Heading>
