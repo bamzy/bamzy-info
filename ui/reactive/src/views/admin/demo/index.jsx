@@ -9,6 +9,7 @@ import Card from "components/card/Card";
 import SearchList from "./components/SearchList";
 import TodoList from "./components/TodoList";
 import BasicHooks from "./components/BasicHooks";
+import CustomHooks from "./components/CustomHooks";
 export default function Demo() {
   
   
@@ -34,8 +35,13 @@ export default function Demo() {
       </Card>
 
       <Card my="10px" height="100%">         
-        <Heading as='h4' size='lg' py={3} w='100%'>Basic hook behavior:</Heading>
+        <Heading as='h4' size='lg' py={3} w='100%'>Basic React Hook Examples:</Heading>
         <BasicHooks />        
+      </Card>
+      
+       <Card my="10px" height="100%">         
+        <Heading as='h4' size='lg' py={3} w='100%'>Useful Custom React Hook:</Heading>
+        <CustomHooks />        
       </Card>
       
     </>
