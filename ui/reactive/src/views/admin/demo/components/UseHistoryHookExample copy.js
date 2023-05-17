@@ -6,7 +6,7 @@ function UseHistoryHookExample(){
     const [val,set,getHistory,undo] = useHistory();
     return (<div>
         <Divider />
-        <Heading size="sm" py={3}><b><Link color="teal.500" href="https://github.com/bamzy/bamzy-info/blob/main/ui/reactive/src/views/admin/demo/hooks/useTimeout.js" isExternal>useHistory:</Link> </b> This is like useState except it stores a history of recent changes which is good for undo and a bunch more things</Heading>  
+        <Heading size="sm" py={3}><b><Link color="teal.500" href="https://github.com/bamzy/bamzy-info/blob/main/ui/reactive/src/views/admin/demo/hooks/useHistory.js" isExternal>useHistory:</Link> </b> This is like useState except it stores a history of recent changes which is good for undo and a bunch more things</Heading>  
         <Heading size="lg">
             current val is: {val}
         </Heading>
