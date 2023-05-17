@@ -4,6 +4,7 @@ import {
  } from "@chakra-ui/react";
 import UseToggleHookExample from "./UseToggleHookExample";
 import UseTimeoutHookExample from "./UseTimeoutHookExample";
+import UseHistoryHookExample from "./UseHistoryHookExample copy";
 export default function CustomHooks(){
 
     return (
@@ -13,6 +14,9 @@ export default function CustomHooks(){
             </Flex>
             <Flex p={2} pt={3}>
                     <UseTimeoutHookExample />
+            </Flex>
+            <Flex p={2} pt={3}>
+                    <UseHistoryHookExample />
             </Flex>
             
         </>
