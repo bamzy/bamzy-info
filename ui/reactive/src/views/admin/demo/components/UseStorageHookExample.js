@@ -6,7 +6,7 @@ function UseStorageHookExample(){
     console.log(obj);
     return (<div>
         <Divider />
-        <Heading size="sm" py={3}><b><Link color="teal.500" href="https://github.com/bamzy/bamzy-info/blob/main/ui/reactive/src/views/admin/demo/hooks/useHistory.js" isExternal>useStorage:</Link> </b> its like useState but it persists</Heading>  
+        <Heading size="sm" py={3}><b><Link color="teal.500" href="https://github.com/bamzy/bamzy-info/blob/main/ui/reactive/src/views/admin/demo/hooks/useStorage.js" isExternal>useStorage:</Link> </b> its like useState but it persists</Heading>  
         
         <Heading size="md">
             obj is:  {JSON.stringify(obj)}
