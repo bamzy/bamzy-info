@@ -5,6 +5,7 @@ import {
 import UseToggleHookExample from "./UseToggleHookExample";
 import UseTimeoutHookExample from "./UseTimeoutHookExample";
 import UseHistoryHookExample from "./UseHistoryHookExample copy";
+import UseStorageHookExample from "./UseStorageHookExample";
 export default function CustomHooks(){
 
     return (
@@ -17,6 +18,9 @@ export default function CustomHooks(){
             </Flex>
             <Flex p={2} pt={3}>
                     <UseHistoryHookExample />
+            </Flex>
+            <Flex p={2} pt={3}>
+                    <UseStorageHookExample />
             </Flex>
             
         </>
