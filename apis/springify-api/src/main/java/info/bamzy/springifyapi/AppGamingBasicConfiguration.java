@@ -1,5 +1,10 @@
 package info.bamzy.springifyapi;
 
+import info.bamzy.springifyapi.games.GameRunner;
+import info.bamzy.springifyapi.games.MarioGame;
+import info.bamzy.springifyapi.games.NFSGame;
+import info.bamzy.springifyapi.games.VideoGame;
+import info.bamzy.springifyapi.utils.CustomLogger;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -39,12 +44,23 @@ public class AppGamingBasicConfiguration {
 
     @Bean
     public boolean compareGames(GameInfo a,@Qualifier("secondQualifier") GameInfo b){
-        System.out.println("comparing a: "+ a.name() + " and b: "+ b.name());
+        CustomLogger.logger.info("comparing a: "+ a.name() + " and b: "+ b.name());
         return a.price()>b.price();
     }
     @Bean (name="mario")
-    public MarioGame getMario(){
+    @Primary
+    public VideoGame getMario(){
         return new MarioGame();
+    }
+
+    @Bean (name="nfs")
+    public VideoGame getNFS(){
+        return new NFSGame();
+    }
+
+    @Bean
+    public GameRunner runner(VideoGame vg){
+        return new GameRunner(vg);
     }
 
 

@@ -1,5 +1,7 @@
 package info.bamzy.springifyapi;
 
+import info.bamzy.springifyapi.games.GameRunner;
+import info.bamzy.springifyapi.utils.CustomLogger;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.Arrays;
@@ -8,17 +10,19 @@ public class AppGamingBasic {
     public static void main(String[] args){
         // create spring context using the configuration
         var context =new AnnotationConfigApplicationContext(AppGamingBasicConfiguration.class);
-        System.out.println("all beans");
+        CustomLogger.logger.info("all beans");
         Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
 
-        System.out.println("My test");
-        System.out.println(context.getBean("getName"));
-        System.out.println(context.getBean("bettername"));
-        System.out.println(context.getBean("minAge"));
-        System.out.println(context.getBean("game"));
-        System.out.println(context.getBean(GameInfo.class));
-        System.out.println(context.getBean("gameNew"));
-        System.out.println(context.getBean("compareGames"));
+        CustomLogger.logger.info("My test");
+        CustomLogger.logger.info(context.getBean("getName"));
+        CustomLogger.logger.info(context.getBean("bettername"));
+        CustomLogger.logger.info(context.getBean("minAge"));
+        CustomLogger.logger.info(context.getBean("game"));
+        CustomLogger.logger.info(context.getBean(GameInfo.class));
+        CustomLogger.logger.info(context.getBean("gameNew"));
+        CustomLogger.logger.info(context.getBean("compareGames"));
+
+        ((GameRunner)context.getBean("runner")).run();
 
     }
 }
