@@ -1,18 +1,19 @@
 package info.bamzy.springifyapi;
 
-import info.bamzy.springifyapi.games.GameRunner;
-import info.bamzy.springifyapi.games.MarioGame;
-import info.bamzy.springifyapi.games.NFSGame;
-import info.bamzy.springifyapi.games.VideoGame;
+import info.bamzy.springifyapi.games.*;
 import info.bamzy.springifyapi.utils.CustomLogger;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
 
 record GameInfo (String name, double price,int age){}
 @Configuration
+@ComponentScan("info.bamzy.springifyapi.games")
+
+
 public class AppGamingBasicConfiguration {
     @Bean
     public String getName(){
@@ -43,25 +44,25 @@ public class AppGamingBasicConfiguration {
 
 
     @Bean
-    public boolean compareGames(GameInfo a,@Qualifier("secondQualifier") GameInfo b){
+    public boolean compareGames( GameInfo a, @Qualifier("secondQualifier") GameInfo b){
         CustomLogger.logger.info("comparing a: "+ a.name() + " and b: "+ b.name());
         return a.price()>b.price();
     }
-    @Bean (name="mario")
-    @Primary
-    public VideoGame getMario(){
-        return new MarioGame();
-    }
+//    @Bean (name="mario")
+//    @Primary
+//    public VideoGame getMario(){
+//        return new MarioGame();
+//    }
+//
+//    @Bean (name="nfs")
+//    public VideoGame getNFS(){
+//        return new NFSGame();
+//    }
 
-    @Bean (name="nfs")
-    public VideoGame getNFS(){
-        return new NFSGame();
-    }
-
-    @Bean
-    public GameRunner runner(VideoGame vg){
-        return new GameRunner(vg);
-    }
+//    @Bean
+//    public GameRunner runner(VideoGame vg){
+//        return new GameRunner(vg);
+//    }
 
 
 }

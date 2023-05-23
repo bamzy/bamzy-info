@@ -110,7 +110,6 @@ class SthConfig {
     }
 
     @Bean
-    @Bean
     public boolean compareGames(GameInfo a,@Qualifier("secondQualifier") GameInfo b){
         System.out.println("comparing a: "+ a.name() + " and b: "+ b.name()); //a is the primary (default) and b is the secondary 
         return a.price()>b.price();
@@ -123,5 +122,102 @@ public class App {
         var context = AnnotationConfigApplicationContext(SthConfig.class);
         context.getBean(Game.class); //will get CS Go
     }
+}
+```
+5) you can delegate the creation of classes to spring as well by annotating them as Component
+
+```java
+import org.springframework.stereotype.Component;
+
+@Component
+public class Game {
+    private int rate=3.4;
+    private String name(){
+        return this.name;
+    }
+    public Game(String name , int rate){
+        this.name = name;
+        this.rate = rate;
+    }
+    public int rate(){return this.rate;}
+    
+}
+```
+
+```java
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+
+@Configuration
+@ComponentScan("package.where.Game.class.is")
+class SthConfig {
+
+    @Bean
+    @Qualifier('secondGame')
+    public Game buildGame(){
+        return new Game("diff game",1.3);
+    }
+    @Bean
+    public boolean compareGames(Game a, @Qualifier("secondGame") Game b) {
+        System.out.println("comparing a: " + a.name() + " and b: " + b.name()); //a  will be created automatically from @Component and b from the method
+        return a.rate() > b.rate();
+    }
+}
+```
+
+6) Spring has 3 types of dependency injections
+```java
+@Component
+public class DependencyOne {
+}
+
+@Component
+public class DependencyTwo {
+}
+```
+6.1- constructor based: when you don't even need to put @Autowired before the constructor
+```java
+public class ConstructorDependencyInjection {
+
+    DependencyOne dep1;
+    DependencyTwo dep2;
+
+    public ConstructorDependencyInjection(DependencyOne dep1, DependencyTwo dep2) {
+        this.dep1 = dep1;
+        this.dep2 = dep2;
+    }
+}
+```
+6.2- setter based dependency injection where you create methods that only act as setters and put @Autowired before them
+```java
+import info.bamzy.springifyapi.games.DependencyOne;
+
+@Component
+public class SetterDependencyInjection {
+
+   DependencyOne dep1;
+   DependencyTwo dep2;
+
+   @Autowired
+   public void setDep2(DependencyTwo two) {
+      this.dep2 =two;
+   }
+
+   @Autowired
+   public void setDep1(DependencyOne one) {
+      this.dep1 =one;
+   }
+}
+```
+6.3- field based injection which uses injection
+```java
+@Component
+public class FieldDependencyInjection {
+
+    @Autowired
+    DependencyOne dep1;
+    @Autowired
+    DependencyTwo dep2;
 }
 ```

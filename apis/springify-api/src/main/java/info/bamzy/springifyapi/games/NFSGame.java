@@ -1,8 +1,12 @@
 package info.bamzy.springifyapi.games;
 
 import info.bamzy.springifyapi.utils.CustomLogger;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Component;
 
-public class NFSGame implements VideoGame {
+@Component
+@Primary
+public class NFSGame implements VideoGame,RPGGame {
 
     @Override
     public String getName() {
@@ -17,5 +21,10 @@ public class NFSGame implements VideoGame {
     }
     public void right(){
         CustomLogger.logger.info("turn right ");
+    }
+
+    @Override
+    public void kill() {
+        CustomLogger.logger.info("hit a wall");
     }
 }
