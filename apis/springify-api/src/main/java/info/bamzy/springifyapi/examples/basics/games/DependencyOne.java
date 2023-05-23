@@ -1,4 +1,4 @@
-package info.bamzy.springifyapi.games;
+package info.bamzy.springifyapi.examples.basics.games;
 
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,4 @@
-package info.bamzy.springifyapi.games;
+package info.bamzy.springifyapi.examples.basics.games;
 
 public interface VideoGame {
     int i = 3;

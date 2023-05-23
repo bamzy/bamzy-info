@@ -2,28 +2,22 @@
 
 ## Terminology:
 **Coupling** <i>Is the measure of how much code change in involved when changing the behavior.  </i><br>
-
 **Tight Coupling:** <i>this is when you don't use frameworks or code into interfaces</i><br>
 **Loose Coupling:** <i>code to interface</i><br>
-**Dependency Injection:** <br>
-**Inversion of Control:** <br>
-**Auto Wiring:** <br>
+**Dependency Injection:** <i>connecting  @Components using autowiring</i><br>
+**Inversion of Control:** <i>creation and wiring is shifted from devs to Spring</i><br>
 **Spring Container aka Spring Context aka Spring IOC Container :** <i>Manages Spring Beans and their lifecycle and there are two types: Bean Factory and Application Context</i><br>
-**Spring Bean:** <i>I would describe bean as info including primitive data and object </i><br>
-**Java Bean:** used in sth called EJB where a java class needs to meet 3 criteria
-
-1)public no-arg constructor 
-
-2)you should have getters/setters
-
-3)implements serializable<br>
-
+**Spring Bean:** <i>any object including primitive data that is managed by Spring framework </i><br>
+**Java Bean:** <i>used in sth called EJB where a java class needs to meet 3 criteria 1)public no-arg constructor  2)you should have getters/setters 3)implements serializable</i>
+**@AutoWiring:** <i>Used for dependency injection of components (@component) and depending on where it is added, you can have filed or setter or constructor depInj (please refer to #6) </i><br>
+**@Component:** <i>allows spring to manage instances of that class when this annotation added before a class </i><br>
+**@ComponentScan:** <i>package names to look for potential @Component </i><br>
+**@Bean vs @Component:** <i>@component is put on classes vs @Bean that is put on methods in config java file - with @Component java creates object but with @Bean, you have to write a return new class() line </i><br>
 **POJO:** any java object is a plain-old-java-object <br>
-**Component Scan:** <br>
 **Application Context:** <br>
 
 
-
+## Code
 1) How to define beans:
 ```java
 @Configuration
@@ -190,24 +184,25 @@ public class ConstructorDependencyInjection {
 }
 ```
 6.2- setter based dependency injection where you create methods that only act as setters and put @Autowired before them
+
 ```java
-import info.bamzy.springifyapi.games.DependencyOne;
+import info.bamzy.springifyapi.examples.basics.games.DependencyOne;
 
 @Component
 public class SetterDependencyInjection {
 
-   DependencyOne dep1;
-   DependencyTwo dep2;
+    DependencyOne dep1;
+    DependencyTwo dep2;
 
-   @Autowired
-   public void setDep2(DependencyTwo two) {
-      this.dep2 =two;
-   }
+    @Autowired
+    public void setDep2(DependencyTwo two) {
+        this.dep2 = two;
+    }
 
-   @Autowired
-   public void setDep1(DependencyOne one) {
-      this.dep1 =one;
-   }
+    @Autowired
+    public void setDep1(DependencyOne one) {
+        this.dep1 = one;
+    }
 }
 ```
 6.3- field based injection which uses injection

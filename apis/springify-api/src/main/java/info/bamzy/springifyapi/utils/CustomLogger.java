@@ -1,6 +1,6 @@
 package info.bamzy.springifyapi.utils;
 
-import info.bamzy.springifyapi.AppGamingBasic;
+import info.bamzy.springifyapi.examples.basics.AppGamingBasic;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

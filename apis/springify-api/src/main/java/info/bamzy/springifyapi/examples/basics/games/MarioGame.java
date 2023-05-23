@@ -1,4 +1,4 @@
-package info.bamzy.springifyapi.games;
+package info.bamzy.springifyapi.examples.basics.games;
 
 import info.bamzy.springifyapi.utils.CustomLogger;
 import org.springframework.stereotype.Component;

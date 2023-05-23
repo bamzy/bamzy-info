@@ -1,6 +1,5 @@
-package info.bamzy.springifyapi.games;
+package info.bamzy.springifyapi.examples.basics.games;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component

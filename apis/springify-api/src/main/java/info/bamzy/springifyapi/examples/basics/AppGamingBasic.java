@@ -1,9 +1,9 @@
-package info.bamzy.springifyapi;
+package info.bamzy.springifyapi.examples.basics;
 
-import info.bamzy.springifyapi.games.ConstructorDependencyInjection;
-import info.bamzy.springifyapi.games.GameRunner;
-import info.bamzy.springifyapi.games.FieldDependencyInjection;
-import info.bamzy.springifyapi.games.SetterDependencyInjection;
+import info.bamzy.springifyapi.examples.basics.games.ConstructorDependencyInjection;
+import info.bamzy.springifyapi.examples.basics.games.GameRunner;
+import info.bamzy.springifyapi.examples.basics.games.FieldDependencyInjection;
+import info.bamzy.springifyapi.examples.basics.games.SetterDependencyInjection;
 import info.bamzy.springifyapi.utils.CustomLogger;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

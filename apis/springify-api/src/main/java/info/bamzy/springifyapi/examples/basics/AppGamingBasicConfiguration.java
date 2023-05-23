@@ -1,6 +1,6 @@
-package info.bamzy.springifyapi;
+package info.bamzy.springifyapi.examples.basics;
 
-import info.bamzy.springifyapi.games.*;
+import info.bamzy.springifyapi.examples.basics.games.*;
 import info.bamzy.springifyapi.utils.CustomLogger;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Primary;
 
 record GameInfo (String name, double price,int age){}
 @Configuration
-@ComponentScan("info.bamzy.springifyapi.games")
+@ComponentScan("info.bamzy.springifyapi.examples.basics.games")
 
 
 public class AppGamingBasicConfiguration {

@@ -1,7 +1,6 @@
-package info.bamzy.springifyapi.games;
+package info.bamzy.springifyapi.examples.basics.games;
 
 import info.bamzy.springifyapi.utils.CustomLogger;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 
