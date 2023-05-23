@@ -1,0 +1,11 @@
+/* Style the caret/arrow */
+.caret {
+    cursor: pointer;
+    user-select: none; /* Prevent text selection */
+  }
+  
+  
+
+  ul, #myUL {
+    list-style-type: none;
+  }

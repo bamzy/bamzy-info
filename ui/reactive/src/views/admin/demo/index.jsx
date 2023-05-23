@@ -10,9 +10,18 @@ import SearchList from "./components/SearchList";
 import TodoList from "./components/TodoList";
 import BasicHooks from "./components/BasicHooks";
 import CustomHooks from "./components/CustomHooks";
+import FolderTree from "./components/FolderTree";
 export default function Demo() {
   
-  
+  const folderData  = {
+    ukey: "root",
+    title:"root",
+    children:[
+      {ukey:1,title:"a",children:[{ukey:2,title:"a1",children:[]},{ukey:3,title:"a2",children:[{ukey:10,title:"a21"},{ukey:11,title:"a22"}]}]},
+      {ukey:4,title:"b",children:[{ukey:5,title:"b1",children:[]},{ukey:6,title:"b2",children:[]},{ukey:7,title:"b3"}]},
+      {ukey:8,title:"c",children:[{ukey:9,title:"c1",children:[]}]},
+    ]
+  }
   return (
     <>
       <Box pt={{ base: "130px", md: "80px", xl: "80px" }}>
@@ -32,6 +41,11 @@ export default function Demo() {
        <Card my="10px" height="100%">         
         <Heading as='h4' size='lg' w='100%'>A todo List</Heading>
         <TodoList />        
+      </Card>
+      
+      <Card my="10px" height="100%">         
+        <Heading as='h4' size='lg' w='100%'>A Dynamic Unlimited Folder Structure</Heading>
+        <FolderTree data={folderData} />        
       </Card>
 
       <Card my="10px" height="100%">         
