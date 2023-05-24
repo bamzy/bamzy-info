@@ -1,5 +1,6 @@
 package info.bamzy.springboot.models;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class NewsSource {
@@ -45,5 +46,18 @@ public class NewsSource {
                 ", displayName='" + displayName + '\'' +
                 ", id=" + id +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        NewsSource that = (NewsSource) o;
+        return  id.equals(that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(url, displayName, id);
     }
 }
