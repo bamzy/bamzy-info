@@ -1,4 +1,4 @@
-package info.bamzy.springboot;
+package info.bamzy.springboot.controllers;
 
 import info.bamzy.springboot.models.NewsSource;
 import org.springframework.web.bind.annotation.*;
