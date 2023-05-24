@@ -1,6 +1,8 @@
 package info.bamzy.springboot.controllers;
 
+import info.bamzy.springboot.configs.ServerConfig;
 import info.bamzy.springboot.models.NewsSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -11,6 +13,8 @@ import java.util.UUID;
 @RestController
 public class NewsSourceController {
     private final double random;
+    @Autowired
+    private ServerConfig sc;
     private ArrayList<NewsSource> dataList = new ArrayList<>(Arrays.asList(
         new NewsSource("bbcpersian.com","BBC", UUID.randomUUID()),
                 new NewsSource("iranintl.com","Iran International", UUID.randomUUID()),
@@ -32,6 +36,11 @@ public class NewsSourceController {
         return random;
     }
 
+    @GetMapping("/server-config")
+    public ServerConfig getConfig() {
+        return sc;
+    }
+
     @PostMapping("newsSource/add")
     @ResponseBody
     public void addNewsSource(@RequestParam(name = "id", required = false) UUID uuid, @RequestParam String displayName, @RequestParam String url){
@@ -46,4 +55,5 @@ public class NewsSourceController {
         dataList.remove(tmp);
 
     }
+
 }
