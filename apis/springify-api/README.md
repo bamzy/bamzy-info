@@ -17,7 +17,7 @@
 **Application Context:** <br>
 
 
-## Chapter One: Basic Code 
+## Chapter One: Basic Concepts 
 1) How to define beans:
 ```java
 @Configuration
@@ -217,7 +217,7 @@ public class FieldDependencyInjection {
 }
 ```
 
-## Chapter Two: Advanced Topics
+## Chapter Two: Spring Advanced Topics
 <img src="src/main/resources/screenshots/01.png" width="700px" height="auto">
 
 1) By default, Spring beans are <b><u>eager</u></b> initialized, meaning they are instantiated at the beginning as spring context is being created
@@ -364,3 +364,10 @@ public class SomeDependency {
 }
 
 ```
+
+5)  Stereotype Annotation :
+   - to be more verbose you can use @Service instead of @Component to show the class has business logic 
+   - to be more verbose you can use @Controller instead of @Component to show the class is a web controller 
+   - to be more verbose you can use @Repository instead of @Component to show the class is deals with data 
+
+## Chapter Three: Spring Boot
