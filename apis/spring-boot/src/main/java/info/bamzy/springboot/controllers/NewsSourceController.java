@@ -1,7 +1,7 @@
 package info.bamzy.springboot.controllers;
 
 import info.bamzy.springboot.configs.ServerConfig;
-import info.bamzy.springboot.models.NewsSource;
+import info.bamzy.springboot.models.enditiy.NewsSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

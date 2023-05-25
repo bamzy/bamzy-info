@@ -11,6 +11,7 @@ import TodoList from "./components/TodoList";
 import BasicHooks from "./components/BasicHooks";
 import CustomHooks from "./components/CustomHooks";
 import FolderTree from "./components/FolderTree";
+import BasicForm from "./components/BasicForm";
 export default function Demo() {
   
   const folderData  = {
@@ -47,6 +48,12 @@ export default function Demo() {
         <Heading as='h4' size='lg' w='100%'>A Dynamic Unlimited Folder Structure</Heading>
         <FolderTree data={folderData} />        
       </Card>
+
+      <Card my="10px" height="100%">         
+        <Heading as='h4' size='lg' w='100%'>A Form</Heading>
+        <BasicForm  />        
+      </Card>
+
 
       <Card my="10px" height="100%">         
         <Heading as='h4' size='lg' py={3} w='100%'>Basic React Hook Examples:</Heading>

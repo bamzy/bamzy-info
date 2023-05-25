@@ -1,14 +1,38 @@
-package info.bamzy.springboot.models;
+package info.bamzy.springboot.models.enditiy;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
-
+@Entity(name="newssources")
 public class NewsSource {
+    @Id
+    private UUID id;
+    @Column
     private String url;
+    @Column(name = "display_name")
     private String displayName;
+    @OneToMany
+    private List<Snapshot> snapshots;
+
+    public List<Snapshot> getSnapshots() {
+        return snapshots;
+    }
+
+    public void setSnapshots(List<Snapshot> snapshots) {
+        this.snapshots = snapshots;
+    }
 
     public String getUrl() {
         return url;
+    }
+
+    public NewsSource() {
+        super();
     }
 
     public void setUrl(String url) {
@@ -31,13 +55,6 @@ public class NewsSource {
         this.id = id;
     }
 
-    private UUID id;
-
-    public NewsSource(String url, String displayName, UUID id) {
-        this.url = url;
-        this.displayName = displayName;
-        this.id = id;
-    }
 
     @Override
     public String toString() {
@@ -46,6 +63,18 @@ public class NewsSource {
                 ", displayName='" + displayName + '\'' +
                 ", id=" + id +
                 '}';
+    }
+
+    public NewsSource(String url, String displayName, UUID id,List<Snapshot> snapshots) {
+        this.url = url;
+        this.displayName = displayName;
+        this.id = id;
+        this.snapshots = snapshots;
+    }
+    public NewsSource(String url, String displayName, UUID id) {
+        this.url = url;
+        this.displayName = displayName;
+        this.id = id;
     }
 
     @Override
