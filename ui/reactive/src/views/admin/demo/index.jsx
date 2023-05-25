@@ -28,7 +28,7 @@ export default function Demo() {
       <Box pt={{ base: "130px", md: "80px", xl: "80px" }}>
         <Card my='10px'>
           <Flex>
-            <Heading as='h4' size='lg' w='100%'>A tictactoe</Heading>
+            <Heading as='h4' size='lg' w='100%'>A TicTacToe</Heading>
             <VariableTicTac size={5} />
           </Flex>
         </Card>
@@ -50,7 +50,7 @@ export default function Demo() {
       </Card>
 
       <Card my="10px" height="100%">         
-        <Heading as='h4' size='lg' w='100%'>A Form</Heading>
+        <Heading as='h4' size='lg' w='100%'>Basic React Form</Heading>
         <BasicForm  />        
       </Card>
 
