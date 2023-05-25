@@ -12,6 +12,9 @@ import BasicHooks from "./components/BasicHooks";
 import CustomHooks from "./components/CustomHooks";
 import FolderTree from "./components/FolderTree";
 import BasicForm from "./components/BasicForm";
+import ReduxToDo from "./components/ReduxToDo";
+import store from "./utils/store"
+import {Provider} from 'react-redux'
 export default function Demo() {
   
   const folderData  = {
@@ -23,6 +26,8 @@ export default function Demo() {
       {ukey:8,title:"c",children:[{ukey:9,title:"c1",children:[]}]},
     ]
   }
+
+
   return (
     <>
       <Box pt={{ base: "130px", md: "80px", xl: "80px" }}>
@@ -52,6 +57,14 @@ export default function Demo() {
       <Card my="10px" height="100%">         
         <Heading as='h4' size='lg' w='100%'>Basic React Form</Heading>
         <BasicForm  />        
+      </Card>
+
+      
+      <Card my="10px" height="100%">         
+        <Heading as='h4' size='lg' w='100%'>Redux in Action</Heading>
+        <Provider store={store}>
+          <ReduxToDo  />        
+        </Provider>
       </Card>
 
 

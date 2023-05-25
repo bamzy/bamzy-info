@@ -5,7 +5,7 @@ import {
 
 const expensiveCalculation = (num) => {
     console.log("Calculating the expensive operation...");
-    for (let i = 0; i < 1000000000; i++) {
+    for (let i = 0; i < 100; i++) {
       num += 1;
     }
     return num;
