@@ -15,6 +15,7 @@ import BasicForm from "./components/BasicForm";
 import ReduxToDo from "./components/ReduxToDo";
 import store from "./utils/store"
 import {Provider} from 'react-redux'
+import DataTable from "./components/DataTable";
 export default function Demo() {
   
   const folderData  = {
@@ -64,6 +65,13 @@ export default function Demo() {
         <Heading as='h4' size='lg' w='100%'>Redux in Action</Heading>
         <Provider store={store}>
           <ReduxToDo  />        
+        </Provider>
+      </Card>
+
+      <Card my="10px" height="100%">         
+        <Heading as='h4' size='lg' w='100%'>DataTable and API</Heading>
+        <Provider store={store}>
+          <DataTable  />        
         </Provider>
       </Card>
 
