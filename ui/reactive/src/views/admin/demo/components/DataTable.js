@@ -38,7 +38,7 @@ export default function DataTable (){
     let list= <div>no data found</div>;
     if (Array.isArray(data) && data.length!==0)  {
          list = data.map((item,index)=>{
-            return <li style={{backgroundColor:"#12eda",margin:"5px",padding:"10px"}} key={index} >{item.Nation} at year: {item.Year}, had the Population: {new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(item.Population)} </li>
+            return <li style={{backgroundColor:"#12eda",margin:"5px",padding:"10px"}} key={index} >{item.Nation} at year: {item.Year}, had the Population: {(item.Population).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} </li>
         });
     }
     
