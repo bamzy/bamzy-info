@@ -22,22 +22,23 @@ export default function DataTable (){
     const loadItems = async ()=>{
         try {
 
-            const resp = await fetch("http://localhost:8081/users",{
+            const resp = await fetch("https://datausa.io/api/data?drilldowns=Nation&measures=Population",{
                 method: "GET", // *GET, POST, PUT, DELETE, etc.
                 headers: {
-                    "Content-Type": "application/json",
+                    
                 }
             })
             let jsonData = await resp.json();
-            setData(jsonData)
+            setData(jsonData.data)
+            console.log(jsonData)
         } catch (err){
             console.log("err:"+err)
         }
     }
     let list= <div>no data found</div>;
-    if (data.length!==0)  {
+    if (Array.isArray(data) && data.length!==0)  {
          list = data.map((item,index)=>{
-            return <li style={{backgroundColor:"#12eda",margin:"5px",padding:"10px"}} key={index} >{item.id}-{item.username} ({item.email})</li>
+            return <li style={{backgroundColor:"#12eda",margin:"5px",padding:"10px"}} key={index} >{item.Nation} at year: {item.Year}, had the Population: {new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(item.Population)} </li>
         });
     }
     
