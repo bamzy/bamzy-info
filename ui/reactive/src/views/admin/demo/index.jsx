@@ -17,7 +17,7 @@ import store from "./utils/store"
 import {Provider} from 'react-redux'
 import DataTable from "./components/DataTable";
 import CodeEditor from "./components/CodeEditor";
-import JsonViewer from "./components/JSONViewer";
+import JsonViewer from "./components/MyJsonViewer";
 export default function Demo() {
   
   const folderData  = {
