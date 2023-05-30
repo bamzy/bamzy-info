@@ -30,7 +30,6 @@ export default function DataTable (){
             })
             let jsonData = await resp.json();
             setData(jsonData.data)
-            console.log(jsonData)
         } catch (err){
             console.log("err:"+err)
         }

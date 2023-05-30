@@ -16,6 +16,8 @@ import ReduxToDo from "./components/ReduxToDo";
 import store from "./utils/store"
 import {Provider} from 'react-redux'
 import DataTable from "./components/DataTable";
+import CodeEditor from "./components/CodeEditor";
+import JsonViewer from "./components/JSONViewer";
 export default function Demo() {
   
   const folderData  = {
@@ -31,15 +33,17 @@ export default function Demo() {
 
   return (
     <>
-      <Box pt={{ base: "130px", md: "80px", xl: "80px" }}>
-        <Card my='10px'>
+      <Card my="10px" mt="40px" height="100%">         
+        <Heading as='h4' size='lg' py={3} w='100%'>JSON Viwer:</Heading>
+        <JsonViewer />        
+      </Card>
+
+      <Card my='10px'>
           <Flex>
             <Heading as='h4' size='lg' w='100%'>A TicTacToe</Heading>
             <VariableTicTac size={5} />
           </Flex>
-        </Card>
-      </Box>
-     
+      </Card>
       <Card my="10px">
         <Heading as='h4' size='lg' w='100%'>Below is a fully virtualized list of 370K words, showing 10 at a time</Heading>
         <SearchList />        
@@ -84,6 +88,11 @@ export default function Demo() {
        <Card my="10px" height="100%">         
         <Heading as='h4' size='lg' py={3} w='100%'>Useful Custom React Hook:</Heading>
         <CustomHooks />        
+      </Card>
+
+      <Card my="10px" height="100%">         
+        <Heading as='h4' size='lg' py={3} w='100%'>Online Editor:</Heading>
+        <CodeEditor />        
       </Card>
       
     </>
