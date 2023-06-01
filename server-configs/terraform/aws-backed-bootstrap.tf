@@ -3,8 +3,8 @@ terraform {
   ## AFTER RUNNING TERRAFORM APPLY (WITH LOCAL BACKEND)
   # backend "s3" {
   #   bucket         = "bamzy-info-tf-state" 
-  #   key            = "03-basics/import-bootstrap/terraform.tfstate"
-  #   region         = "us-east-1"
+  #   key            = "terraform.tfstate"
+  #   region         = "ca-central-1"
   #   dynamodb_table = "terraform-state-table"
   #   encrypt        = true
   # }
