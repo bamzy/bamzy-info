@@ -49,7 +49,7 @@ export default function HeaderLinks(props) {
 	  } = useAuth0();
 	const logoutWithRedirect = () =>
     	logout({
-        	logoutParams: {returnTo: window.location.origin,}
+        	logoutParams: {returnTo: window.location.origin+"/dashboard",}
     	});
 	let nickname= "Hey, Guest";
 	let fullName= "Guest";

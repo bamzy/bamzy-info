@@ -35,7 +35,7 @@ export function SidebarLinks(props) {
   const logoutWithRedirect = () => {
     return logout({
         logoutParams: {
-          returnTo: window.location.origin,
+          returnTo: window.location.origin+"/dashboard",
         }
     });
 
