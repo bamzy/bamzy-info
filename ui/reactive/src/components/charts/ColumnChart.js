@@ -17,7 +17,7 @@ class ColumnChart extends Component {
   }
   loadData(){
     try {
-        console.log("url:"+this.props.url)
+        // console.log("url:"+this.props.url)
         let size = this.props.size? parseInt(this.props.size): 10;
         axios.get(this.props.url).then((resp)=>{
           // debugger;

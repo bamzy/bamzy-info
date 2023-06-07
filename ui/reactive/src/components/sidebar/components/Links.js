@@ -1,9 +1,9 @@
-/* eslint-disable */
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
-// chakra imports
-import { Box, Flex, HStack, Text, useColorModeValue } from "@chakra-ui/react";
+import { useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 
+import { Box, Flex, HStack, Text, useColorModeValue ,Spinner,Button,Center} from "@chakra-ui/react";
 export function SidebarLinks(props) {
   //   Chakra color mode
   let location = useLocation();
@@ -22,6 +22,25 @@ export function SidebarLinks(props) {
   const activeRoute = (routeName) => {
     return location.pathname.includes(routeName);
   };
+
+  const [isOpen, setIsOpen] = useState(false);
+  const {
+    user,
+    isAuthenticated,
+    loginWithRedirect,
+    logout,
+    error,
+    isLoading
+  } = useAuth0();
+
+  const logoutWithRedirect = () =>
+    logout({
+        logoutParams: {
+          returnTo: window.location.origin,
+        }
+    });
+
+
 
   // this function creates the links from the secondary accordions (for example auth -> sign-in -> default)
   const createLinks = (routes) => {
@@ -48,7 +67,6 @@ export function SidebarLinks(props) {
         );
       } else if (
         route.layout === "/admin" ||
-        route.layout === "/auth" ||
         route.layout === "/demo"
       ) {
         return (
@@ -124,11 +142,34 @@ export function SidebarLinks(props) {
             )}
           </NavLink>
         );
+      } else if (route.layout === "/auth"){
+        return (
+          <LogInOutButton key={index} isAuthenticated={isAuthenticated} logout={logout} loginWithRedirect={loginWithRedirect} user={user}/> 
+        );
       }
     });
   };
-  //  BRAND
+  //  
+  if(error) return <p>error happened</p>
+  if(isLoading)
+    return <Spinner
+    thickness='4px'
+    speed='0.65s'
+    emptyColor='gray.200'
+    color='blue.500'
+    size='xl'
+  />
   return createLinks(routes);
 }
-
+function LogInOutButton({isAuthenticated,logout,loginWithRedirect,user}){
+  let elem = <Button  variant="outline" colorScheme='red' mx={2} onClick={logout}>Logout </Button>
+  if (!isAuthenticated) elem = <Button  variant="outline" colorScheme='blue'  mx={2} onClick={loginWithRedirect}>Login</Button>;
+  return <Box>
+    <Flex >
+      <Center w='100px' bg='white'>
+          {elem}
+      </Center>
+    </Flex>
+  </Box>;
+}
 export default SidebarLinks;

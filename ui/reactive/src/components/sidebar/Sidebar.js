@@ -55,6 +55,7 @@ function Sidebar(props) {
           renderThumbVertical={renderThumb}
           renderView={renderView}>
           <Content routes={routes} />
+          
         </Scrollbars>
       </Box>
     </Box>

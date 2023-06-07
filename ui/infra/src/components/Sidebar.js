@@ -3,7 +3,8 @@ import './Sidebar.css';
 import {Button,IconButton} from '@mui/material';
 import {Link,useNavigate} from 'react-router-dom';
 import { checkLoggedIn ,logMeOut} from '../utils/authUtil';
-import {Logout} from '@mui/icons-material';
+import {Login, Logout} from '@mui/icons-material';
+import {useAuth0} from '@auth0/auth0-react';
 export default function Sidebar(props)  {
   const navigate = useNavigate();
   const [isLoggedIn,setIsLoggedIn] = useState(false)
@@ -27,7 +28,7 @@ export default function Sidebar(props)  {
     {to:'/login',text:'Login',needsAdmin:false},
     {to:'/elastic',text:'Elastic Dashboard',needsAdmin:true},
   ]
-
+  
   const sidebarItems = sidebarLinks.map((item,index)=>{
     if ((item.needsAdmin && isLoggedIn) || (!isLoggedIn && !item.needsAdmin) || item.needsAdmin===null ){              
       return <li key={index}><Link to={item.to}>{item.text}</Link></li> 

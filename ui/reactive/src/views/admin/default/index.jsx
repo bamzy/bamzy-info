@@ -79,17 +79,17 @@ export default function NewsDashboardReport() {
             />
         </SimpleGrid>
         <SimpleGrid columns={1} spacing={20} mb='20px'>
-            <WordFrequencyColumnChartCard url={`${Constants.rssAPIUrl}?name=analyzeBBC`} title='BBC Persian' altName='بی بی سی فارسی' size='15' />
-            <WordFrequencyColumnChartCard url={`${Constants.telegramAPIUrl}/VahidOnline`} title='VahidOnline' altName='وحید آنلاین' size='15' />
-            <WordFrequencyColumnChartCard url={`${Constants.telegramAPIUrl}/bidarzani`} title='Bidarzani' altName='بیدارزنی' size='15' />
-            <WordFrequencyColumnChartCard url={`${Constants.telegramAPIUrl}/Fars_news1`} title='Fars News' altName='فارس نیوز' size='15' />
+            <WordFrequencyColumnChartCard url={`${Constants.rssAPIUrl}?name=analyzeBBC`} title='BBC Persian' altname='بی بی سی فارسی' size='15' />
+            <WordFrequencyColumnChartCard url={`${Constants.telegramAPIUrl}/VahidOnline`} title='VahidOnline' altname='وحید آنلاین' size='15' />
+            <WordFrequencyColumnChartCard url={`${Constants.telegramAPIUrl}/bidarzani`} title='Bidarzani' altname='بیدارزنی' size='15' />
+            <WordFrequencyColumnChartCard url={`${Constants.telegramAPIUrl}/Fars_news1`} title='Fars News' altname='فارس نیوز' size='15' />
         </SimpleGrid>
         <SimpleGrid columns={{ base: 1, md: 2, xl: 2 }} gap='20px' mb='20px'>
             <TotalSpent />
             <WeeklyRevenue />
         </SimpleGrid>
         <SimpleGrid columns={2} gap='20px' mb='20px'>
-          <Flex alignItem='center'>
+          <Flex >
             <MiniCalendar h='100%' minW='100%' selectRange={false} />
           </Flex>
             <CheckTable columnsData={columnsDataCheck} tableData={tableDataCheck} />

@@ -24,6 +24,7 @@ import { MdNotificationsNone, MdInfoOutline } from 'react-icons/md';
 import { FaEthereum } from 'react-icons/fa';
 import routes from 'routes.js';
 import { ThemeEditor } from './ThemeEditor';
+import {useAuth0}  from '@auth0/auth0-react'
 export default function HeaderLinks(props) {
 	const { secondary } = props;
 	// Chakra Color Mode
@@ -39,6 +40,21 @@ export default function HeaderLinks(props) {
 		'14px 17px 40px 4px rgba(112, 144, 176, 0.18)',
 		'14px 17px 40px 4px rgba(112, 144, 176, 0.06)'
 	);
+
+	const {
+		user,
+		isAuthenticated,
+		loginWithRedirect,
+		logout,
+		logoutWithRedirect
+	  } = useAuth0();
+	let nickname= "Hey, Guest";
+	let fullName= "Guest";
+	if(user && user.nickname) nickname = "Hey, "+ user.nickname;
+	if(user && user.name) fullName = user.name;
+	let avatarUrl = null;
+	if(user && user.picture) avatarUrl = user.picture;
+
 	const borderButton = useColorModeValue('secondaryGray.500', 'whiteAlpha.200');
 	return (
 		<Flex
@@ -148,9 +164,10 @@ export default function HeaderLinks(props) {
 			<Menu>
 				<MenuButton p="0px">
 					<Avatar
+						src={avatarUrl}
 						_hover={{ cursor: 'pointer' }}
 						color="white"
-						name="Adela Parkson"
+						name={fullName}
 						bg="#11047A"
 						size="sm"
 						w="40px"
@@ -169,23 +186,21 @@ export default function HeaderLinks(props) {
 							fontSize="sm"
 							fontWeight="700"
 							color={textColor}>
-							👋&nbsp; Hey, Adela
+							👋&nbsp; {nickname}
 						</Text>
 					</Flex>
 					<Flex flexDirection="column" p="10px">
 						<MenuItem _hover={{ bg: 'none' }} _focus={{ bg: 'none' }} borderRadius="8px" px="14px">
 							<Text fontSize="sm">Profile Settings</Text>
 						</MenuItem>
-						<MenuItem _hover={{ bg: 'none' }} _focus={{ bg: 'none' }} borderRadius="8px" px="14px">
-							<Text fontSize="sm">Newsletter Settings</Text>
-						</MenuItem>
+						
 						<MenuItem
 							_hover={{ bg: 'none' }}
 							_focus={{ bg: 'none' }}
 							color="red.400"
 							borderRadius="8px"
-							px="14px">
-							<Text fontSize="sm">Log out</Text>
+							px="14px" >
+							{isAuthenticated && <Button onClick={logoutWithRedirect} variant="text" fontSize="sm">Log out</Button>}
 						</MenuItem>
 					</Flex>
 				</MenuList>
