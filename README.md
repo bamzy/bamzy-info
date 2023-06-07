@@ -56,6 +56,10 @@ currently these are the noticeable features:<br>
   * Brought [jenkins](https://jenkins.bamzy.info) behind cloudflare instead of nginx reverse proxy
   * 
 
+* <i><b>[Update: June 7, 2023]</b></i>
+  * Dashboard has authentication tnx to [Auth0](https://auth0.com) and the free tier supports to up to 10000 user sigups + Google & Github login for now
+  * 
+
 
 ## Paid Services Used
 1) GoDaddy: .info Domain : 7.04/y CAD
