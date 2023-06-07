@@ -23,7 +23,7 @@ const providerConfig = {
   clientId: process.env.REACT_APP_AUTH0_CLIENT_ID,
   onRedirectCallback,
   authorizationParams: {
-    redirect_uri: window.location.origin,
+    redirect_uri: window.location.origin+"/dashboard",
     ...(process.env.REACT_APP_AUDIENCE ? { audience: process.env.REACT_APP_AUDIENCE} : null),
   },
   
