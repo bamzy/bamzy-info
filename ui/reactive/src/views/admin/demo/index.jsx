@@ -18,6 +18,7 @@ import {Provider} from 'react-redux'
 import DataTable from "./components/DataTable";
 import CodeEditor from "./components/CodeEditor";
 import JsonViewer from "./components/MyJsonViewer";
+import useDocumentTitle from '../../../utils/useDocumentTitle'
 export default function Demo() {
   
   const folderData  = {
@@ -29,7 +30,7 @@ export default function Demo() {
       {ukey:8,title:"c",children:[{ukey:9,title:"c1",children:[]}]},
     ]
   }
-
+  useDocumentTitle("Useful React Code")
 
   return (
     <>
