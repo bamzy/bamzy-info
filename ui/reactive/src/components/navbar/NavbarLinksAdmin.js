@@ -45,9 +45,12 @@ export default function HeaderLinks(props) {
 		user,
 		isAuthenticated,
 		loginWithRedirect,
-		logout,
-		logoutWithRedirect
+		logout
 	  } = useAuth0();
+	const logoutWithRedirect = () =>
+    	logout({
+        	logoutParams: {returnTo: window.location.origin,}
+    	});
 	let nickname= "Hey, Guest";
 	let fullName= "Guest";
 	if(user && user.nickname) nickname = "Hey, "+ user.nickname;
@@ -200,7 +203,7 @@ export default function HeaderLinks(props) {
 							color="red.400"
 							borderRadius="8px"
 							px="14px" >
-							{isAuthenticated && <Button onClick={logoutWithRedirect} variant="text" fontSize="sm">Log out</Button>}
+							{isAuthenticated && <Text onClick={logoutWithRedirect} variant="text" fontSize="sm">Log out</Text>}
 						</MenuItem>
 					</Flex>
 				</MenuList>

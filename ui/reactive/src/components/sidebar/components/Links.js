@@ -23,7 +23,6 @@ export function SidebarLinks(props) {
     return location.pathname.includes(routeName);
   };
 
-  const [isOpen, setIsOpen] = useState(false);
   const {
     user,
     isAuthenticated,
@@ -33,12 +32,14 @@ export function SidebarLinks(props) {
     isLoading
   } = useAuth0();
 
-  const logoutWithRedirect = () =>
-    logout({
+  const logoutWithRedirect = () => {
+    return logout({
         logoutParams: {
           returnTo: window.location.origin,
         }
     });
+
+  }
 
 
 
@@ -144,7 +145,7 @@ export function SidebarLinks(props) {
         );
       } else if (route.layout === "/auth"){
         return (
-          <LogInOutButton key={index} isAuthenticated={isAuthenticated} logout={logout} loginWithRedirect={loginWithRedirect} user={user}/> 
+          <LogInOutButton key={index} isAuthenticated={isAuthenticated} logout={logout} loginWithRedirect={loginWithRedirect} user={user} logoutWithRedirect={logoutWithRedirect}/> 
         );
       }
     });
@@ -161,7 +162,7 @@ export function SidebarLinks(props) {
   />
   return createLinks(routes);
 }
-function LogInOutButton({isAuthenticated,logout,loginWithRedirect,user}){
+function LogInOutButton({isAuthenticated,logout,loginWithRedirect,user,logoutWithRedirect}){
   let elem = <Button  variant="outline" colorScheme='red' mx={2} onClick={logout}>Logout </Button>
   if (!isAuthenticated) elem = <Button  variant="outline" colorScheme='blue'  mx={2} onClick={loginWithRedirect}>Login</Button>;
   return <Box>
