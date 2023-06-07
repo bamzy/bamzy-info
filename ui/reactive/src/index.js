@@ -28,7 +28,7 @@ const providerConfig = {
   },
   
 };
-console.log(providerConfig)
+
 
 ReactDOM.render(
   <Auth0Provider  {...providerConfig}>
