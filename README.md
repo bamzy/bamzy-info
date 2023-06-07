@@ -22,7 +22,7 @@ currently these are the noticeable features:<br>
 * <i><b>[Update: Feb 20, 2023]</b></i>  it has a text scraper that compares the RSS feed of prominent Iranian news sites and draws word clouds based on most frequent words used
 * <i><b>[Update: Feb 22, 2023]</b></i>  used nginx config to unify separate API servers (running in separate docker containers) without exposing the internal networking structure
   * as a result we have paths like this <b>bamzy.info/api/chart?name=xxxx</b>
-* <i><b>[Update: March 8, 2023]</b></i>  There is a new and independent react-app under the [/iran](https://bamzy.info/iran) path with some exciting charts
+* <i><b>[Update: March 8, 2023]</b></i>  There is a new and independent react-app under the [/dashboard](https://bamzy.info/dashboard) path with some exciting charts
   * its an independent react-app which is behind a reverse proxy and ties to the same chartAPI that the static site uses
 * <i><b>[Update: March 27, 2023]</b></i>  Jenkins server was introduced to build the final artifact for the react-app using this [jenkinsfile](https://github.com/bamzy/bamzy-info/blob/main/Jenkinsfile)
     * Jenkins runs an npm docker to build the app<br>
