@@ -3,6 +3,7 @@ const express = require('express')
 const {scrapeRssFeed} = require('./wordRepo');
 const {analyzeTelegramChannel} = require('./telegram-api');
 const {NewsSource} = require('./modules/NewsSource');
+const {sendMessage,listMessages,getQueueList} = require('./sqsAPI');
 const cors = require('cors')
 const app = express();
 
@@ -68,6 +69,23 @@ app.get('/findAll',async (req,res)=>{
 app.get('/user:userid',(req,res)=>{
     console.log(req.params);
     res.send(req.params['userid'])
+})
+
+
+app.get('/getQList',async (req,res)=>{
+    
+    var data = await getQueueList();    
+    res.send(data);
+})
+
+
+app.get('/listMessages',async (req,res)=>{
+    let list = await listMessages()
+   res.send(list);
+})
+app.post('/sendMessage',async (req,res)=>{
+    let data = await sendMessage({},'Hi Im bamdad');
+   res.send(data);
 })
 
 module.exports = {app}

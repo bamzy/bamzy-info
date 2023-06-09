@@ -1,4 +1,6 @@
 const axios = require("axios");
+
+const {sendMessage} = require('./sqsAPI') 
 const getExcludedWords = ()=>{
     let map = new Map();
     map.set('است');
@@ -93,6 +95,10 @@ const scrapeRssFeed = (url,res)=>{
         let rawTextArr = extractRawRSSText(fullText);
         let chartResult = finalizeText(rawTextArr);
         res.json({freqs:chartResult,size:chartResult.length});
+        sendMessage({"URL": {
+            DataType: "String",
+            StringValue: url
+          }},chartResult);
     }).catch(function (error) {
         res.send({freqs:[
                 {x:'Please',value:10},
