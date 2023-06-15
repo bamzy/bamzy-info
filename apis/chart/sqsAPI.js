@@ -7,15 +7,9 @@ var sqs = new AWS.SQS({apiVersion: '2012-11-05'});
 
 const listMessages = async ()=>{
     var params = {
-        AttributeNames: [
-        "SentTimestamp"
-        ],
-        MaxNumberOfMessages: 10,
-        MessageAttributeNames: [
-        "All"
-        ],
+        
         QueueUrl: queueURL,
-        VisibilityTimeout: 20,
+        VisibilityTimeout: 20000,
         WaitTimeSeconds: 0
     };
     
@@ -23,18 +17,18 @@ const listMessages = async ()=>{
         if (err) {
             return err;
         } else if (data.Messages) {
-            return data
-            // var deleteParams = {
-            //     QueueUrl: queueURL,
-            //     ReceiptHandle: data.Messages[0].ReceiptHandle
-            // };
-            // sqs.deleteMessage(deleteParams, function(err, data) {
-            //     if (err) {
-            //     console.log("Delete Error", err);
-            //     } else {
-            //     console.log("Message Deleted", data);
-            //     }
-            // });
+            var deleteParams = {
+                QueueUrl: queueURL,
+                ReceiptHandle: data.Messages[0].ReceiptHandle
+            };
+            sqs.deleteMessage(deleteParams, function(err, data) {
+                if (err) {
+                    console.log("Delete Error", err);
+                } else {
+                    console.log("Message Deleted", data);
+                }
+            });
+            return data;
         }
     }).promise();
     return(data)
