@@ -60,6 +60,10 @@ currently these are the noticeable features:<br>
   * Dashboard has authentication tnx to [Auth0](https://auth0.com) and the free tier supports to up to 10000 user sigups + Google & Github login for now
   * 
 
+* <i><b>[Update: June 16, 2023]</b></i>
+  * we have a new endpoint for swagger at /api-docs
+  * 
+
 
 ## Paid Services Used
 1) GoDaddy: .info Domain : 7.04/y CAD
