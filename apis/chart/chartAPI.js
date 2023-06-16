@@ -90,8 +90,8 @@ app.post('/sendMessage',async (req,res)=>{
 })
 app.use(
     '/api-docs',
-    swaggerUi.serve, 
-    swaggerUi.setup(swaggerDocument)
+    swaggerUi.serve
+    
   );
-
+  app.get('/api-docs', swaggerUi.setup(swaggerDocument));
 module.exports = {app}
