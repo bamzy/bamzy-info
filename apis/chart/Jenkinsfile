@@ -30,7 +30,7 @@ pipeline {
         stage('Run jest tests for chartAPI') {
             steps {
                 echo '\033[34m'
-                sh 'cd apis/chart && npx jest'
+                sh 'cd apis/chart && npx jest --runInBand --detectOpenHandles --forceExit'
             }
         }
 
