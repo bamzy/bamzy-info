@@ -16,7 +16,6 @@ export default function useTimeout(callback,wait){
     },[wait])
 
     useEffect(()=>{
-        console.log('use effect called')
         callbackRef.current = callback;
     },[callback])
     return [reset,clear];
