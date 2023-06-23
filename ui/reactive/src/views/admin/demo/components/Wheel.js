@@ -6,6 +6,7 @@ export default function Wheel({items}){
     const [rotate,setRotate]  = useState(false);
     const ref = useRef(0);
     const step = 10;
+    const initialStep = useRef(50);
     // console.log(ref.current);
 
     useEffect(()=>{
@@ -13,13 +14,15 @@ export default function Wheel({items}){
         // console.log('in use effec')
         let tref = setTimeout(()=>{
             if(ref.current<0) {
-                console.log(angel%360-270)
+                // console.log(angel%360-270)
                 setRotate(false);
                 return;
             }
-            setAngel(angel+step);
+            if(initialStep.current>1) initialStep.current = initialStep.current-1;
+            setAngel(angel+initialStep.current);
 
             ref.current=ref.current-1;
+
             // console.log('callbacked');
         },50)
         return () => clearTimeout(tref)
@@ -38,7 +41,8 @@ export default function Wheel({items}){
             setAngel(0);
         } else {
             setAngel(0);
-            ref.current = 50+ Math.floor(Math.random() * 200)
+            ref.current = 50+ Math.floor(Math.random() * 100)
+            initialStep.current = ref.current;
         }
         setRotate(!rotate);
     }
@@ -47,15 +51,15 @@ export default function Wheel({items}){
             
             <Flex w='100%'>
                 <Center  w='50%' h='100%'>
-                <Button colorScheme='blue' size="lg" onClick={()=>handleRotate(rotate)}>{rotate? 'Stop':'Try'} {angel}</Button>
+                <Button colorScheme='blue' size="lg" onClick={()=>handleRotate(rotate)}>{rotate? 'Stop':'Try'} </Button>
                 </Center>
                 <Center w='50%' bg=''>
                     <Box>
-                        <div style={{ width: '0', height: '0', borderLeft: '20px solid #f00',borderBottom: '20px solid transparent', borderTop: '20px solid transparent'}}> </div>                   
+                        <div style={{ width: '0', height: '0', borderLeft: '20px solid rgb(19 0 255)',borderBottom: '20px solid transparent', borderTop: '20px solid transparent'}}> </div>                   
                     </Box>
                     <Box>
                         <div style={{width: '500px', height: '500px',borderRadius: '50%',border:'5px dashed',borderColor:'black',transform:`rotate(${angel}deg)`,
-                            fontSize: '50px',color: '#fff',textAlign: 'center',background: 'gray'}}>{circles}</div>
+                            fontSize: '50px',color: '#fff',textAlign: 'center',background: 'radial-gradient(circle, rgba(131,58,180,1) 0%, rgba(253,29,52,1) 50%, rgba(252,176,69,1) 100%)',boxShadow: '-1px 1px 3px #000'}}>{circles}</div>
                     </Box>
                 </Center>
             </Flex>    
