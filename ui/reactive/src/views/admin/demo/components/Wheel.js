@@ -47,22 +47,23 @@ export default function Wheel({items}){
         setRotate(!rotate);
     }
     return (
-        <>
-            
-            <Flex w='100%'>
-                <Center  w='50%' h='100%'>
-                <Button colorScheme='blue' size="lg" onClick={()=>handleRotate(rotate)}>{rotate? 'Stop':'Try'} </Button>
-                </Center>
-                <Center w='50%' bg=''>
+        <div>
+            <Flex w='100%'>   
+                <Center  bg=''>
                     <Box>
                         <div style={{ width: '0', height: '0', borderLeft: '20px solid rgb(19 0 255)',borderBottom: '20px solid transparent', borderTop: '20px solid transparent'}}> </div>                   
                     </Box>
                     <Box>
-                        <div style={{width: '500px', height: '500px',borderRadius: '50%',border:'5px dashed',borderColor:'black',transform:`rotate(${angel}deg)`,
-                            fontSize: '50px',color: '#fff',textAlign: 'center',background: 'radial-gradient(circle, rgba(131,58,180,1) 0%, rgba(253,29,52,1) 50%, rgba(252,176,69,1) 100%)',boxShadow: '-1px 1px 3px #000'}}>{circles}</div>
+                        <div style={{position:'relative'}}>
+                            <Button colorScheme='blue' size="lg" style={{transform: 'translate(-50%, -50%)',position:'absolute',top:'50%',left:'50%',zIndex:'2',width:'50px'}} onClick={()=>handleRotate(rotate)}>{rotate? 'Stop':'Try'} </Button>
+                            <div style={{width: '500px', height: '500px',borderRadius: '50%',border:'5px dashed',borderColor:'black',transform:`rotate(${angel}deg)`,
+                                fontSize: '50px',color: '#fff', background: 'radial-gradient(circle, rgba(131,58,180,1) 0%, rgba(253,29,52,1) 50%, rgba(252,176,69,1) 100%)'}}>
+                                    {circles}
+                            </div>
+                        </div>
                     </Box>
                 </Center>
             </Flex>    
-        </>
+        </div>
     );
 }
