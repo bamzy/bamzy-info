@@ -10,7 +10,7 @@ sysctl -w vm.max_map_count=262144
 ```
 2) setup a docker network (optional)
 ```shell
-docker network create elastic-newrok
+docker network create elastic-network
 ```
 3) then run the elasticsearch container
 ```shell
