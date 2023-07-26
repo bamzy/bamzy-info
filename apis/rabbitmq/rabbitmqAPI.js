@@ -9,42 +9,84 @@ require('dotenv').config();
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(cors());
+let connectionInfo = {connection:null,channels: new Map()}
 
-
-const initClient = (user,pass,url)=>{
+const initClient = (user,pass,domain,q,callback)=>{
     try{
-        let url  = `amqp://${user}:${pass}@${url}`;
+        if(connectionInfo.connection!=null&& connectionInfo.channels.has(q)) {
+            callback(connectionInfo.connection,connectionInfo.channels.get(q));
+            return;
+        } 
+        console.log(connectionInfo);
+        let url  = `amqp://${user}:${pass}@${domain}`;
         console.log(url);
         amqp.connect(url, function(error0, connection) {
             if (error0) {
                 throw error0;
             }
+            connectionInfo.connection = connection;
             connection.createChannel(function(error1, channel) {
                 if (error1) {
                 throw error1;
                 }
-                var queue = 'hello';
-                var msg = 'Hello world';
+                var queue = q;
+                
 
                 channel.assertQueue(queue,{
                 durable: false
                 });
-
-                channel.sendToQueue(queue, Buffer.from(msg));
-                console.log(" [x] Sent %s", msg);
+                connectionInfo.channels.set(q,channel);
+                callback(connection,channel)
+                
+                
             });
         });
     } catch (err){
-        console.log('err'+ err.message);
+        console.log('err '+ err.message);
     }
 
 }
 
-app.get('/send',async (req,res)=> {
+app.get('/publish',async (req,res)=> {
 
     try {
-        let client = initClient(process.env.RabbitMQ_user,process.env.RabbitMQ_password,process.env.url)
-        console.log('hi');
+        let qname = "secondQueue";
+        let client = initClient(process.env.RabbitMQ_user,process.env.RabbitMQ_password,process.env.url,qname,async (connection,channel)=>{
+            for(i=0;i<100;i++){
+
+                var msg = 'random Hello world ' +  Math.floor(Math.random() * 1000);;
+                channel.sendToQueue(qname, Buffer.from(msg));
+                await new Promise(r => setTimeout(r, 150));
+                // console.log(" [x] Sent %s \n", msg);
+                res.write(msg);
+            }
+            res.end();
+        })
+        
+
+
+    } catch (err){
+        res.status(500).send("Error1: " +err.message)
+    }
+});
+
+app.get('/register',async (req,res)=> {
+    let ref = null;
+    try {
+        let qname = "secondQueue";
+        let client = initClient(process.env.RabbitMQ_user,process.env.RabbitMQ_password,process.env.url,qname,(connection,channel)=>{
+            channel.consume(qname, function(msg) {
+                
+                if(ref!=null) clearTimeout(ref)
+                res.write(msg.content.toString());
+                // console.log(" [x] Received %s", msg.content.toString());
+                ref = setTimeout(()=>{res.end();connection.close();},2000)
+              }, {
+                  noAck: false
+                });
+            res.write("registered to listen");
+        })
+        
 
 
     } catch (err){
