@@ -11,9 +11,9 @@ app.use(express.urlencoded());
 app.use(cors());
 
 
-const initClient = (user,pass)=>{
+const initClient = (user,pass,url)=>{
     try{
-        let url  = `amqp://${user}:${pass}@api-rabbitmq.bamzy.info`;
+        let url  = `amqp://${user}:${pass}@${url}`;
         console.log(url);
         amqp.connect(url, function(error0, connection) {
             if (error0) {
@@ -43,7 +43,7 @@ const initClient = (user,pass)=>{
 app.get('/send',async (req,res)=> {
 
     try {
-        let client = initClient(process.env.RabbitMQ_user,process.env.RabbitMQ_password)
+        let client = initClient(process.env.RabbitMQ_user,process.env.RabbitMQ_password,process.env.url)
         console.log('hi');
 
 
