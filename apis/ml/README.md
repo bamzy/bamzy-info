@@ -10,3 +10,13 @@ jupyter notebook list
 Currently running servers:
 http://localhost:8888/?token=<token>
 ```
+
+switch anaconda envs by
+```
+activate [name]
+```
+
+install tensorflow by 
+```
+pip install tensorflow
+```
