@@ -19,6 +19,7 @@ import DataTable from "./components/DataTable";
 import CodeEditor from "./components/CodeEditor";
 import JsonViewer from "./components/MyJsonViewer";
 import useDocumentTitle from '../../../utils/useDocumentTitle'
+import Wheel from "./components/Wheel";
 export default function Demo() {
   
   const folderData  = {
@@ -39,6 +40,12 @@ export default function Demo() {
         <JsonViewer />        
       </Card>
 
+      <Card my='10px'>
+            <Heading as='h4' size='lg' w='100%'>Wheel of Fortune</Heading>
+          <Flex>
+            <Wheel items={['software','hardware','OS','React']} />
+          </Flex>
+      </Card>
       <Card my='10px'>
           <Flex>
             <Heading as='h4' size='lg' w='100%'>A TicTacToe</Heading>

@@ -1,0 +1,85 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0", 
+      "title": "My CharAPI Docs",
+      "description": "Text Analysis on Sources",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:8081",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "Users",
+        "description": "API for users in the system"
+      }
+    ],
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "paths": {
+        "/analyzeTelegramChannel/{channelName}": {
+          "get": {
+            "tags": ["Analyze Iran International"],
+            "summary": "get word frequency",
+            "parameters": [{
+                "name": "channelName",
+                "in": "path",
+                "required": true,
+                "description": "look up your destination's channel name on telegram",
+                "type": "string"
+            }],
+            "responses": {
+              "200": {
+                "description": "OK",
+                "schema": {
+                  
+                }
+              }
+            }
+          }
+        },
+        "/analyzeBBC": {
+          "get": {
+            "tags": ["Analyze BBC Persian"],
+            "summary": "get word frequency",
+            "responses": {
+              "200": {
+                "description": "OK",
+                "schema": {
+                  
+                }
+              }
+            }
+          }
+        },
+        "/analyzeIranIntl": {
+          "get": {
+            "tags": ["Analyze Iran International"],
+            "summary": "get word frequency",
+            "responses": {
+              "200": {
+                "description": "OK",
+                "schema": {
+                  
+                }
+              }
+            }
+          }
+        }
+      }, 
+      "definitions": {
+        "Freqs": {
+            "size": {"type":"integer"},
+            "required": []
+        },
+        "Freqs": {
+            "type": "array",
+            "$ref": "#/definitions/User"
+        }
+        }
+    
+  }

@@ -24,12 +24,13 @@ pipeline {
                 sh 'cd apis/chart && npm install'
                 sh 'cp apis/chart/.env-copy apis/chart/.env'
                 sh 'echo \'PORT=8081 \n \'  >> apis/chart/.env'
+                sh 'echo \'SQS_URL=https://sqs.ca-central-1.amazonaws.com/593885178555/bamzy-sqs \n \'  >> apis/chart/.env'
             }
         }
         stage('Run jest tests for chartAPI') {
             steps {
                 echo '\033[34m'
-                sh 'cd apis/chart && npx jest'
+                sh 'cd apis/chart && npx jest --runInBand --detectOpenHandles --forceExit'
             }
         }
 

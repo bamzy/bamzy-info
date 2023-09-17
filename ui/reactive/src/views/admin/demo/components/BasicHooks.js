@@ -6,6 +6,7 @@ import UseMemoHookExample from "./UseMemoHookExample";
 import UseRefHookExample from "./UseRefHookExample";
 import UseCallbackHookExample from "./UseCallbackHooExample";
 import UseContextHookExample from "./UseContextHookExample";
+import UseLayoutEffectHookExample from "./UseLayoutEffectHookExample";
 export default function BasicHooks(){
 
     return (
@@ -21,6 +22,9 @@ export default function BasicHooks(){
             </Flex>
             <Flex p={2} pt={3}>
                     <UseContextHookExample />
+            </Flex>
+            <Flex p={2} pt={3}>
+                    <UseLayoutEffectHookExample />
             </Flex>
         </>
     );

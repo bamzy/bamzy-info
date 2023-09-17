@@ -4,7 +4,7 @@ import {
  } from "@chakra-ui/react";
 import UseToggleHookExample from "./UseToggleHookExample";
 import UseTimeoutHookExample from "./UseTimeoutHookExample";
-import UseHistoryHookExample from "./UseHistoryHookExample copy";
+import UseHistoryHookExample from "./UseHistoryHookExample";
 import UseStorageHookExample from "./UseStorageHookExample";
 export default function CustomHooks(){
 

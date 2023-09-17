@@ -1,0 +1,29 @@
+.pie {
+    position: absolute;
+    top:60px;
+    width: 200px;
+    height: 70px;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -o-border-radius: 50px;
+    border-radius: 50px;
+    clip: rect(0px, 200px, 200px, 0px);
+  }
+  .hold {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -o-border-radius: 50px;
+    border-radius: 50px;
+    /* clip: rect(0px, 300px, 300px, 50px); */
+  }
+  .slice .pie {
+    padding-top: 10px;
+    background-color: #d4d261;
+    -webkit-transform:rotate(-45deg);
+    -moz-transform:rotate(-45deg);
+    -o-transform:rotate(-45deg);
+    transform:rotate(-45deg);
+  }

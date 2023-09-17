@@ -6,7 +6,8 @@ const {NewsSource} = require('./modules/NewsSource');
 const {sendMessage,listMessages,getQueueList} = require('./sqsAPI');
 const cors = require('cors')
 const app = express();
-
+const swaggerUi = require('swagger-ui-express');
+swaggerDocument = require('./swagger.json');
 
 //Middlewares
 app.use(express.json());
@@ -87,5 +88,10 @@ app.post('/sendMessage',async (req,res)=>{
     let data = await sendMessage({},'Hi Im bamdad');
    res.send(data);
 })
-
+app.use(
+    '/api-docs',
+    swaggerUi.serve
+    
+  );
+  app.get('/api-docs', swaggerUi.setup(swaggerDocument));
 module.exports = {app}
